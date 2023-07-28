@@ -22,6 +22,9 @@
     "deploy": "predeploy ; gh-pages -d build",
     "build": "react-scripts build",
     "lint": "eslint . --ignore-path .gitignore --fix",
+    "format": "prettier --write . --ignore-path .gitignore",
+    "fix-style": "npm run format && npm run lint",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +46,8 @@
   },
   "devDependencies": {
     "gh-pages": "^5.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
     "prettier": "3.0.0"
   }
 }
