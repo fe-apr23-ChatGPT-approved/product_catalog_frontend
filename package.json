@@ -21,7 +21,7 @@
     "predeploy": "npm run build",
     "deploy": "predeploy ; gh-pages -d build",
     "build": "react-scripts build",
-    "lint": "eslint . --ignore-path .gitignore --fix",
+    "lint": "eslint . --ignore-path .gitignore",
     "format": "prettier --write . --ignore-path .gitignore",
     "fix-style": "npm run format && npm run lint",
     "prepare": "husky install"
@@ -49,5 +49,9 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "prettier": "3.0.0"
+  },
+
+  "lint-staged": {
+    "*.tsx": "npm run lint"
   }
 }
