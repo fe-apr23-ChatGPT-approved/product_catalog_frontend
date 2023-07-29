@@ -1,6 +1,4 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 
-export const App: React.FC = () => (
-  <h1>Hello!</h1>
-);
+export const App: React.FC = () => <h1>Hello!</h1>;
