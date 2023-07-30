@@ -1,0 +1,131 @@
+.header {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #E2E6E9;
+  margin: 0px;
+    padding: 0px;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  &__main-logo{
+    height: 22px;
+    width: 64px;
+    padding:  13px 16px;
+    margin-right: 24px;
+    align-items: center;
+
+    @media (min-width: 1200px) {
+      height: 28px;
+      width: 80px;
+      padding:  18px 24px;
+    }
+  }
+  
+  &__list {
+    list-style: none;
+    display: none;
+    margin: 0px;
+    padding: 0px;
+    flex-basis: 100%;
+
+
+    //need to add corect font
+    font-family: sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+
+    @media (min-width: 640px) {
+      display: flex;
+    }
+  }
+
+  &__item {
+    margin-right: 32px;
+    display: flex;
+
+    @media (min-width: 1200px) {
+      margin-right: 64px;
+    }
+
+    &--is-active {
+        color: #313237;
+        position: relative;
+      
+      &::after {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 3px;
+        content: "";
+        background-color: #313237;
+      }
+      
+    }
+
+    &--is-active a{
+      color: #313237;
+    }
+    
+    
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #89939A;
+    height: 100%;
+  
+    line-height: 48px;
+
+    @media (min-width: 1200px) {
+      line-height: 64px;
+    }
+
+    &:hover {
+      color: #313237;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__button{
+    border-left: 1px solid #E2E6E9;
+    padding: 0 16px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 1200px) {
+      padding: 0 24px;
+    }
+
+    &--tablet{
+      @media (min-width: 640px) {
+        display: flex;
+      }
+    }
+
+    &--mobile{
+      @media (max-width: 639.5px) {
+        display: flex;
+      }
+    }
+    
+
+    &:hover {
+      border-bottom: 1px solid #313237;
+    }
+  }
+}

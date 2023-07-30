@@ -1,4 +1,10 @@
 import React from 'react';
 import './App.scss';
+import './Components/Header.scss';
+import { Header } from './Components/Header';
 
-export const App: React.FC = () => <h1>Hello!</h1>;
+export const App: React.FC = () => (
+  <div className="starter">
+    <Header />
+  </div>
+);
