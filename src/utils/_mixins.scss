@@ -1,0 +1,17 @@
+
+@mixin onDesktop {
+  @media (min-width: $desktopScreen) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: $tabletScreen) {
+    @content;
+  }
+}
+
+@mixin square($size) {
+  height: $size;
+  width: $size;
+}

@@ -1,0 +1,155 @@
+@import '../../utils/_vars.scss';
+@import '../../utils/_mixins.scss';
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px 0;
+
+  background-color: $backgroundColor;
+  box-shadow: 0px -1px 0px 0px $elementsColor;
+
+  &__container {
+    margin: 0 16px;
+
+    @include onTablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+
+      margin: 0 24px;
+    }
+
+    @include onDesktop {
+      max-width: 1200px;
+
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+  }
+
+  &__logo {
+    &-image {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex: 1;
+
+      height: 32px;
+      width: 89px;
+
+      margin-bottom: 32px;
+
+      cursor: pointer;
+
+      @include onTablet {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__list {
+    margin-bottom: 32px;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      flex: 2;
+
+      margin-bottom: 0;
+    }
+  }
+
+  &__item {
+    margin-bottom: 16px;
+
+    font-family: 'Mont', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+
+    color: $secondaryColor;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+
+    &:last-child {
+      @include onTablet {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__link {
+    transition: $transitionDuration;
+  
+    &:visited {
+      color: $secondaryColor;
+    }
+
+    &:hover {
+      color: $primaryColor;
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+
+    @include onTablet {
+      justify-content: flex-end;
+    }
+
+    &-text {
+      margin-right: 16px;
+
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+
+      color: $secondaryColor;
+      text-align: right;
+    }
+
+    &-btn {
+      position: relative;
+      @include square(32px);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: $backgroundColor;
+      border: 1px solid $secondaryColor;
+      border-radius: 50%;
+
+      cursor: pointer;
+      transition: $transitionDuration;
+
+      &:hover {
+        border: 1px solid $primaryColor;
+      }
+    }
+  }
+
+  &__arrow-up {
+    @include square(16px);
+    position: absolute;
+
+    opacity: 1;
+    transition: opacity $transitionDuration;
+
+    &.hidden {
+      opacity: 0;
+    }
+  }
+}
