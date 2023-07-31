@@ -2,9 +2,9 @@
   position: sticky;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #E2E6E9;
+  border-bottom: 1px solid #e2e6e9;
   margin: 0px;
-    padding: 0px;
+  padding: 0px;
 
   &__content {
     display: flex;
@@ -13,27 +13,27 @@
     padding: 0px;
   }
 
-  &__main-logo{
+  &__main-logo {
+    box-sizing: content-box;
     height: 22px;
     width: 64px;
-    padding:  13px 16px;
+    padding: 13px 16px;
     margin-right: 24px;
     align-items: center;
 
     @media (min-width: 1200px) {
       height: 28px;
       width: 80px;
-      padding:  18px 24px;
+      padding: 18px 24px;
     }
   }
-  
+
   &__list {
     list-style: none;
     display: none;
     margin: 0px;
     padding: 0px;
     flex-basis: 100%;
-
 
     //need to add corect font
     font-family: sans-serif;
@@ -58,33 +58,30 @@
     }
 
     &--is-active {
-        color: #313237;
-        position: relative;
-      
+      color: #313237;
+      position: relative;
+
       &::after {
         position: absolute;
         bottom: 0;
         right: 0;
         left: 0;
         height: 3px;
-        content: "";
+        content: '';
         background-color: #313237;
       }
-      
     }
 
-    &--is-active a{
+    &--is-active a {
       color: #313237;
     }
-    
-    
   }
 
   &__link {
     text-decoration: none;
-    color: #89939A;
+    color: #89939a;
     height: 100%;
-  
+
     line-height: 48px;
 
     @media (min-width: 1200px) {
@@ -100,8 +97,8 @@
     display: flex;
   }
 
-  &__button{
-    border-left: 1px solid #E2E6E9;
+  &__button {
+    border-left: 1px solid #e2e6e9;
     padding: 0 16px;
     display: none;
     align-items: center;
@@ -111,18 +108,17 @@
       padding: 0 24px;
     }
 
-    &--tablet{
+    &--tablet {
       @media (min-width: 640px) {
         display: flex;
       }
     }
 
-    &--mobile{
+    &--mobile {
       @media (max-width: 639.5px) {
         display: flex;
       }
     }
-    
 
     &:hover {
       border-bottom: 1px solid #313237;

@@ -1,0 +1,75 @@
+@import '../../Utils/variables.scss';
+
+.starter {
+  overflow: hidden;
+}
+
+.menu {
+  height: $menu-height;
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+
+  &__list {
+    display: block;
+    list-style: none;
+    padding: 0px;
+    flex-basis: 100%;
+
+    //need to add corect font
+    font-family: sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+  }
+
+  &__item {
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: center;
+
+    &--is-active a {
+      color: #313237;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    padding-bottom: 8px;
+    color: #89939a;
+    line-height: 100%;
+
+    &:hover {
+      color: #313237;
+      border-bottom: 2px solid #313237;
+      padding-bottom: 6px;
+    }
+  }
+
+  &__buttons {
+    position: relative;
+    bottom: 0;
+    display: flex;
+  }
+
+  &__button {
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #e2e6e9;
+    border-bottom: 2px solid white;
+    width: 50%;
+    height: max;
+
+    &:hover {
+      border-bottom: 2px solid #313237;
+    }
+
+    &:first-child {
+      border-right: 1px solid #e2e6e9;
+    }
+  }
+}
