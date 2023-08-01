@@ -16,10 +16,7 @@ export const NotFoundPage: React.FC = () => (
       <button className={style['not-found-page__link']}>Go Home</button>
     </a>
 
-    <img
-      className={style['not-found-page__img']}
-      src={astronaut}
-      alt={astronaut}
-    />
+    <img className={style.not_found_page__img} src={astronaut} alt={astronaut} />
+
   </div>
 );
