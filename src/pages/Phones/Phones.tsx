@@ -1,0 +1,1 @@
+export const Phones: React.FC = () => (<h1>Phones</h1>);

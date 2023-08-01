@@ -1,0 +1,1 @@
+export const Accessories: React.FC = () => (<h1>Accessories</h1>);

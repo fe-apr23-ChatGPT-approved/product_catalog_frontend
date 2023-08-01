@@ -1,0 +1,1 @@
+export const NotFoundPage: React.FC = () => (<h1>Ooops</h1>);

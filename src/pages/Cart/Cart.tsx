@@ -1,0 +1,1 @@
+export const Cart: React.FC = () => (<h1>Cart</h1>);
