@@ -68,12 +68,7 @@
   &__item {
     margin-bottom: 16px;
 
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 11px;
-    letter-spacing: 0.48px;
-    text-transform: uppercase;
+    @include uppercase;
 
     color: $secondaryColor;
 
@@ -102,7 +97,7 @@
 
   &__back_to_top {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex: 1;
 
@@ -113,9 +108,7 @@
     &_text {
       margin-right: 16px;
 
-      font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
+      @include smallText;
 
       color: $secondaryColor;
       text-align: right;
