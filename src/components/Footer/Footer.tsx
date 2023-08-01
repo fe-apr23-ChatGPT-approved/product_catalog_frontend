@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-curly-brace-presence */
 import { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
@@ -7,7 +6,7 @@ import Logo from '../../images/logo.svg';
 import arrowUpHovered from '../../icons/arrow_up.svg';
 import arrowUp from '../../icons/arrow_up_grey.svg';
 
-import './Footer.scss';
+import style from './Footer.module.scss';
 
 export const Footer: FC = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -24,47 +23,47 @@ export const Footer: FC = () => {
   };
 
   return (
-    <footer className="footer">
-      <div className="footer__container">
-        <div className="footer__logo-image">
+    <footer className={style.footer}>
+      <div className={style.footer__container}>
+        <div className={style.footer__logo_image}>
           <img
             src={Logo}
-            className="footer__logo"
-            alt="Nice Gagets logo" />
+            className={style.footer__logo}
+            alt={'Nice Gagets logo'} />
         </div>
 
-        <ul className="footer__list">
+        <ul className={style.footer__list}>
           {footerLinks.map(({ name, to }) => (
-            <li className="footer__item" key={name}>
-              <Link to={to} className="footer__link">
+            <li className={style.footer__item} key={name}>
+              <Link to={to} className={style.footer__link}>
                 {name}
               </Link>
             </li>
           ))}
         </ul>
 
-        <div className="footer__back-to-top">
-          <span className="footer__back-to-top-text">
+        <div className={style.footer__back_to_top}>
+          <span className={style.footer__back_to_top_text}>
             Back to top
           </span>
           <button
-            type="button"
-            className="footer__back-to-top-btn"
+            type={'button'}
+            className={style.footer__back_to_top_btn}
             onMouseEnter={handleHover}
             onMouseLeave={handleHover}
             onClick={() => handleScrollToTop()}
           >
             <img
-              className={cn('footer__arrow-up',
-                {'hidden': isHovered })}
+              className={cn(style.footer__arrow_up,
+                { [style.hidden]: isHovered })}
               src={arrowUp}
-              alt="Arrow Up"
+              alt={'Arrow Up'}
             />
             <img
-              className={cn('footer__arrow-up',
-                { 'hidden': !isHovered })}
+              className={cn(style.footer__arrow_up,
+                { [style.hidden]: !isHovered })}
               src={arrowUpHovered}
-              alt="Arrow Up"
+              alt={'Arrow Up'}
             />
           </button>
         </div>

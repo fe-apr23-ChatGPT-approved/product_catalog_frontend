@@ -1,5 +1,6 @@
 @import '../../utils/_vars.scss';
 @import '../../utils/_mixins.scss';
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -31,7 +32,7 @@
   }
 
   &__logo {
-    &-image {
+    &_image {
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -99,7 +100,7 @@
     }
   }
 
-  &__back-to-top {
+  &__back_to_top {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -109,7 +110,7 @@
       justify-content: flex-end;
     }
 
-    &-text {
+    &_text {
       margin-right: 16px;
 
       font-family: 'Mont', sans-serif;
@@ -120,7 +121,7 @@
       text-align: right;
     }
 
-    &-btn {
+    &_btn {
       position: relative;
       @include square(32px);
 
@@ -141,7 +142,7 @@
     }
   }
 
-  &__arrow-up {
+  &__arrow_up {
     @include square(16px);
     position: absolute;
 
