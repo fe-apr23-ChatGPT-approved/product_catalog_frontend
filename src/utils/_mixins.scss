@@ -1,0 +1,105 @@
+@mixin onDesktop {
+  @media (min-width: $desktopScreen) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: $tabletScreen) {
+    @content;
+  }
+}
+
+@mixin square($size) {
+  height: $size;
+  width: $size;
+}
+
+@mixin h1_DestopAndTablet {
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.48px;
+}
+
+@mixin h2_DestopAndTablet {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+}
+
+@mixin h3_DestopAndTablet {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 140%;
+}
+
+@mixin h4_DestopAndTablet {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+@mixin uppercase {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}
+
+@mixin buttons {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+@mixin bodyText {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+@mixin smallText {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+@mixin h1_Mobile {
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.48px;
+}
+
+@mixin h2_Mobile {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 140%;
+}
+
+@mixin h3_Mobile {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+@mixin h4_Mobile {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
