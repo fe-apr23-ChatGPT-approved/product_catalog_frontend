@@ -1,7 +1,6 @@
 @import '../../utils/_vars.scss';
 @import '../../utils/_mixins.scss';
 
-
 .header {
   position: sticky;
   display: flex;
@@ -22,7 +21,6 @@
     padding: 13px 16px;
     margin-right: 24px;
     align-items: center;
-    
 
     @include onDesktop {
       height: 28px;

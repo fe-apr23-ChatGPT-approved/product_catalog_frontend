@@ -27,12 +27,14 @@ export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
         <img className={style.header__main_logo} src={logo} alt={'main logo'} />
         {!isOpenMenu && (
           <ul className={style.header__list}>
-            {pages.map(page => (
+            {pages.map((page) => (
               <li className={style.header__item} key={page}>
                 <NavLink
-                  className={({ isActive }) => cn(`${style.header__link}`, {
-                    [style.header__link__is_active]: isActive,
-                  })}
+                  className={({ isActive }) =>
+                    cn(`${style.header__link}`, {
+                      [style.header__link__is_active]: isActive,
+                    })
+                  }
                   to={`/${page}`}
                 >
                   {page}
@@ -43,10 +45,16 @@ export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
         )}
       </div>
       <div className={style.header__buttons}>
-        <Link className={`${style.header__button} ${style.header__button__tablet}`} to={'/like'}>
+        <Link
+          className={`${style.header__button} ${style.header__button__tablet}`}
+          to={'/like'}
+        >
           <img src={like} alt={'like button'} />
         </Link>
-        <Link className={`${style.header__button} ${style.header__button__tablet}`} to={'cart'}>
+        <Link
+          className={`${style.header__button} ${style.header__button__tablet}`}
+          to={'cart'}
+        >
           <img src={cart} alt={'cart button'} />
         </Link>
         <div
