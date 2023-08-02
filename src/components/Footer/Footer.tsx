@@ -23,7 +23,7 @@ export const Footer: FC = () => {
           <img
             src={Logo}
             className={style.footer__logo}
-            alt={'Nice Gagets logo'}
+            alt={'Nice Gadgets logo'}
           />
         </div>
 
