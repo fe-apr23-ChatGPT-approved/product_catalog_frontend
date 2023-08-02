@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.scss';
 import { Footer } from './components/Footer';
 
