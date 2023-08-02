@@ -26,7 +26,7 @@
     justify-content: center;
 
     &__is_active a {
-      color: $activeLinkColor
+      color: $activeLinkColor;
     }
   }
 
@@ -41,7 +41,7 @@
     }
 
     &__is_active {
-      color: #313237;
+      color: $activeLinkColor;
       border-bottom: 2px solid $activeLinkColor;
       padding-bottom: 6px;
     }

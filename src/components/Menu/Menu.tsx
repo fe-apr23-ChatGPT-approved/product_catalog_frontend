@@ -7,7 +7,7 @@ import cn from 'classnames';
 import style from './Menu.module.scss';
 
 interface Props {
-  setIsOpenMenu: React.Dispatch<React.SetStateAction<boolean>>
+  setIsOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const Menu: React.FC<Props> = ({ setIsOpenMenu }) => {
@@ -20,12 +20,14 @@ export const Menu: React.FC<Props> = ({ setIsOpenMenu }) => {
   return (
     <div className={style.menu}>
       <ul className={style.menu__list}>
-        {pages.map(page => (
+        {pages.map((page) => (
           <li className={style.menu__item} key={page}>
             <NavLink
-              className={({ isActive }) => cn(style.menu__link, {
-                [style.menu__link__is_active]: isActive,
-              })}
+              className={({ isActive }) =>
+                cn(style.menu__link, {
+                  [style.menu__link__is_active]: isActive,
+                })
+              }
               to={`/${page}`}
               onClick={handleClick}
             >
