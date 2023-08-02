@@ -1,6 +1,6 @@
 import React from 'react';
 import { createHashRouter } from 'react-router-dom';
-import { Layout } from './components/Layout';
+import { Layout } from './components/Layout/Layout';
 // import { NotFoundPage } from './pages/NotFoundPage';
 // import { HomePage } from './pages/HomePage/HomePage';
 
@@ -12,35 +12,39 @@ export const AppRouter = createHashRouter([
     // children: [
     //   {
     //     index: true,
-    //     element: <HomePage />,
+    //     element: <HomePage />
     //   },
 
     //   {
     //     path: '/home',
     //     // eslint-disable-next-line react/jsx-curly-brace-presence
-    //     element: <Navigate to="/" replace />,
+    //     element: <Navigate to="/" replace />
     //   },
 
     //   {
     //     path: '/phones',
-    //     element: <PhonesPage />,
+    //     element: <PhonesPage />
     //   },
+
     //   {
     //     path: '/tablets',
-    //     element: <TabletsPage />,
+    //     element: <TabletsPage />
     //   },
+
     //   {
     //     path: '/accessories',
-    //     element: <AccessoriesPage />,
+    //     element: <AccessoriesPage />
     //   },
+
     //   {
     //     path: '/cart',
-    //     element: <CartPage />,
+    //     element: <CartPage />
     //   },
+
     //   {
     //     path: '/favourites',
-    //     element: <FavouritesPage />,
-    //   },
-    // ],
+    //     element: <FavouritesPage />
+    //   }
+    // ]
   },
 ]);
