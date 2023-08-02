@@ -10,9 +10,9 @@ export const App: React.FC = () => {
   return (
     <>
       <Header isOpenMenu={isOpenMenu} setIsOpenMenu={setIsOpenMenu} />
-      
+
       {isOpenMenu && <Menu setIsOpenMenu={setIsOpenMenu} />}
-      
+
       {!isOpenMenu && <Footer />}
     </>
   );
