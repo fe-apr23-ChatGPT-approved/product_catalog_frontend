@@ -1,0 +1,31 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars';
+
+.product_card {
+  padding: 32px;
+
+  border-radius: 8px;
+  border: 1px solid $elementsColor;
+  background: $backgroundColor;
+
+  list-style: none;
+
+
+  @include onMobile {
+    min-width: 212px;
+    height: 439px;
+  }
+
+  @include onTablet {
+    min-width: 237px;
+    height: 512px;
+  }
+
+  @include onDesktop {
+    min-width: 272px;
+    height: 506px;
+  }
+
+  
+}
+

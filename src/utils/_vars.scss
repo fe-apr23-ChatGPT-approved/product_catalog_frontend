@@ -1,3 +1,4 @@
+$mobileScreen: 639px;
 $tabletScreen: 640px;
 $desktopScreen: 1200px;
 
@@ -5,5 +6,16 @@ $backgroundColor: #fff;
 $secondaryColor: #89939A;
 $primaryColor: #0F0F11;
 $elementsColor: #e2e6e9;
+$buttonRadiusColor: #b4bdc3;
 
 $transitionDuration: 0.3s;
+
+$gap: 16px;
+
+$secondaryTitle-little: 22px;
+$secondaryTitle-big: 32px;
+
+$marginBetweenSectionsMobile: 56px;
+$marginBetweenSectionsTablet: 64px;
+$marginBetweenSectionsDesktop: 80px;
+$marginBetweenTitleAndSection: 24px;

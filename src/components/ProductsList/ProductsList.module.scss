@@ -1,0 +1,14 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars';
+
+.product_list {
+  overflow: hidden;
+
+  &__wraper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    gap: 16px;
+  }
+}

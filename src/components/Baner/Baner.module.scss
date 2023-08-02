@@ -1,0 +1,30 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars';
+
+.baner {
+  @include section_Size;
+
+  @include onMobile {
+    &_noPadding {
+      padding: 0;
+    }
+  }
+
+  margin-top: 24px;
+
+
+  @include onTablet {
+    margin-top: 32px;
+  }
+
+  @include onDesktop {
+    margin-top: 56px;
+  }
+
+  &__dots {
+    margin-top: 8px;
+
+    display: flex;
+    justify-content: center;
+  }
+}

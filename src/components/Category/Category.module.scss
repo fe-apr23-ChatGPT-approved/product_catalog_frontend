@@ -1,0 +1,41 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.category {
+  display: flex;
+  flex-direction: column;
+
+  &__photo_container {
+    margin: auto;
+    margin-bottom: $marginBetweenTitleAndSection;
+
+    min-width: 288px;
+    height: 288px;
+
+    background-color: #6d6474;
+    border-radius: 8px;
+
+    @include onTablet {
+      min-width: 187px;
+      height: 187px;
+    }
+
+    @media (width: 1200px) {
+      border-radius: 0;
+    }
+
+    @include onDesktop {
+      min-width: 368px;
+      height: 368px;
+    }
+  }
+
+  &__title {
+    @include h4_DestopAndTablet;
+    text-decoration: none;
+  }
+
+  &__quantity {
+    margin: 4px 0 32px 0;
+  }
+}

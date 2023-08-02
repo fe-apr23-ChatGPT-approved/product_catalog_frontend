@@ -1,0 +1,27 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars';
+
+.new_model {
+  &__photo {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
+
+    @include onTablet {
+      border-radius: 8px;
+    }
+
+    &_mobile {
+      @media (min-width: 640px) {
+        display: none;
+      }
+    }
+
+    &_tableAndDesktop {
+      @media (max-width: 639px) {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars';
+
+.brand_new_models {
+  @include section_Size;
+
+  margin-top: $marginBetweenSectionsMobile;
+
+  @include onTablet {
+    margin-top: $marginBetweenSectionsTablet;
+  }
+
+  @include onTablet {
+    margin-top: $marginBetweenSectionsDesktop;
+  }
+
+  &__title {
+    @include h2_Mobile;
+    margin-bottom: $marginBetweenTitleAndSection;
+
+    @include onTablet {
+      @include h2_DestopAndTablet;
+    }
+  }
+}

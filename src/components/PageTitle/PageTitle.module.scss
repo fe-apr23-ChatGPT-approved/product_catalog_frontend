@@ -1,0 +1,14 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars';
+
+.page_title {
+  @include section_Size;
+  
+  &__title {
+    @include h1_Mobile;
+
+    @include onTablet {
+      @include h1_DestopAndTablet;
+    }
+  }
+}

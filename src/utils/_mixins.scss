@@ -1,3 +1,9 @@
+@mixin onMobile {
+  @media (max-width: $mobileScreen) {
+    @content;
+  }
+}
+
 @mixin onDesktop {
   @media (min-width: $desktopScreen) {
     @content;
@@ -76,11 +82,11 @@
 }
 
 @mixin h1_Mobile {
-  font-size: 48px;
+  font-size: 32px;
   font-style: normal;
   font-weight: 800;
-  line-height: 56px;
-  letter-spacing: -0.48px;
+  line-height: 41px;
+  letter-spacing: -0.32px;
 }
 
 @mixin h2_Mobile {
@@ -102,4 +108,22 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+@mixin section_Size {
+  max-width: 1200px;
+  margin: auto;
+
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @include onTablet {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  @include onDesktop {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 }
