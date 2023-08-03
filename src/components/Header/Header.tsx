@@ -32,7 +32,7 @@ export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
                 <NavLink
                   className={({ isActive }) =>
                     cn(`${style.header__link}`, {
-                      [style.header__link__is_active]: isActive,
+                      [style['header__link--is-active']]: isActive,
                     })
                   }
                   to={`/${page}`}
@@ -46,19 +46,19 @@ export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
       </div>
       <div className={style.header__buttons}>
         <Link
-          className={`${style.header__button} ${style.header__button__tablet}`}
+          className={`${style.header__button} ${style['header__button--tablet']}`}
           to={'/like'}
         >
           <img src={like} alt={'like button'} />
         </Link>
         <Link
-          className={`${style.header__button} ${style.header__button__tablet}`}
+          className={`${style.header__button} ${style['header__button--tablet']}`}
           to={'cart'}
         >
           <img src={cart} alt={'cart button'} />
         </Link>
         <div
-          className={`${style.header__button} ${style.header__button__mobile}`}
+          className={`${style.header__button} ${style['header__button--mobile']}`}
           onClick={handleClick}
         >
           <img src={!isOpenMenu ? burgerMenu : close} alt={'menu button'} />
