@@ -52,8 +52,8 @@ export const Pagination: FC<Props> = ({
     <ul className={style.pagination}>
       <li
         className={classNames(style.pagination__element,
-          style.pagination__element_leftArrow, {
-            [style.pagination__element_disabled]: isFirstPage,
+          style['pagination__element-left-arrow'], {
+            [style['pagination__element--disabled']]: isFirstPage,
           })}
         onClick={onClickPrevButton}
       >
@@ -63,8 +63,7 @@ export const Pagination: FC<Props> = ({
         <li
           key={page}
           className={classNames(style.pagination__element, {
-            [style.pagination__element_active]: currentPage === page,
-            [style.pagination__element_last]: isLastPage,
+            [style['pagination__element--active']]: currentPage === page,
           })}
           onClick={() => onPageClick(page)}
         >
@@ -74,8 +73,8 @@ export const Pagination: FC<Props> = ({
 
       <li
         className={classNames(style.pagination__element,
-          style.pagination__element_rightArrow, {
-            [style.pagination__element_disabled]: isLastPage,
+          style['pagination__element-right-arrow'], {
+            [style['pagination__element--disabled']]: isLastPage,
           })}
         onClick={onClickNextButton}
       >

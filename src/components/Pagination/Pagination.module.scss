@@ -1,6 +1,7 @@
 @import '../../utils/vars';
 @import '../../utils/mixins';
 
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -33,31 +34,31 @@
     transition: $transitionDuration;
     cursor: pointer;
 
-    &_leftArrow {
+    &-left-arrow {
       margin-right: 8px;
 
       transform: rotate(-90deg);
     }
 
-    &_rightArrow {
+    &-right-arrow {
       margin-left: 8px;
 
       transform: rotate(90deg);
     }
 
-    &_active {
+    &--active {
       background-color: $primaryColor;
       color: $backgroundColor;
     }
 
-    &_disabled {
+    &--disabled {
       color: $iconsAndPlaceholders;
       border-color: $elementsColor;
 
       cursor: auto;
     }
 
-    &:hover:not(.pagination__element_disabled) {
+    &:hover:not(.pagination__element--disabled) {
       border-color: $primaryColor;
     }
   }
