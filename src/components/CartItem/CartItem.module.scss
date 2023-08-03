@@ -1,0 +1,142 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+
+  padding: 16px;
+
+  border-radius: 16px;
+  border: 1px solid $elementsColor;
+  background: $backgroundColor;
+
+  @include onTablet {
+    max-width: 592px;
+
+    padding: 24px;
+
+    align-items: center;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  @include onDesktop {
+    max-width: 752px;
+  }
+
+  &__gadget_info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__close_btn {
+    background-color: $backgroundColor;
+    color: $iconsPlaceholders;
+    border: 0;
+    padding: 0;
+
+    cursor: pointer;
+    transition: color $transitionDuration;
+
+    &:hover {
+      color: $primaryColor;
+    }
+  }
+
+  &__image_container {
+    @include square(80px);
+    padding: 7px;
+  }
+  
+  &__gadget_image {
+    @include square(66px);
+  }
+
+  &__gadget_decscription {
+    @include bodyText;
+    color: $primaryColor;
+  }
+
+  &__details {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include onTablet {
+      justify-content: end;
+      gap: 24px;
+      flex: 1;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__count {
+    width: 25px;
+    text-align: center;
+    @include bodyText;
+    color: $primaryColor;
+  }
+
+  &__btn {
+    @include square(32px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    background-color: $backgroundColor;
+    border-radius: 50%;
+    border: 1px solid $iconsPlaceholders;
+
+    transition: border $transitionDuration;
+    cursor: pointer;
+    outline: none;
+
+    &_disabled {
+      color: $secondaryColor;
+      cursor: auto;
+      border: 1px solid $elementsColor;
+    }
+
+    &:hover:not(.cartItem__btn_disabled) {
+      border: 1px solid $primaryColor;
+    }
+
+    &:active:not(.cartItem__btn_disabled) {
+      background-color: $hoverBgColor;
+    }
+
+    &_img {
+      @include square(16px);
+    }
+  }
+
+  &__total_price {
+    display: block;
+    width: 80px;
+    height: 31px;
+
+    color: $primaryColor;
+    text-align: right;
+    @include h3_DestopAndTablet;
+  }
+}
+
+
