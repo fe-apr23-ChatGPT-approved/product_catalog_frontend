@@ -63,7 +63,7 @@
       line-height: 64px;
     }
 
-    &__is_active {
+    &--is-active {
       color: $activeLinkColor;
       position: relative;
 
@@ -98,13 +98,13 @@
       padding: 0 24px;
     }
 
-    &__tablet {
+    &--tablet {
       @include onTablet {
         display: flex;
       }
     }
 
-    &__mobile {
+    &--mobile {
       display: flex;
 
       @include onTablet {
