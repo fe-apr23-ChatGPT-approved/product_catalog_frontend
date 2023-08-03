@@ -25,7 +25,7 @@ export const Menu: React.FC<Props> = ({ setIsOpenMenu }) => {
             <NavLink
               className={({ isActive }) =>
                 cn(style.menu__link, {
-                  [style.menu__link__is_active]: isActive,
+                  [style['menu__link--is-active']]: isActive,
                 })
               }
               to={`/${page}`}
@@ -39,14 +39,14 @@ export const Menu: React.FC<Props> = ({ setIsOpenMenu }) => {
 
       <div className={style.menu__buttons}>
         <Link
-          className={`${style.menu__button} ${style.menu__button__tablet}`}
+          className={`${style.menu__button} ${style['menu__button--tablet']}`}
           to={'/cart'}
           onClick={handleClick}
         >
           <img src={like} alt={'like button'} />
         </Link>
         <Link
-          className={`${style.menu__button} ${style.menu__button__tablet}`}
+          className={`${style.menu__button} ${style['menu__button--tablet']}`}
           to={'/cart'}
           onClick={handleClick}
         >
