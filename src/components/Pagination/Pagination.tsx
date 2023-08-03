@@ -1,8 +1,9 @@
 import { FC } from 'react';
-import { getNumbers } from '../../components/Pagination/PaginationLayout';
 import classNames from 'classnames';
-import arrow from '../../icons/arrow_up.svg';
+import { Arrow } from '../Arrow/Arrow';
 import { scrollToTop } from '../../helpers/ScrollToTop';
+import style from './Pagination.module.scss';
+import { getNumbers } from '../../helpers/getNumbersPagination';
 
 interface Props {
   total: number;
@@ -23,7 +24,6 @@ export const Pagination: FC<Props> = ({
   const isFirstPage = currentPage === 1;
 
   const onClickPrevButton = () => {
-
     if (currentPage !== 1) {
       const newPage = currentPage - 1;
 
@@ -34,7 +34,6 @@ export const Pagination: FC<Props> = ({
   };
 
   const onClickNextButton = () => {
-
     if (currentPage !== numberOfPages) {
       const newPage = currentPage + 1;
 
@@ -50,54 +49,37 @@ export const Pagination: FC<Props> = ({
   };
 
   return (
-    <ul className={'pagination'}>
+    <ul className={style.pagination}>
       <li
-        className={classNames('page-item', {
-          disabled: isFirstPage,
-        })}
+        className={classNames(style.pagination__element,
+          style.pagination__element_leftArrow, {
+            [style.pagination__element_disabled]: isFirstPage,
+          })}
         onClick={onClickPrevButton}
       >
-        <a
-          data-cy={'prevLink'}
-          className={'page-link'}
-          href={'#prev'}
-          aria-disabled={isFirstPage}
-        >
-          <img src={arrow} alt={'Previous page'} />
-        </a>
+        <Arrow />
       </li>
       {pages.map((page) => (
         <li
           key={page}
-          className={classNames('page-item', {
-            active: currentPage === page,
+          className={classNames(style.pagination__element, {
+            [style.pagination__element_active]: currentPage === page,
+            [style.pagination__element_last]: isLastPage,
           })}
+          onClick={() => onPageClick(page)}
         >
-          <a
-            data-cy={'pageLink'}
-            className={'page-link'}
-            href={`#${page}`}
-            onClick={() => onPageClick(page)}
-          >
-            {page}
-          </a>
+          {page}
         </li>
       ))}
 
       <li
-        className={classNames('page-item', {
-          disabled: isLastPage,
-        })}
+        className={classNames(style.pagination__element,
+          style.pagination__element_rightArrow, {
+            [style.pagination__element_disabled]: isLastPage,
+          })}
+        onClick={onClickNextButton}
       >
-        <a
-          data-cy={'nextLink'}
-          className={'page-link'}
-          href={'#next'}
-          aria-disabled={isLastPage}
-          onClick={onClickNextButton}
-        >
-          <img src={arrow} alt={'Next page'} />
-        </a>
+        <Arrow />
       </li>
     </ul>
   );
