@@ -1,7 +1,7 @@
 @import '../../utils/mixins';
 @import '../../utils/vars';
 
-.not_found_page {
+.not-found-page {
   position: fixed;
   top: 0px;
   left: 0px;
@@ -17,7 +17,8 @@
     color: #fff;
     font-size: 100px;
 
-    margin-top: 8vh;
+
+    margin-top: 5vh;
     margin-bottom: 5vh;
 
     @include onMobile {
@@ -40,7 +41,7 @@
       line-height: 23px;
     }
 
-    &__crossedOut {
+    &--crossedOut {
       position: relative;
       width: 64px;
 
@@ -83,7 +84,7 @@
 
     @include onTablet {
       margin: 0;
-      height: 600px;
+      height: 400px;
     }
   }
 }
