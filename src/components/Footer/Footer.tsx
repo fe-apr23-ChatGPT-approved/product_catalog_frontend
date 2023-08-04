@@ -29,7 +29,8 @@ export const Footer: FC = () => {
           <img
             src={Logo}
             className={style.footer__logo}
-            alt={'Nice Gagets logo'} />
+            alt={'Nice Gagets logo'}
+          />
         </div>
 
         <ul className={style.footer__list}>
@@ -43,9 +44,7 @@ export const Footer: FC = () => {
         </ul>
 
         <div className={style.footer__back_to_top}>
-          <span className={style.footer__back_to_top_text}>
-            Back to top
-          </span>
+          <span className={style.footer__back_to_top_text}>Back to top</span>
           <button
             type={'button'}
             className={style.footer__back_to_top_btn}
@@ -54,14 +53,16 @@ export const Footer: FC = () => {
             onClick={() => handleScrollToTop()}
           >
             <img
-              className={cn(style.footer__arrow_up,
-                { [style.hidden]: isHovered })}
+              className={cn(style.footer__arrow_up, {
+                [style.hidden]: isHovered,
+              })}
               src={arrowUp}
               alt={'Arrow Up'}
             />
             <img
-              className={cn(style.footer__arrow_up,
-                { [style.hidden]: !isHovered })}
+              className={cn(style.footer__arrow_up, {
+                [style.hidden]: !isHovered,
+              })}
               src={arrowUpHovered}
               alt={'Arrow Up'}
             />

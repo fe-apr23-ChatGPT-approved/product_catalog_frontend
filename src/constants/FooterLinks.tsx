@@ -16,6 +16,6 @@ export const footerLinks: FooterLink[] = [
 
   {
     name: 'Rights',
-    to: 'https://github.com/fe-apr23-ChatGPT-approved'
+    to: 'https://github.com/fe-apr23-ChatGPT-approved',
   },
 ];

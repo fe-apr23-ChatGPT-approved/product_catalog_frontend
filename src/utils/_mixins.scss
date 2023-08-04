@@ -1,3 +1,9 @@
+@mixin onMobile {
+  @media (max-width: $mobileScreen) {
+    @content;
+  }
+}
+
 @mixin onDesktop {
   @media (min-width: $desktopScreen) {
     @content;
