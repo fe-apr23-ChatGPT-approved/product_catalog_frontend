@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { Arrow } from '../Arrow/Arrow';
 import { scrollToTop } from '../../helpers/ScrollToTop';
@@ -19,28 +19,40 @@ export const Pagination: FC<Props> = ({
   onPageChange,
 }) => {
   const numberOfPages = Math.ceil(total / perPage);
-  const pages = getNumbers(1, numberOfPages);
-  const isLastPage = currentPage === numberOfPages;
+  const maxDisplayedPages = 4;
+  const [displayedPages, setDisplayedPages] = useState<number[]>([]);
   const isFirstPage = currentPage === 1;
+  const isLastPage = currentPage === numberOfPages;
 
-  const onClickPrevButton = () => {
-    if (currentPage !== 1) {
-      const newPage = currentPage - 1;
+  useEffect(() => {
+    const pages = getNumbers(1, numberOfPages);
+    const centerIndex = Math.floor(maxDisplayedPages / 2 );
+    let startPage = currentPage - centerIndex;
 
-      onPageChange(newPage);
+    if (startPage < 1) {
+      startPage = 1;
+    } else if (startPage + maxDisplayedPages - 1 > numberOfPages) {
+      startPage = Math.max(numberOfPages - maxDisplayedPages + 1, 1);
     }
 
-    scrollToTop();
+    const endPage = startPage + maxDisplayedPages;
+    setDisplayedPages(pages.slice(startPage - 1, endPage - 1));
+  }, [currentPage, numberOfPages, maxDisplayedPages]);
+
+  const onClickPrevButton = () => {
+    if (!isFirstPage) {
+      const newPage = currentPage - 1;
+      onPageChange(newPage);
+      scrollToTop();
+    }
   };
 
   const onClickNextButton = () => {
-    if (currentPage !== numberOfPages) {
+    if (!isLastPage) {
       const newPage = currentPage + 1;
-
       onPageChange(newPage);
+      scrollToTop();
     }
-
-    scrollToTop();
   };
 
   const onPageClick = (page: number) => {
@@ -51,15 +63,14 @@ export const Pagination: FC<Props> = ({
   return (
     <ul className={style.pagination}>
       <li
-        className={classNames(style.pagination__element,
-          style['pagination__element-left-arrow'], {
-            [style['pagination__element--disabled']]: isFirstPage,
-          })}
+        className={classNames(style.pagination__element, style['pagination__element-left-arrow'], {
+          [style['pagination__element--disabled']]: isFirstPage,
+        })}
         onClick={onClickPrevButton}
       >
         <Arrow />
       </li>
-      {pages.map((page) => (
+      {displayedPages.map((page) => (
         <li
           key={page}
           className={classNames(style.pagination__element, {
@@ -70,11 +81,10 @@ export const Pagination: FC<Props> = ({
           {page}
         </li>
       ))}
-
       <li
         className={classNames(style.pagination__element,
-          style['pagination__element-right-arrow'], {
-            [style['pagination__element--disabled']]: isLastPage,
+          style['pagination__element-right-arrow'],
+          {[style['pagination__element--disabled']]: isLastPage,
           })}
         onClick={onClickNextButton}
       >
