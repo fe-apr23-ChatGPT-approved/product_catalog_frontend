@@ -34,7 +34,7 @@ export const ProductCard: React.FC = () => {
     name: 'Apple iPhone 7 32GB Black',
     fullPrice: 400,
     price: 375,
-    screen: '4.7\' IPS',
+    screen: '4.7 IPS',
     capacity: '32GB',
     color: 'black',
     ram: '2GB',
