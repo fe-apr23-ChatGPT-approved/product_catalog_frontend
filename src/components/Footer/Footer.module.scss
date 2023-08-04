@@ -32,7 +32,7 @@
   }
 
   &__logo {
-    &_image {
+    &-image {
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -85,7 +85,7 @@
 
   &__link {
     transition: $transitionDuration;
-  
+
     &:visited {
       color: $secondaryColor;
     }
@@ -95,7 +95,7 @@
     }
   }
 
-  &__back_to_top {
+  &__back-to-top {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,7 +105,7 @@
       justify-content: flex-end;
     }
 
-    &_text {
+    &-text {
       margin-right: 16px;
 
       @include smallText;
@@ -114,7 +114,7 @@
       text-align: right;
     }
 
-    &_btn {
+    &-btn {
       position: relative;
       @include square(32px);
 
@@ -135,14 +135,14 @@
     }
   }
 
-  &__arrow_up {
+  &__arrow-up {
     @include square(16px);
     position: absolute;
 
     opacity: 1;
     transition: opacity $transitionDuration;
 
-    &.hidden {
+    &--hidden {
       opacity: 0;
     }
   }

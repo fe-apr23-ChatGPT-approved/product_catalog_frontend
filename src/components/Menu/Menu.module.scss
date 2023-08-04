@@ -1,0 +1,73 @@
+@import '../../utils/_vars.scss';
+@import '../../utils/_mixins.scss';
+
+.starter {
+  overflow: hidden;
+}
+
+.menu {
+  height: $menu-height;
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+
+  &__list {
+    display: block;
+    list-style: none;
+    padding: 0px;
+    flex-basis: 100%;
+
+    @include uppercase;
+  }
+
+  &__item {
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: center;
+
+    &--is-active a {
+      color: $activeLinkColor;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    padding-bottom: 8px;
+    color: $secondaryColor;
+    line-height: 100%;
+
+    &:hover {
+      color: $activeLinkColor;
+    }
+
+    &--is-active {
+      color: $activeLinkColor;
+      border-bottom: 2px solid $activeLinkColor;
+      padding-bottom: 6px;
+    }
+  }
+
+  &__buttons {
+    position: relative;
+    bottom: 0;
+    display: flex;
+  }
+
+  &__button {
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid $elementsColor;
+    border-bottom: 2px solid $backgroundColor;
+    width: 50%;
+    height: max;
+
+    &:hover {
+      border-bottom: 2px solid $activeLinkColor;
+    }
+
+    &:first-child {
+      border-right: 1px solid $elementsColor;
+    }
+  }
+}

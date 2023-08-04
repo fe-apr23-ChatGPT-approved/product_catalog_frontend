@@ -1,0 +1,119 @@
+@import '../../utils/_vars.scss';
+@import '../../utils/_mixins.scss';
+
+.header {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $elementsColor;
+  margin: 0px;
+  padding: 0px;
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__main_logo {
+    box-sizing: content-box;
+    height: 22px;
+    width: 64px;
+    padding: 13px 16px;
+    margin-right: 24px;
+    align-items: center;
+
+    @include onDesktop {
+      height: 28px;
+      width: 80px;
+      padding: 18px 24px;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: none;
+    margin: 0px;
+    padding: 0px;
+    flex-basis: 100%;
+
+    @include uppercase;
+
+    @include onTablet {
+      display: flex;
+    }
+  }
+
+  &__item {
+    margin-right: 32px;
+    display: flex;
+
+    @include onDesktop {
+      margin-right: 64px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $secondaryColor;
+    height: 100%;
+
+    line-height: 48px;
+
+    @include onDesktop {
+      line-height: 64px;
+    }
+
+    &--is-active {
+      color: $activeLinkColor;
+      position: relative;
+
+      &::after {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 3px;
+        content: '';
+        background-color: $activeLinkColor;
+      }
+    }
+
+    &:hover {
+      color: $activeLinkColor;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__button {
+    border-left: 1px solid $elementsColor;
+    padding: 0 16px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    @include onDesktop {
+      padding: 0 24px;
+    }
+
+    &--tablet {
+      @include onTablet {
+        display: flex;
+      }
+    }
+
+    &--mobile {
+      display: flex;
+
+      @include onTablet {
+        display: none;
+      }
+    }
+
+    &:hover {
+      border-bottom: 1px solid $activeLinkColor;
+    }
+  }
+}
