@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { Pagination } from '../Pagination/Pagination';
 import { getLastIndex } from '../../helpers/getNumbersPagination';
