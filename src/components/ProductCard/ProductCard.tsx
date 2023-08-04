@@ -112,7 +112,7 @@ export const ProductCard: React.FC = () => {
         {/* button below should be separete component */}
         <button
           className={cn(style['favourites-add-button'], {
-            [style['favourites-add-button--active']]: productFavourite
+            [style['favourites-add-button--active']]: productFavourite,
           })}
           onClick={() => handleAddFavourite()}
         >
