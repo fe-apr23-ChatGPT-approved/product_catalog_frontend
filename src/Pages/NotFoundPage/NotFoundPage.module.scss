@@ -12,12 +12,12 @@
 
   &__title {
     color: #fff;
-    font-size: 100px;
+    font-size: 80px;
 
     margin: 30px 0;
 
     @include onMobile {
-      font-size: 100px;
+      font-size: 70px;
     }
   }
 
@@ -81,6 +81,7 @@
     margin-top: 40px;
 
     @include onTablet {
+      margin: 0;
       height: 400px;
     }
   }
