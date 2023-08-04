@@ -1,6 +1,7 @@
 import React from 'react';
 import { createHashRouter } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
+import { NotFoundPage } from './Pages/NotFoundPage';
 // import { NotFoundPage } from './pages/NotFoundPage';
 // import { HomePage } from './pages/HomePage/HomePage';
 
@@ -9,42 +10,48 @@ export const AppRouter = createHashRouter([
     path: '/',
     element: <Layout />,
     // errorElement: <NotFoundPage />,
-    // children: [
-    //   {
-    //     index: true,
-    //     element: <HomePage />
-    //   },
+    children: [
+      {
+        path: '*',
+        // eslint-disable-next-line react/jsx-curly-brace-presence
+        element: <NotFoundPage />
+      },
 
-    //   {
-    //     path: '/home',
-    //     // eslint-disable-next-line react/jsx-curly-brace-presence
-    //     element: <Navigate to="/" replace />
-    //   },
+      //   {
+      //     index: true,
+      //     element: <HomePage />
+      //   },
 
-    //   {
-    //     path: '/phones',
-    //     element: <PhonesPage />
-    //   },
+      //   {
+      //     path: '/home',
+      //     // eslint-disable-next-line react/jsx-curly-brace-presence
+      //     element: <Navigate to="/" replace />
+      //   },
 
-    //   {
-    //     path: '/tablets',
-    //     element: <TabletsPage />
-    //   },
+      //   {
+      //     path: '/phones',
+      //     element: <PhonesPage />
+      //   },
 
-    //   {
-    //     path: '/accessories',
-    //     element: <AccessoriesPage />
-    //   },
+      //   {
+      //     path: '/tablets',
+      //     element: <TabletsPage />
+      //   },
 
-    //   {
-    //     path: '/cart',
-    //     element: <CartPage />
-    //   },
+      //   {
+      //     path: '/accessories',
+      //     element: <AccessoriesPage />
+      //   },
+
+      //   {
+      //     path: '/cart',
+      //     element: <CartPage />
+      //   },
 
     //   {
     //     path: '/favourites',
     //     element: <FavouritesPage />
     //   }
-    // ]
+    ]
   },
 ]);
