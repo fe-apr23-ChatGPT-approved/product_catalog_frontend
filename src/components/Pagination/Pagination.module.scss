@@ -1,3 +1,62 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  padding: 24px 0 64px;
+
+  @include onTablet {
+    padding-top: 40px;
+  }
+
+  @include onDesktop {
+    padding: 40px 0 80px;
+  }
+
+  &__element {
+    @include square(32px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    @include bodyText;
+
+    border-radius: 50%;
+    border: 1px solid $elementsColor;
+
+    transition: $transitionDuration;
+    cursor: pointer;
+
+    &-left-arrow {
+      margin-right: 8px;
+
+      transform: rotate(-90deg);
+    }
+
+    &-right-arrow {
+      margin-left: 8px;
+
+      transform: rotate(90deg);
+    }
+
+    &--active {
+      background-color: $primaryColor;
+      color: $backgroundColor;
+    }
+
+    &--disabled {
+      color: $iconsAndPlaceholders;
+      border-color: $elementsColor;
+
+      cursor: auto;
+    }
 
     &:hover:not(.pagination__element--disabled) {
       border-color: $primaryColor;
