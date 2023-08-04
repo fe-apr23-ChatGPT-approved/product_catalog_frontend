@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
-import { Pagination } from '../Pagination/Pagination';
+import { Pagination } from '../Pagination';
 import { getLastIndex } from '../../helpers/getNumbersPagination';
 import { PageSelector } from '../Selectors/PageSelector';
 import style from '../Selectors/PageSelector/PageSelector.module.scss';
