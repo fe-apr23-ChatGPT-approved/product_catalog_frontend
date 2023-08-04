@@ -14,7 +14,7 @@ export const AppRouter = createHashRouter([
       {
         path: '*',
         // eslint-disable-next-line react/jsx-curly-brace-presence
-        element: <NotFoundPage />
+        element: <NotFoundPage />,
       },
 
       //   {
@@ -48,10 +48,10 @@ export const AppRouter = createHashRouter([
       //     element: <CartPage />
       //   },
 
-    //   {
-    //     path: '/favourites',
-    //     element: <FavouritesPage />
-    //   }
-    ]
+      //   {
+      //     path: '/favourites',
+      //     element: <FavouritesPage />
+      //   }
+    ],
   },
 ]);
