@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
 import style from './ProductCard.module.scss';
-// import { Product } from '../../types/product';
+import { Product } from '../../types/product';
 import { Link } from 'react-router-dom';
 
-import productPhoto from '../../images/00.webp';
 import heart from '../../icons/Add to fovourites.svg';
 import favouriteheart from '../../icons/Favourites Filled (Heart Like).svg';
 
@@ -44,7 +43,7 @@ export const ProductCard: React.FC = () => {
 
   const {
     itemId,
-    // image,
+    image,
     name,
     category,
     fullPrice,
@@ -55,11 +54,12 @@ export const ProductCard: React.FC = () => {
   } = product;
 
   const productPageLink = `/${category}/${itemId}`;
+  const imageLink = `https:gadget-store-api.onrender.com/${image}`;
 
   return (
     <div className={style['product-card']}>
       <Link className={style['product-card__link']} to={productPageLink}>
-        <img src={productPhoto} className={style['product-card__image']} />
+        <img src={imageLink} className={style['product-card__image']} />
       </Link>
 
       <Link className={style['product-card__name']} to={productPageLink}>
@@ -99,7 +99,7 @@ export const ProductCard: React.FC = () => {
       </div>
 
       <div className={style['product-card__buttons-wrapper']}>
-        {/* below AddToCartButton should be separete component */}
+        {/* button below should be separete component */}
         <button
           className={cn(style['add-to-cart-button'], {
             [style['add-to-cart-button--active']]: productAdded,
@@ -109,9 +109,11 @@ export const ProductCard: React.FC = () => {
           {buttonText}
         </button>
 
-        {/* below FavouritesAddButton should be separete component */}
+        {/* button below should be separete component */}
         <button
-          className={style['favourites-add-button']}
+          className={cn(style['favourites-add-button'], {
+            [style['favourites-add-button--active']]: productFavourite
+          })}
           onClick={() => handleAddFavourite()}
         >
           {productFavourite ? (
