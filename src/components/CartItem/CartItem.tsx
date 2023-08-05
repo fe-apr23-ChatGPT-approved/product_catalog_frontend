@@ -5,19 +5,18 @@ import plus from '../../icons/Plus.svg';
 import image from '../../images/phone-image.svg'; // image for example, left place for it
 import { Cross } from '../Cross/Cross';
 import { Minus } from '../Minus/Minus';
+import { item } from '../../pages/CartPage';
 
 // const removeFromCart = (item: Phone) => {
 //   const filteredCart = cartItems.filter(({ good }) => good.id !== item.id);
 //   setCartItems(filteredCart);
 // }; we need to use this function in localStorage
 
-const item = {
-  id: 1,
-  name: ' Apple iPhone 14 Pro 128GB Silver (MQ023)',
-  price: 859,
-}; // item for example
+interface Props {
+  item: item,
+}
 
-export const CartItem: FC = () => {
+export const CartItem: FC<Props> = ({ item }) => {
   const [counter, setCounter] = useState(1);
   const isOneItem = counter === 1;
 
@@ -36,7 +35,7 @@ export const CartItem: FC = () => {
     setCounter((prev) => prev - 1); // in future we should use func from localStorage there
   };
 
-  const totalPrice = item.price * counter;
+  const totalPrice = item.priceRegular * counter;
 
   return (
     <section className={style.cartItem}>
