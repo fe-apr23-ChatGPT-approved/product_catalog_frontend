@@ -14,8 +14,6 @@
   background: $backgroundColor;
 
   @include onTablet {
-    max-width: 592px;
-
     padding: 24px;
 
     align-items: center;
@@ -24,7 +22,7 @@
   }
 
   @include onDesktop {
-    max-width: 752px;
+    width: 752px;
   }
 
   &__gadget_info {
@@ -39,7 +37,7 @@
 
   &__close_btn {
     background-color: $backgroundColor;
-    color: $iconsPlaceholders;
+    color: $iconsAndPlaceholders;
     border: 0;
     padding: 0;
 
@@ -103,7 +101,7 @@
 
     background-color: $backgroundColor;
     border-radius: 50%;
-    border: 1px solid $iconsPlaceholders;
+    border: 1px solid $iconsAndPlaceholders;
 
     transition: border $transitionDuration;
     cursor: pointer;
