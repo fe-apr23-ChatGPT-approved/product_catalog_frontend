@@ -1,0 +1,41 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+.total-cost {
+  padding: 23px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+
+  border-radius: 16px;
+  border: 1px solid $elementsColor;
+
+  @include onDesktop {
+    width: 368px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__price {
+    color: $primaryColor;
+    @include h2_DestopAndTablet;
+  }
+
+  &__items-amount {
+    color: $secondaryColor;
+    @include bodyText;
+  }
+
+  &__line {
+    border: 0.5px solid $elementsColor;
+    width: 100%;
+  }
+}
