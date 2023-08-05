@@ -82,7 +82,9 @@
 }
 
 @mixin h1_Mobile {
-  font-size: 48px;
+  font-size: 32px;
+  line-height: 41;
+  letter-spacing: -0.01em;
   font-style: normal;
   font-weight: 800;
   line-height: 56px;
@@ -108,4 +110,29 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+@mixin sectionContainer {
+  margin: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 64px;
+  height: 100%;
+  max-width: 1200px;
+  overflow: hidden;
+
+  @include onTablet {
+    margin: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 64px;
+  }
+
+  @include onDesktop {
+    margin: auto;
+    padding-left: 32px;
+    padding-right: 32px;
+
+    padding-bottom: 80px;
+  }
 }
