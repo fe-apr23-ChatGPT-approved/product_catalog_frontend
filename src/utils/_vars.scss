@@ -8,7 +8,11 @@ $elementsColor: #e2e6e9;
 $primaryColor: #0f0f11;
 $elementsColor: #e2e6e9;
 $iconsColor: #b4bdc3;
-$buttonColor: #4219d0;
 $buttonColorSecondary: #f4ba47;
+$accentColor: #4219D0;
 
 $transitionDuration: 0.3s;
+
+/*HEADER*/
+$menu-height: calc(100vh - 49px);
+$activeLinkColor: #313237;

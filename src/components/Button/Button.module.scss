@@ -1,0 +1,32 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+.button{
+  width: 100%;
+  padding: 13px;
+
+  @include buttons;
+  color: $backgroundColor;
+
+  background: $accentColor;
+  border: 1px solid transparent;
+  outline: none;
+  border-radius: 48px;
+
+  transition: border-radius 0.3s;
+
+
+  &:hover {
+    border-radius: 48px;
+    background: $accentColor;
+    box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+  }
+
+  &:active {
+    color: $accentColor;
+
+    background-color: $backgroundColor;
+    border: 1px solid $elementsColor;
+    box-shadow:none;
+  }
+}
