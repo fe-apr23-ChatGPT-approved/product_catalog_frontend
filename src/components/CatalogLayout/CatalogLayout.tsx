@@ -119,17 +119,11 @@ export const CatalogLayout = () => {
         {visibleItems.map((item) => (
           <li className={style.big} key={item.id} data-cy={'item'}>
             {item.id}
-            {' '}
--
-            {' '}
+            -
             {item.title}
-            {' '}
--
-            {' '}
+            -
             {item.age}
-            {' '}
--
-            {' '}
+            -
             {item.price}
           </li>
         ))}
