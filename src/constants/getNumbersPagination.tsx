@@ -1,8 +1,7 @@
-export function getNumbers(from: number, to: number): number[] {
-  const numbers = [];
-  for (let n = from; n <= to; n += 1) {
-    numbers.push(n);
-  }
+export function getNumbers(numberOfPages: number): number[] {
+  const numbers = Array(numberOfPages)
+    .fill(0)
+    .map((_, index) => index + 1);
 
   return numbers;
 }

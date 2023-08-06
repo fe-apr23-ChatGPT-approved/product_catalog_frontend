@@ -1,25 +1,20 @@
 import React from 'react';
 import { createHashRouter } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
-import { NotFoundPage } from './pages/NotFoundPages';
+import { ProductPage } from './components/ProductsPage';
+// import { NotFoundPage } from './pages/NotFoundPage';
 // import { HomePage } from './pages/HomePage/HomePage';
 
 export const AppRouter = createHashRouter([
   {
     path: '/',
     element: <Layout />,
-    children: [
-
-      {
-        path: '*',
-        // eslint-disable-next-line react/jsx-curly-brace-presence
-        element: <NotFoundPage />
-      },
-
-      //   {
-      //     index: true,
-      //     element: <HomePage />
-      //   },
+    // errorElement: <NotFoundPage />,
+    // children: [
+    //   {
+    //     index: true,
+    //     element: <HomePage />
+    //   },
 
       //   {
       //     path: '/home',
@@ -47,10 +42,10 @@ export const AppRouter = createHashRouter([
       //     element: <CartPage />
       //   },
 
-      //   {
-      //     path: '/favourites',
-      //     element: <FavouritesPage />
-      //   }
-    ]
+    //   {
+    //     path: '/favourites',
+    //     element: <FavouritesPage />
+    //   }
+    // ]
   },
 ]);

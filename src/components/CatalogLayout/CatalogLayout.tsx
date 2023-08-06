@@ -30,14 +30,14 @@ export const CatalogLayout = () => {
   const total = items.length;
   const initialItemsPerPage = total;
   const [currentPage, setCurrentPage] = useState(initialPage);
-  const [itemsPerPage, setItemsPerPage] = useState(initialItemsPerPage);
+  const [limit, setLimit] = useState(initialItemsPerPage);
   const [sortOption, setSortOption] = useState('age');
 
   useEffect(() => {
     const searchParams = new URLSearchParams();
 
-    if (itemsPerPage !== initialItemsPerPage) {
-      searchParams.set('itemsPerPage', itemsPerPage.toString());
+    if (limit !== initialItemsPerPage) {
+      searchParams.set('limit', limit.toString());
     }
 
     if (currentPage !== initialPage) {
@@ -52,7 +52,7 @@ export const CatalogLayout = () => {
       searchParams.toString() ? '?' + searchParams.toString() : ''
     }`;
     window.history.pushState(null, '', newUrl);
-  }, [itemsPerPage, currentPage, sortOption]);
+  }, [limit, currentPage, sortOption]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -60,7 +60,7 @@ export const CatalogLayout = () => {
 
   const onSelect = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     const newItemsPerPage = Number(event.target.value);
-    setItemsPerPage(newItemsPerPage);
+    setLimit(newItemsPerPage);
     setCurrentPage(initialPage);
   };
 
@@ -83,10 +83,10 @@ export const CatalogLayout = () => {
     }
   });
 
-  const lastIndexOnPage = getLastIndex(itemsPerPage, currentPage, total);
-  const firstIndexOnPage = (currentPage - 1) * itemsPerPage;
+  const lastIndexOnPage = getLastIndex(limit, currentPage, total);
+  const firstIndexOnPage = (currentPage - 1) * limit;
   const visibleItems = sortedItems.slice(firstIndexOnPage, lastIndexOnPage);
-  const showPagination = total > itemsPerPage;
+  const showPagination = total > limit;
 
   return (
     <>
@@ -110,7 +110,7 @@ export const CatalogLayout = () => {
           </select>
         </div>
 
-        <PageSelector value={itemsPerPage} onChange={onSelect} total={total} />
+        <PageSelector value={limit} onChange={onSelect} total={total} />
       </div>
 
       {/* here will be catalogList */}
@@ -144,7 +144,7 @@ export const CatalogLayout = () => {
       >
         <Pagination
           total={total}
-          perPage={itemsPerPage}
+          limit={limit}
           currentPage={currentPage}
           onPageChange={handlePageChange}
         />
