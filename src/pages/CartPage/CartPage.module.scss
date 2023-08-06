@@ -47,4 +47,13 @@
       margin-bottom: 0;
     }
   }
+
+  &__empty-cart-msg {
+    color: $secondaryColor;
+    @include h4_Mobile;
+
+    @include onTablet {
+      @include h4_DestopAndTablet;
+    }
+  }
 }

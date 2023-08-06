@@ -7,8 +7,8 @@ import { BackButton } from '../../components/BackButton';
 export interface item {
   id: number;
   name: string;
-  priceRegular: number;
-  priceDiscount?: number;
+  fullPrice: number;
+  price?: number;
 }
 
 // const item = {
@@ -21,41 +21,44 @@ const items: item[] = [
   {
     id: 1,
     name: ' Apple iPhone 13 Pro 128GB Silver (MQ023)',
-    priceRegular: 1100,
-    priceDiscount: 1050,
+    fullPrice: 1100,
+    price: 1050,
   },
   {
     id: 2,
     name: ' Apple iPhone 12 Pro 128GB Silver (MQ023)',
-    priceRegular: 1100,
-    priceDiscount: 1050,
+    fullPrice: 1100,
+    price: 1050,
   },
   {
     id: 3,
     name: ' Apple iPhone 14 Pro 128GB Silver (MQ023)',
-    priceRegular: 300,
+    fullPrice: 300,
   },
   {
     id: 4,
     name: ' Apple iPhone 14 Pro 128GB Silver (MQ023)',
-    priceRegular: 250,
+    fullPrice: 250,
   },
   {
     id: 5,
     name: ' Apple iPhone 11 Pro 128GB Silver (MQ023)',
-    priceRegular: 1100,
-    priceDiscount: 1050,
+    fullPrice: 1100,
+    price: 1050,
   },
 ]; //imitating arr from local storage
 
 export const CartPage: FC = () => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
+  const [cartItems, setCartItems] = useState(items);
 
-  const totalPrice = items.reduce((accumulator, product) => {
-    const priceToUse = product.priceDiscount || product.priceRegular;
+  const removeFromCart = (itemId: number) => {
+    const filteredCart = cartItems.filter((item) => item.id !== itemId);
+    setCartItems(filteredCart);
+  }; //we need to use this function in localStorage
 
-    return accumulator + priceToUse;
-  }, 0);
+  const totalPrice = cartItems.reduce((accumulator, cartItem) => (
+    accumulator + (cartItem.price || cartItem.fullPrice)), 0);
 
   const handleClickModal = () => {
     setIsVisibleModal(!isVisibleModal);
@@ -67,22 +70,32 @@ export const CartPage: FC = () => {
         <BackButton />
 
         <h1 className={style['cart-page__title']}>Cart</h1>
-        <div className={style['cart-page__content']}>
-          <ul className={style['cart-page__cart-list']}>
-            {items.map((item) => (
-              <li key={item.id} className={style['cart-page__cart-item']}>
-                {<CartItem item={item} />}
-              </li>
-            ))}
-          </ul>
-          <div className={style['cart-page__total-cost']}>
-            <TotalCost
-              totalPrice={totalPrice}
-              products={items}
-              onClickModal={handleClickModal}
-            />
+
+        {cartItems.length ? (
+          <div className={style['cart-page__content']}>
+            <ul className={style['cart-page__cart-list']}>
+              {cartItems.map((item) => (
+                <li key={item.id} className={style['cart-page__cart-item']}>
+                  {<CartItem
+                    item={item}
+                    onClose={removeFromCart}
+                  />}
+                </li>
+              ))}
+            </ul>
+            <div className={style['cart-page__total-cost']}>
+              <TotalCost
+                totalPrice={totalPrice}
+                products={items}
+                onClickModal={handleClickModal}
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <h1 className={style['cart-page__empty-cart-msg']}>
+            Your cart is empty
+          </h1>
+        )}
       </div>
     </section>
   );

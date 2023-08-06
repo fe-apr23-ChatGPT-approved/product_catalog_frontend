@@ -7,22 +7,14 @@ import { Cross } from '../Cross/Cross';
 import { Minus } from '../Minus/Minus';
 import { item } from '../../pages/CartPage';
 
-// const removeFromCart = (item: Phone) => {
-//   const filteredCart = cartItems.filter(({ good }) => good.id !== item.id);
-//   setCartItems(filteredCart);
-// }; we need to use this function in localStorage
-
 interface Props {
   item: item,
+  onClose: (itemId: number) => void,
 }
 
-export const CartItem: FC<Props> = ({ item }) => {
+export const CartItem: FC<Props> = ({ item, onClose }) => {
   const [counter, setCounter] = useState(1);
   const isOneItem = counter === 1;
-
-  // const handleCloseItem = () => {
-  //   removeFromCart(item);
-  // };
   
   const handleAddItem = () => {
     setCounter((prev) => prev + 1); // in future we should use func from localStorage there
@@ -35,14 +27,14 @@ export const CartItem: FC<Props> = ({ item }) => {
     setCounter((prev) => prev - 1); // in future we should use func from localStorage there
   };
 
-  const totalPrice = item.priceRegular * counter;
+  const totalPrice = item.fullPrice * counter;
 
   return (
     <section className={style.cartItem}>
       <div className={style.cartItem__gadget_info}>
         <button
           className={style.cartItem__close_btn}
-          // onClick={handleCloseItem}
+          onClick={() => onClose(item.id)}
         >
           <Cross />
         </button>
