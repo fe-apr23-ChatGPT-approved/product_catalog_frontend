@@ -1,50 +1,56 @@
 import React from 'react';
 import { createHashRouter } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
-// import { NotFoundPage } from './pages/NotFoundPage';
+import { NotFoundPage } from './pages/NotFoundPages';
 // import { HomePage } from './pages/HomePage/HomePage';
 
 export const AppRouter = createHashRouter([
   {
     path: '/',
     element: <Layout />,
-    // errorElement: <NotFoundPage />,
-    // children: [
-    //   {
-    //     index: true,
-    //     element: <HomePage />
-    //   },
+    children: [
 
-    //   {
-    //     path: '/home',
-    //     // eslint-disable-next-line react/jsx-curly-brace-presence
-    //     element: <Navigate to="/" replace />
-    //   },
+      {
+        path: '*',
+        // eslint-disable-next-line react/jsx-curly-brace-presence
+        element: <NotFoundPage />
+      },
 
-    //   {
-    //     path: '/phones',
-    //     element: <PhonesPage />
-    //   },
+      //   {
+      //     index: true,
+      //     element: <HomePage />
+      //   },
 
-    //   {
-    //     path: '/tablets',
-    //     element: <TabletsPage />
-    //   },
+      //   {
+      //     path: '/home',
+      //     // eslint-disable-next-line react/jsx-curly-brace-presence
+      //     element: <Navigate to="/" replace />
+      //   },
 
-    //   {
-    //     path: '/accessories',
-    //     element: <AccessoriesPage />
-    //   },
+      //   {
+      //     path: '/phones',
+      //     element: <PhonesPage />
+      //   },
 
-    //   {
-    //     path: '/cart',
-    //     element: <CartPage />
-    //   },
+      //   {
+      //     path: '/tablets',
+      //     element: <TabletsPage />
+      //   },
 
-    //   {
-    //     path: '/favourites',
-    //     element: <FavouritesPage />
-    //   }
-    // ]
+      //   {
+      //     path: '/accessories',
+      //     element: <AccessoriesPage />
+      //   },
+
+      //   {
+      //     path: '/cart',
+      //     element: <CartPage />
+      //   },
+
+      //   {
+      //     path: '/favourites',
+      //     element: <FavouritesPage />
+      //   }
+    ]
   },
 ]);
