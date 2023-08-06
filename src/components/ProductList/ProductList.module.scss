@@ -10,13 +10,18 @@
   column-gap: 16px;
   row-gap: 40px;
 
+  max-width: 1200px;
+  justify-content: center;
+  place-items: center;
+
+  grid-template-columns: repeat(1, 1fr);
 
   @include onTablet {
     grid-template-columns: repeat(2, 1fr);
     padding: 24px 24px 40px;
   }
 
-  @media (min-width: 768px) {
+  @include onTabletGrid {
     grid-template-columns: repeat(3, 1fr);
   }
 

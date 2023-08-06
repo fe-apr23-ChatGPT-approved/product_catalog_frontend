@@ -38,16 +38,20 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   } = product;
 
   const productPageLink = `/${category}/${itemId}`;
-  const imageLink = `https:gadget-store-api.onrender.com/${image}`;
+  const imageLink = `https://gadget-store-api.onrender.com/${image}`;
 
   return (
     <div className={style['product-card']}>
-      <Link className={style['product-card__link']} to={productPageLink}>
-        <img src={imageLink} className={style['product-card__image']} />
-      </Link>
+      <div className={style['product-card__image-container']}>
+        <Link to={productPageLink}>
+          <img src={imageLink} className={style['product-card__image']} />
+        </Link>
+      </div>
 
       <Link className={style['product-card__name']} to={productPageLink}>
-        {name}
+        <div className={style['product-card__name-container']}>
+          {name}
+        </div>
       </Link>
 
       <p className={style['product-card__price']}>

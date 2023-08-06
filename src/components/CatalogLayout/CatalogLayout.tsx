@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { Pagination } from '../Pagination';
-import { getLastIndex } from '../../constants/getNumbersPagination';
 import { PageSelector } from '../Selectors/PageSelector';
 import style from '../Selectors/PageSelector/PageSelector.module.scss';
 import layoutStyle from './CatalogLayout.module.scss';
 import paginationStyle from '../Pagination/Pagination.module.scss';
+import { getProducts } from '../../api/getProductsFromServer';
+import { Product } from '../../types/product';
+import { Button } from '../Button';
+import { ProductList } from '../ProductList';
+import { Data } from '../../types/dataFromServer';
+// import { useLocation } from 'react-router';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 const sortOptions = [
   { value: 'age', label: 'Newest' },
@@ -13,40 +19,61 @@ const sortOptions = [
   { value: 'price', label: 'Cheapest' },
 ];
 
-// hardcode array
-
-const items = [
-  { id: 1, title: 'Product A', age: 3, price: 25.99 },
-  { id: 2, title: 'Product B', age: 5, price: 15.49 },
-  { id: 3, title: 'Product C', age: 1, price: 10.0 },
-  { id: 4, title: 'Product D', age: 2, price: 35.75 },
-  { id: 5, title: 'Product E', age: 4, price: 50.0 },
-];
-
-// hardcode array
-
 export const CatalogLayout = () => {
   const initialPage = 1;
-  const total = items.length;
-  const initialItemsPerPage = total;
-  const [currentPage, setCurrentPage] = useState(initialPage);
-  const [limit, setLimit] = useState(initialItemsPerPage);
-  const [sortOption, setSortOption] = useState('age');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [total, setTotal] = useState<number>(0);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [isReloaded, setIsReloaded] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<number>(initialPage);
+  const [limit, setLimit] = useState<number | string>('All');
+  const [sortOption, setSortOption] = useState<string>('age');
+  const location = useLocation();
+  location.pathname;
+  
+  useEffect(() => {
+    setIsLoading(true);
+    setProducts([]);
+    setTotal(0);
+
+    if (isReloaded) {
+      setIsReloaded(false);
+    }
+    console.log(searchParams.toString());
+    console.log(location.pathname);
+    getProducts(`${location.pathname}?${searchParams.toString()}`)
+      .then((data: Data) => {
+        if ('rows' in data) {
+          setProducts(data.rows);
+          setTotal(Number(data.count));
+        } else {
+          setIsError(true);
+        }
+      })
+      .catch(() => setIsError(true))
+      .finally(() => setIsLoading(false));
+  }, [isReloaded, searchParams, location.pathname]);
+
+  const canShowCatalog = !isLoading && !isError;
 
   useEffect(() => {
     const searchParams = new URLSearchParams();
-
-    if (limit !== initialItemsPerPage) {
+    if (typeof limit === 'number') {
       searchParams.set('limit', limit.toString());
     }
 
-    if (currentPage !== initialPage) {
-      searchParams.set('page', currentPage.toString());
+    if (typeof limit === 'number' && currentPage !== initialPage) {
+      const offset = (currentPage - 1) * limit;
+      searchParams.set('offset', offset.toString());
     }
 
     if (sortOption !== 'age') {
       searchParams.set('sort', sortOption);
     }
+
+    setSearchParams(searchParams);
 
     const newUrl = `${window.location.pathname}${
       searchParams.toString() ? '?' + searchParams.toString() : ''
@@ -59,8 +86,8 @@ export const CatalogLayout = () => {
   };
 
   const onSelect = (event: React.ChangeEvent<HTMLSelectElement>): void => {
-    const newItemsPerPage = Number(event.target.value);
-    setLimit(newItemsPerPage);
+    const newLimit = Number(event.target.value);
+    setLimit(newLimit);
     setCurrentPage(initialPage);
   };
 
@@ -72,27 +99,21 @@ export const CatalogLayout = () => {
     setCurrentPage(initialPage);
   };
 
-  const sortedItems = [...items].sort((a, b) => {
-    switch (sortOption) {
-    case 'title':
-      return a.title.localeCompare(b.title);
-    case 'price':
-      return a.price - b.price;
-    default:
-      return b.age - a.age;
-    }
-  });
+  const showPagination = typeof limit === 'number';
 
-  const lastIndexOnPage = getLastIndex(limit, currentPage, total);
-  const firstIndexOnPage = (currentPage - 1) * limit;
-  const visibleItems = sortedItems.slice(firstIndexOnPage, lastIndexOnPage);
-  const showPagination = total > limit;
+  const handleReloadButton = () => {
+    setIsReloaded(true);
+  };
 
   return (
-    <>
+    <div className={style['catalog-layout']}>
+      <span className={style['catalog-layout__total']}>
+        {`${total} models`}
+      </span>
       <div className={layoutStyle['catalog-layout__selectors']}>
         <div className={style.selector}>
           <p className={style.selector__info}>Sort By:</p>
+
           <select
             className={cn(
               style.selector__field,
@@ -103,52 +124,56 @@ export const CatalogLayout = () => {
             onChange={handleSortChange}
           >
             {sortOptions.map((option) => (
-              <option key={option.value} value={option.value}>
+              <option
+                key={option.value}
+                className={style['catalog-layout__selector-text']}
+                value={option.value}
+              >
                 {option.label}
               </option>
             ))}
           </select>
         </div>
 
-        <PageSelector value={limit} onChange={onSelect} total={total} />
+        <PageSelector value={limit} onChange={onSelect} />
       </div>
 
-      {/* here will be catalogList */}
+      {isError && (
+        <div>
+          <span>Something went wrong</span>
+          <Button
+            buttonTarget={'Reload'}
+            onClick={handleReloadButton}
+          />
+        </div>
+      )}
 
-      <ul>
-        {visibleItems.map((item) => (
-          <li className={style.big} key={item.id} data-cy={'item'}>
-            {item.id}
-            {' '}
--
-            {' '}
-            {item.title}
-            {' '}
--
-            {' '}
-            {item.age}
-            {' '}
--
-            {' '}
-            {item.price}
-          </li>
-        ))}
-      </ul>
+      {/* {isLoading && (
+        <Loader />
+      )} */}
+      {/*
+      {!isLoadedData && (
+        <span>There are no phones yet</span>
+      )} */}
 
-      {/* here will be catalogList */}
+      {canShowCatalog && (
+        <>
+          <ProductList products={products} />
 
-      <div
-        className={cn(paginationStyle.pagination__container, {
-          [paginationStyle['pagination__container--hidden']]: !showPagination,
-        })}
-      >
-        <Pagination
-          total={total}
-          limit={limit}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-        />
-      </div>
-    </>
+          <div
+            className={cn(paginationStyle.pagination__container, {
+              [paginationStyle['pagination__container--hidden']]: !showPagination,
+            })}
+          >
+            <Pagination
+              total={total}
+              limit={limit}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            />
+          </div>
+        </>
+      )}
+    </div>
   );
 };

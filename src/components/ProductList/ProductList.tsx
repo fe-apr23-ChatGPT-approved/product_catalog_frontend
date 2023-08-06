@@ -9,8 +9,8 @@ interface Props {
 
 export const ProductList: FC<Props> = ({ products }) => (
   <section className={style['product-list']}>
-    {/* {products.map((product) => (
+    {products.map((product) => (
       <ProductCard key={product.id} product={product} />
-    ))} */}
+    ))}
   </section>
 );

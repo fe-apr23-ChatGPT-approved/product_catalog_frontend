@@ -9,6 +9,11 @@
     @content;
   }
 }
+@mixin onTabletGrid {
+  @media (min-width: $tabletGridScreen) {
+    @content
+  }
+}
 
 @mixin onTablet {
   @media (min-width: $tabletScreen) {
@@ -68,9 +73,10 @@
 }
 
 @mixin bodyText {
+  padding-top: 16px;
   font-size: 14px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 21px;
 }
 

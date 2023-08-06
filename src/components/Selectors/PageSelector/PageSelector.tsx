@@ -3,12 +3,11 @@ import cn from 'classnames';
 import style from './PageSelector.module.scss';
 
 interface Props {
-  value: number,
-  total: number,
+  value: number | string,
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void,
 }
 
-export const PageSelector:FC<Props> = ({ value, onChange, total }) => (
+export const PageSelector:FC<Props> = ({ value, onChange }) => (
   <div className={style.selector}>
     <p className={style.selector__info}>
       Items on page
@@ -24,7 +23,7 @@ export const PageSelector:FC<Props> = ({ value, onChange, total }) => (
       <option value={'4'}>4</option>
       <option value={'8'}>8</option>
       <option value={'16'}>16</option>
-      <option value={total}>All</option>
+      <option value={'All'}>All</option>
     </select>
   </div>
 );

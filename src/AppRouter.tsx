@@ -10,11 +10,11 @@ export const AppRouter = createHashRouter([
     path: '/',
     element: <Layout />,
     // errorElement: <NotFoundPage />,
-    // children: [
-    //   {
-    //     index: true,
-    //     element: <HomePage />
-    //   },
+    children: [
+      // {
+      //   index: true,
+      //   element: <HomePage />
+      // },
 
       //   {
       //     path: '/home',
@@ -22,20 +22,20 @@ export const AppRouter = createHashRouter([
       //     element: <Navigate to="/" replace />
       //   },
 
-      //   {
-      //     path: '/phones',
-      //     element: <PhonesPage />
-      //   },
+      {
+        path: '/phones',
+        element: <ProductPage />
+      },
 
-      //   {
-      //     path: '/tablets',
-      //     element: <TabletsPage />
-      //   },
+      {
+        path: '/tablets',
+        element: <ProductPage />
+      },
 
-      //   {
-      //     path: '/accessories',
-      //     element: <AccessoriesPage />
-      //   },
+      {
+        path: '/accessories',
+        element: <ProductPage />
+      },
 
       //   {
       //     path: '/cart',
@@ -46,6 +46,6 @@ export const AppRouter = createHashRouter([
     //     path: '/favourites',
     //     element: <FavouritesPage />
     //   }
-    // ]
+    ]
   },
 ]);
