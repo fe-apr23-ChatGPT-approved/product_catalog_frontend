@@ -1,0 +1,59 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+.cart-page {
+  margin: 0 auto;
+  max-width: 1200px;
+
+  &__container {
+    padding: 24px 16px 56px;
+
+    @include onTablet {
+      padding: 40px 24px 64px;
+    }
+
+    @include onDesktop {
+      padding: 40px 32px 80px;
+    }
+  }
+
+  &__title {
+    margin: 16px 0 32px;
+
+    color: $primaryColor;
+
+    @include h1_Mobile;
+
+    @include onTablet {
+      @include h1_DestopAndTablet;
+    }
+  }
+
+  &__content {
+    @include onDesktop {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+  }
+
+  &__cart-list {
+    margin-bottom: 32px;
+  }
+
+  &__cart-item {
+    margin-bottom: 16px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__empty-cart-msg {
+    color: $secondaryColor;
+    @include h4_Mobile;
+
+    @include onTablet {
+      @include h4_DestopAndTablet;
+    }
+  }
+}

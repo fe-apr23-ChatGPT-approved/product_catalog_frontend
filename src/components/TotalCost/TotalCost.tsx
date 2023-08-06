@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { item } from '../../pages/CartPage';
 import style from './TotalCost.module.scss';
 import { Button } from '../Button';
