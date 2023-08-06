@@ -1,5 +1,8 @@
-export function getNewId(items) {
+import { CartItemType } from '../types/cartItemType';
+
+export function getNewId(items: CartItemType[]) {
   if (!items[0]) {
+
     return 1;
   }
 

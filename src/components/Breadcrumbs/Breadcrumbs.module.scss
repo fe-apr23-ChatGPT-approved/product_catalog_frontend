@@ -1,0 +1,19 @@
+@import '../../utils/_vars.scss';
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  height: 16px;
+  row-gap: 8px;
+  align-items: center;
+
+  &__home {
+    
+  }
+
+  &__path {
+    font-size: 12px;
+    font-weight: 600px;
+    color: $secondaryColor;
+  }
+}

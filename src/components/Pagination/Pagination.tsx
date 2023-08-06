@@ -7,26 +7,29 @@ import { getNumbers } from '../../constants/getNumbersPagination';
 
 interface Props {
   total: number;
-  perPage: number;
+  limit: number | string;
   currentPage: number;
   onPageChange: (page: number) => void;
 }
 
 export const Pagination: FC<Props> = ({
   total,
-  perPage,
+  limit,
   currentPage,
   onPageChange,
 }) => {
-  const numberOfPages = Math.ceil(total / perPage);
+  const numberOfPages = typeof limit === 'number'
+    ? Math.ceil(total / limit)
+    : 0;
   const maxDisplayedPages = 4;
+
   const [displayedPages, setDisplayedPages] = useState<number[]>([]);
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === numberOfPages;
 
   useEffect(() => {
-    const pages = getNumbers(1, numberOfPages);
-    const centerIndex = Math.floor(maxDisplayedPages / 2 );
+    const pages = getNumbers(numberOfPages);
+    const centerIndex = Math.floor(maxDisplayedPages / 2);
     let startPage = currentPage - centerIndex;
 
     if (startPage < 1) {
@@ -63,9 +66,13 @@ export const Pagination: FC<Props> = ({
   return (
     <ul className={style.pagination}>
       <li
-        className={classNames(style.pagination__element, style['pagination__element-left-arrow'], {
-          [style['pagination__element--disabled']]: isFirstPage,
-        })}
+        className={classNames(
+          style.pagination__element,
+          style['pagination__element-left-arrow'],
+          {
+            [style['pagination__element--disabled']]: isFirstPage,
+          },
+        )}
         onClick={onClickPrevButton}
       >
         <Arrow />
@@ -80,12 +87,14 @@ export const Pagination: FC<Props> = ({
         >
           {page}
         </li>
+
       ))}
       <li
-        className={classNames(style.pagination__element,
+        className={classNames(
+          style.pagination__element,
           style['pagination__element-right-arrow'],
-          {[style['pagination__element--disabled']]: isLastPage,
-          })}
+          { [style['pagination__element--disabled']]: isLastPage },
+        )}
         onClick={onClickNextButton}
       >
         <Arrow />
