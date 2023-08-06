@@ -2,6 +2,7 @@ import { FC, useState } from 'react';
 import { TotalCost } from '../../components/TotalCost';
 import style from './CartPage.module.scss';
 import { CartItem } from '../../components/CartItem';
+import { BackButton } from '../../components/BackButton';
 
 export interface item {
   id: number;
@@ -63,11 +64,8 @@ export const CartPage: FC = () => {
   return (
     <section className={style['cart-page']}>
       <div className={style['cart-page__container']}>
-        <span
-          className={style['cart-page__breadcrumbs']}
-        >
-          Back
-        </span>
+        <BackButton />
+
         <h1 className={style['cart-page__title']}>Cart</h1>
         <div className={style['cart-page__content']}>
           <ul className={style['cart-page__cart-list']}>

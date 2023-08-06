@@ -1,0 +1,24 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+.back-btn {
+  @include smallText;
+  color: $secondaryColor;
+  background-color: $backgroundColor;
+  border: 0;
+
+  transition: $transitionDuration;
+
+  &:hover {
+    color: $primaryColor;
+  }
+  &::before {
+    content: url('../../icons/arrow_up.svg');
+    display: inline-block;
+    padding-bottom: 4px;
+    @include square(16px);
+
+    color: $primaryColor;
+    transform: rotate(-90deg) translate(-2px);
+  }
+}
