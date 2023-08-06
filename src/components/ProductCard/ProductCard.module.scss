@@ -1,0 +1,162 @@
+@import '../../utils/mixins';
+@import '../../utils/vars';
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  padding: 32px;
+
+  gap: 8px;
+
+  border-radius: 8px;
+  border: 1px solid $elementsColor;
+  transition: 0.4s;
+
+  cursor: pointer;
+
+  &__link {
+    display: flex;
+    margin: 0 auto 24px;
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: 196px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: transform 0.2s ease-in;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__name {
+    @include bodyText;
+
+    color: $primaryColor;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__price {
+    position: relative;
+    margin: 0;
+
+    @include h3_DestopAndTablet;
+
+    color: $primaryColor;
+
+    &-discount {
+      margin-right: 8px;
+    }
+
+    &-full {
+      font-weight: 400;
+      color: $secondaryColor;
+      text-decoration: line-through;
+    }
+
+    &::after {
+      position: absolute;
+      display: block;
+
+      margin-top: 8px;
+      content: '';
+
+      width: 100%;
+      height: 1px;
+      background-color: $elementsColor;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 16px 0 8px 0;
+
+    &-title {
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      align-self: stretch;
+
+      color: $secondaryColor;
+
+      @include smallText;
+      font-weight: 600;
+    }
+
+    &-value {
+      @include smallText;
+      color: $primaryColor;
+    }
+  }
+
+  &__buttons-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+}
+
+.add-to-cart-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex: 1;
+  height: 40px;
+
+  @include buttons;
+
+  border: none;
+  border-radius: 48px;
+
+  background: $accentColor;
+  color: $backgroundColor;
+
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+  }
+
+  &--active {
+    transition: 0.3s;
+    background-color: $backgroundColor;
+    color: $accentColor;
+    border: 1px solid #e2e6e9;
+    box-shadow: none;
+  }
+}
+
+.favourites-add-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid $iconsAndPlaceholders;
+  border-radius: 48px;
+
+  background-color: $backgroundColor;
+
+  &--active {
+    border-color: $elementsColor;
+  }
+
+  cursor: pointer;
+}
