@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import cn from 'classnames';
 import style from './CartItem.module.scss';
 import plus from '../../icons/Plus.svg';
