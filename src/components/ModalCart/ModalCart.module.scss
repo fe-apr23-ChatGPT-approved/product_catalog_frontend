@@ -1,0 +1,96 @@
+@import '../../utils/mixins';
+@import '../../utils/vars';
+
+.modal-cart {
+  &--not-active {
+    display: none;
+  }
+ 
+  display: block;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: #00000080;
+
+  padding: 50px;
+
+  @include onTablet {
+    padding: 100px;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    margin: 0 auto;
+    padding: 30px;
+
+    top: 10%;
+
+    max-width: 900px;
+
+    background: $backgroundColor;
+
+    border: 1px solid $secondaryColor;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px #00000052;
+
+    transition: 0.5s;
+
+    overflow: hidden;
+
+    @include onTablet {
+      padding: 70px;
+    }
+
+    @include onDesktop {
+      padding: 100px;
+    }
+  }
+
+  &__text {
+    text-align: center;
+
+    @include h3_DestopAndTablet;
+
+    @include onTablet {
+      @include h2_DestopAndTablet;
+    }
+
+  }
+
+  &__button-wrapper {
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    gap: 30px;
+
+    padding-top: 10px;
+
+    @include onTablet {
+      width: 300px;
+      padding-top: 30px;
+    }
+
+    @include onDesktop {
+      padding-top: 30px;
+    }
+  }
+
+  &__photo {
+    margin: 0 auto;
+    width: 100px;
+
+    @include onTablet {
+      width: 200px;
+    }
+  }
+}
