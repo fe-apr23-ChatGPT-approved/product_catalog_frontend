@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { TotalCost } from '../../components/TotalCost';
 import style from './CartPage.module.scss';
 import { CartItem } from '../../components/CartItem';
