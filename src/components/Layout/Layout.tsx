@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 import { Footer } from '../Footer';
 import { Header } from '../Header';
 import { Menu } from '../Menu';
-import { CartPage } from '../../pages/CartPage';
 
 export const Layout: FC = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -16,7 +15,6 @@ export const Layout: FC = () => {
       <main>
         <Outlet />
       </main>
-      <CartPage />
       {!isOpenMenu && <Footer />}
     </>
   );
