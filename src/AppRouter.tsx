@@ -6,14 +6,14 @@ import { PhonesPage } from './pages/PhonesPage';
 import { CartPage } from './pages/CartPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
-// import { NotFoundPage } from './pages/NotFoundPage';
+import { NotFoundPage } from './pages/NotFoundPages/NotFoundPage';
 // import { HomePage } from './pages/HomePage/HomePage';
 
 export const AppRouter = createHashRouter([
   {
     path: '/',
     element: <Layout />,
-    // errorElement: <NotFoundPage />,
+    errorElement: <NotFoundPage />,
     children: [
       // {
       //   index: true,
