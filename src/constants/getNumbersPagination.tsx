@@ -1,4 +1,4 @@
-export function getNumbers(numberOfPages: number): number[] {
+export function getNumbers(numberOfPages: number | null): number[] {
   if (!numberOfPages) {
     return [];
   }

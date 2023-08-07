@@ -1,5 +1,5 @@
 import React from 'react';
-import { createHashRouter } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 import { PhonesPage } from './pages/PhonesPage';
 
@@ -9,52 +9,42 @@ import { AccessoriesPage } from './pages/AccessoriesPage';
 import { NotFoundPage } from './pages/NotFoundPages/NotFoundPage';
 // import { HomePage } from './pages/HomePage/HomePage';
 
-export const AppRouter = createHashRouter([
+export const AppRouter = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
-    errorElement: <NotFoundPage />,
+    // errorElement: <NotFoundPage />,
     children: [
-      // {
-      //   index: true,
-      //   element: <HomePage />
-      // },
-
-      //   {
-      //     path: '/home',
-      //     // eslint-disable-next-line react/jsx-curly-brace-presence
-      //     element: <Navigate to="/" replace />
-      //   },
-
+  
       {
-        path: '/phones',
-        element: <PhonesPage />
+        path: 'phones',
+        element: <PhonesPage />,
       },
+
+      // {
+      //   path: 'phones/:phoneId',
+      //   element: <ProductPage />,
+      // },
 
       {
         path: '/tablets',
-        element: <TabletsPage />
+        element: <TabletsPage />,
       },
 
       {
         path: '/accessories',
-        element: <AccessoriesPage />
+        element: <AccessoriesPage />,
       },
 
       {
         path: '/cart',
-        element: <CartPage />
+        element: <CartPage />,
       },
-
-      //   {
-      //     path: '/cart',
-      //     element: <CartPage />
-      //   },
-
-    //   {
-    //     path: '/favourites',
-    //     element: <FavouritesPage />
-    //   }
-    ]
+      
+      {
+        path: '*',
+        element: <NotFoundPage />,
+      },
+    ],
   },
 ]);

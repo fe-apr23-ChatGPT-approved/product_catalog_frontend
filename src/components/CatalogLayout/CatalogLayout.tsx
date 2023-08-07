@@ -5,7 +5,7 @@ import { PageSelector } from '../Selectors/PageSelector';
 import style from '../Selectors/PageSelector/PageSelector.module.scss';
 import layoutStyle from './CatalogLayout.module.scss';
 import paginationStyle from '../Pagination/Pagination.module.scss';
-import { getProducts } from '../../api/getProductsFromServer';
+import { getFromServer } from '../../api/getProductsFromServer';
 import { Product } from '../../types/productType';
 import { Button } from '../Button';
 import { ProductList } from '../ProductList';
@@ -32,7 +32,7 @@ export const CatalogLayout = () => {
   const [sortOption, setSortOption] = useState<string>('age');
   const location = useLocation();
   location.pathname;
-  
+
   useEffect(() => {
     setIsLoading(true);
     setProducts([]);
@@ -42,7 +42,7 @@ export const CatalogLayout = () => {
       setIsReloaded(false);
     }
 
-    getProducts(`${location.pathname}?${searchParams.toString()}`)
+    getFromServer(`${location.pathname}?${searchParams.toString()}`)
       .then((data: Data) => {
         if ('rows' in data) {
           setProducts(data.rows);
@@ -73,11 +73,6 @@ export const CatalogLayout = () => {
     }
 
     setSearchParams(searchParams);
-
-    const newUrl = `${window.location.pathname}${
-      searchParams.toString() ? '?' + searchParams.toString() : ''
-    }`;
-    window.history.pushState(null, '', newUrl);
   }, [limit, currentPage, sortOption]);
 
   const handlePageChange = (page: number) => {
@@ -140,10 +135,7 @@ export const CatalogLayout = () => {
       {isError && (
         <div className={style['catalog-layout__error']}>
           <span>Something went wrong</span>
-          <Button
-            buttonTarget={'Reload'}
-            onClick={handleReloadButton}
-          />
+          <Button buttonTarget={'Reload'} onClick={handleReloadButton} />
         </div>
       )}
 
@@ -161,7 +153,8 @@ export const CatalogLayout = () => {
 
           <div
             className={cn(paginationStyle.pagination__container, {
-              [paginationStyle['pagination__container--hidden']]: !showPagination,
+              [paginationStyle['pagination__container--hidden']]:
+                !showPagination,
             })}
           >
             <Pagination
