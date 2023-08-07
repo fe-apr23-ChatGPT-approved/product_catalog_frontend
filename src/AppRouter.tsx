@@ -7,6 +7,7 @@ import { CartPage } from './pages/CartPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import { NotFoundPage } from './pages/NotFoundPages/NotFoundPage';
+import { ProductDetails } from './pages/ProductDetails';
 // import { HomePage } from './pages/HomePage/HomePage';
 
 export const AppRouter = createHashRouter([
@@ -28,22 +29,40 @@ export const AppRouter = createHashRouter([
 
       {
         path: '/phones',
-        element: <PhonesPage />
+        element: <PhonesPage />,
+        children: [
+          {
+            path: ':itemId',
+            element: <ProductDetails />,
+          },
+        ],
       },
 
       {
         path: '/tablets',
-        element: <TabletsPage />
+        element: <TabletsPage />,
+        children: [
+          {
+            path: ':itemId',
+            element: <ProductDetails />,
+          },
+        ],
       },
 
       {
         path: '/accessories',
-        element: <AccessoriesPage />
+        element: <AccessoriesPage />,
+        children: [
+          {
+            path: ':itemId',
+            element: <ProductDetails />,
+          },
+        ],
       },
 
       {
         path: '/cart',
-        element: <CartPage />
+        element: <CartPage />,
       },
 
       //   {
@@ -51,10 +70,10 @@ export const AppRouter = createHashRouter([
       //     element: <CartPage />
       //   },
 
-    //   {
-    //     path: '/favourites',
-    //     element: <FavouritesPage />
-    //   }
-    ]
+      //   {
+      //     path: '/favourites',
+      //     element: <FavouritesPage />
+      //   }
+    ],
   },
 ]);
