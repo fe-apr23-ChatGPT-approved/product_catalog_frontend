@@ -43,7 +43,11 @@ const ButtonGroup = ({ next, previous }: ButtonGroupProps) => {
   );
 };
 
-export const CarouselSlider: React.FC = () => {
+interface Props {
+  title: string,
+}
+
+export const CarouselSlider: React.FC<Props> = ({ title }) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 4000, min: 1200 },
@@ -64,7 +68,7 @@ export const CarouselSlider: React.FC = () => {
     //and render items from data array
     <div className={style.carousel}>
       <div className={style.carousel__navigation}>
-        <div className={style.carousel__title}>Recomended</div>
+        <div className={style.carousel__title}>{title}</div>
       </div>
       <Carousel
         responsive={responsive}
