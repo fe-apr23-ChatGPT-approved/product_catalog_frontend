@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, createHashRouter } from 'react-router-dom';
+import { Navigate, createBrowserRouter } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 import { PhonesPage } from './pages/PhonesPage';
 
@@ -10,12 +10,16 @@ import { NotFoundPage } from './pages/NotFoundPages/NotFoundPage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { ProductDetails } from './pages/ProductDetails';
 
-export const AppRouter = createHashRouter([
+export const AppRouter = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
-    errorElement: <NotFoundPage />,
-    children: [
+    // errorElement: <NotFoundPage />,
+    children: [  
+      {
+        path: 'phones',
+        element: <PhonesPage />,
+      },
       {
         index: true,
         element: <HomePage />
@@ -26,49 +30,23 @@ export const AppRouter = createHashRouter([
         element: <Navigate to="/" replace />
       },
 
-      {
-        path: '/phones',
-        element: <PhonesPage />,
-        children: [
-          {
-            path: ':itemId',
-            element: <ProductDetails />,
-          },
-        ],
-      },
-
-      {
-        path: '/tablets',
-        element: <TabletsPage />,
-        children: [
-          {
-            path: ':itemId',
-            element: <ProductDetails />,
-          },
-        ],
-      },
-
+      // {
+      //   path: 'phones/:phoneId',
+      //   element: <ProductPage />,
+      // },
       {
         path: '/accessories',
         element: <AccessoriesPage />,
-        children: [
-          {
-            path: ':itemId',
-            element: <ProductDetails />,
-          },
-        ],
       },
 
       {
         path: '/cart',
         element: <CartPage />,
+      },    
+      {
+        path: '*',
+        element: <NotFoundPage />,
       },
-
-      //   {
-      //     path: '/cart',
-      //     element: <CartPage />
-      //   },
-
       //   {
       //     path: '/favourites',
       //     element: <FavouritesPage />

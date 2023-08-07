@@ -1,6 +1,4 @@
-// import { Breadcrumbs } from '../Breadcrumbs';
 import { CatalogLayout } from '../CatalogLayout';
-// import { Pagination } from '../Pagination';
 import style from './ProductsPage.module.scss';
 
 interface Props {
