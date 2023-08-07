@@ -72,13 +72,13 @@
       margin-right: 16px;
     }
 
-    &--disabled {
-      opacity: 0.5;
-      cursor: default;
+    // &--disabled {
+    //   opacity: 0.5;
+    //   cursor: default;
 
-      &:hover {
-        border-color: #b4bdc3;
-      }
-    }
+    //   &:hover {
+    //     border-color: #b4bdc3;
+    //   }
+    // }
   }
 }

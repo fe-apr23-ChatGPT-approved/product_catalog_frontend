@@ -4,12 +4,12 @@ import style from './CarouselSlider.module.scss';
 import arrow from '../../icons/Arrow.svg';
 import cn from 'classnames';
 
-const ButtonGroup = ({ next, previous, carouselState }: ButtonGroupProps) => {
-  const currentSlide = carouselState?.currentSlide ?? 0;
-  const startSlider = currentSlide === 0;
+const ButtonGroup = ({ next, previous }: ButtonGroupProps) => {
+  // const currentSlide = carouselState?.currentSlide ?? 0;
+  // const startSlider = currentSlide === 0;
   // now i hardoced it we need to use dataArray.length -1
   //NEED TO FIX IT **
-  const finishSlider = currentSlide === 6;
+  // const finishSlider = currentSlide === 6;
 
   const handleClickPrev = () => {
     if (previous) {
@@ -28,24 +28,17 @@ const ButtonGroup = ({ next, previous, carouselState }: ButtonGroupProps) => {
       <button
         className={cn(
           `${style.carousel__button} ${style['carousel__button--left']}`,
-          {
-            [style['carousel__button--disabled']]: startSlider,
-          },
         )}
         onClick={handleClickPrev}
       >
         <img className={style.img} src={arrow} />
       </button>
       <button
-        className={cn(`${style.carousel__button}`, {
-          [style['carousel__button--disabled']]: finishSlider,
-        })}
+        className={cn(`${style.carousel__button}`)}
         onClick={handleClickNext}
       >
         <img src={arrow} />
       </button>
-      {/* <button className={finishSlider ? 'disable' : ''}
-      onClick={handleClickNext}>next</button> */}
     </div>
   );
 };
@@ -79,6 +72,7 @@ export const CarouselSlider: React.FC = () => {
         itemClass="carousel-item"
         customButtonGroup={<ButtonGroup />}
         renderButtonGroupOutside={true}
+        infinite={true}
         arrows={false}
       >
         <div className={style.card}>Item 1</div>
