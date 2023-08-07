@@ -18,9 +18,7 @@ export const TotalCost: FC<Props> = ({ totalPrice, onClickModal }) => {
     <>
       <div className={style['total-cost']}>
         <div className={style['total-cost__info']}>
-          <h2 className={style['total-cost__price']}>
-            {`$${totalPrice}`}
-          </h2>
+          <h2 className={style['total-cost__price']}>{`$${totalPrice}`}</h2>
           <span className={style['total-cost__items-amount']}>
             {`Total for ${productsAmount} items`}
           </span>
