@@ -26,7 +26,7 @@ export const Pagination: FC<Props> = ({
 
   useEffect(() => {
     const pages = getNumbers(1, numberOfPages);
-    const centerIndex = Math.floor(maxDisplayedPages / 2 );
+    const centerIndex = Math.floor(maxDisplayedPages / 2);
     let startPage = currentPage - centerIndex;
 
     if (startPage < 1) {
@@ -63,9 +63,13 @@ export const Pagination: FC<Props> = ({
   return (
     <ul className={style.pagination}>
       <li
-        className={classNames(style.pagination__element, style['pagination__element-left-arrow'], {
-          [style['pagination__element--disabled']]: isFirstPage,
-        })}
+        className={classNames(
+          style.pagination__element,
+          style['pagination__element-left-arrow'],
+          {
+            [style['pagination__element--disabled']]: isFirstPage,
+          },
+        )}
         onClick={onClickPrevButton}
       >
         <Arrow />
@@ -82,10 +86,11 @@ export const Pagination: FC<Props> = ({
         </li>
       ))}
       <li
-        className={classNames(style.pagination__element,
+        className={classNames(
+          style.pagination__element,
           style['pagination__element-right-arrow'],
-          {[style['pagination__element--disabled']]: isLastPage,
-          })}
+          { [style['pagination__element--disabled']]: isLastPage },
+        )}
         onClick={onClickNextButton}
       >
         <Arrow />
