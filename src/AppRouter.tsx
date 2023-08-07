@@ -15,7 +15,7 @@ export const AppRouter = createBrowserRouter([
     path: '/',
     element: <Layout />,
     // errorElement: <NotFoundPage />,
-    children: [  
+    children: [
       {
         path: 'phones',
         element: <PhonesPage />,
@@ -42,7 +42,7 @@ export const AppRouter = createBrowserRouter([
       {
         path: '/cart',
         element: <CartPage />,
-      },    
+      },
       {
         path: '*',
         element: <NotFoundPage />,
