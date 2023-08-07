@@ -17,5 +17,5 @@ export const LoadFunctionToProductPage = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [pathname]);
+  }, []);
 };

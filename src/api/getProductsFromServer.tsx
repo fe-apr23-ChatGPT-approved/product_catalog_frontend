@@ -14,4 +14,7 @@ function request(url: string) {
 export const getProducts = (url: string) => request(url);
 
 export const getRecommended = (url: string) => getProducts(`${url}/recomended`);
+export const getNewModels = () => getProducts('/products/new');
+export const getDiscountModels = () => getProducts('/products/discount');
+
 ///products/:id/recomended
