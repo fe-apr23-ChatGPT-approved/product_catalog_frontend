@@ -1,0 +1,122 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(10px);
+  }
+}
+
+.photos-list {
+  display: grid;
+  gap: $gap;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include onTablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  &__current-photo {
+    margin: auto;
+
+    grid-row: 1;
+    grid-column: 1/-1;
+
+    padding-bottom: 24px;
+
+    height: 275px;
+
+    animation: fadeIn 1.5s forwards;
+
+    @include onTablet {
+      grid-row: 1;
+      grid-column: 2/7;
+    }
+  
+    @include onDesktop {
+      height: 442px;
+
+      grid-row: 1;
+      grid-column: 4/12;
+    }
+  }
+
+
+  &__list {
+    display: flex;
+    overflow: hidden;
+    flex-direction: row;
+
+    gap: 8px;
+
+    grid-row: 2;
+    grid-column: 1/-1;
+
+    @include onTablet {
+      flex-direction: column;
+      grid-row: 1;
+
+    }
+
+    @include onDesktop {
+      flex-direction: column;
+      grid-row: 1;
+
+    }
+
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__list-item {
+    display: flex;
+    justify-content: center;
+
+    border: 1px solid $iconsAndPlaceholders;
+    border-radius: 4px;
+    width: 100%;
+
+    height: 50px;
+
+    @include onTablet {
+      height: 35px;
+      width: 35px;
+    }
+
+    @include onDesktop {
+      height: 80px;
+      width: 80px;
+   }
+
+   cursor: pointer;
+
+   &--selected {
+    border: 1px solid black;
+   }
+   
+  }
+
+  &__photo {
+
+    padding: 4px;
+
+    transition: all 0.3s ease;
+    object-fit: contain;
+    object-position: center;
+
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
