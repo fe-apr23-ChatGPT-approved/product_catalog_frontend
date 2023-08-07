@@ -1,0 +1,79 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+.product-details {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 25px 16px 56px;
+
+  @include onTablet {
+    padding: 25px 24px 64px;
+  }
+
+  @include onDesktop {
+    padding: 25px 32px 81px;
+  }
+
+  &__back-btn {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 32px;
+
+    @include h2_DestopAndTablet;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__photos {
+    @include onMobile {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__variants {
+    @include onMobile {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__block {
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 0;
+    }
+  }
+
+  &__main-info {
+    @include onTablet {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 17px;
+
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      column-gap: 64px;
+
+      margin-bottom: 80px;
+    }
+  }
+
+  &__aditional-info {
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 64px;
+      margin-bottom: 80px;
+    }
+  }
+}
