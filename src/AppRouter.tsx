@@ -32,7 +32,7 @@ export const AppRouter = createHashRouter([
         element: <PhonesPage />,
         children: [
           {
-            path: ':productId',
+            path: ':itemId',
             element: <ProductDetails />,
           },
         ],
