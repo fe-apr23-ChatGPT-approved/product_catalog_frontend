@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useCallback } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Product } from '../../types/productType';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { ProductContext, ProductContextType } from './ProductContext';
@@ -38,16 +38,35 @@ export const ProductContextProvider: FC<Props> = ({ children }) => {
     }
   };
 
-  const removeFromCart = useCallback(
-    (productId: number) =>
-      setCartItems(cartItems.filter((item) => item.product.id !== productId)),
-    [],
+  const addOneItem = (cartItem: CartItemType) => {
+    setCartItems(cartItems.map(item => (
+      item.product.id === cartItem.product.id
+        ? {...item, quantity: item.quantity + 1}
+        : item)));
+  };
+
+  const removeOneItem = (cartProduct: CartItemType) => {
+    setCartItems(cartItems.map(item => (
+      item.product.id === cartProduct.product.id
+        ? {...item, quantity: item.quantity - 1}
+        : item)));
+  };
+
+  const removeFromCart = (productCart: CartItemType) => (
+    setCartItems(cartItems.filter((item) => item.product.id !== productCart.product.id))
   );
+
+  const cleareCart = () => {
+    setCartItems([]);
+  };
 
   const value: ProductContextType = {
     cartItems,
     addToCart,
     removeFromCart,
+    addOneItem,
+    removeOneItem,
+    cleareCart,
   };
 
   return (

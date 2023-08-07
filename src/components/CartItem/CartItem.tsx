@@ -1,40 +1,47 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useContext } from 'react';
 import cn from 'classnames';
 import style from './CartItem.module.scss';
 import plus from '../../icons/Plus.svg';
-import image from '../../images/phone-image.svg'; // image for example, left place for it
 import { Cross } from '../Cross/Cross';
 import { Minus } from '../Minus/Minus';
-import { item } from '../../pages/CartPage';
+import { ProductContext } from '../cartContext/ProductContext';
+import { CartItemType } from '../../types/cartItemType';
 
 interface Props {
-  item: item,
-  onClose: (itemId: number) => void,
+  item: CartItemType,
 }
 
-export const CartItem: FC<Props> = ({ item, onClose }) => {
-  const [counter, setCounter] = useState(1);
-  const isOneItem = counter === 1;
+export const CartItem: FC<Props> = ({ item }) => {
+  const {quantity, product} = item;
+  const isOneItem = quantity === 1;
+  const {addOneItem, removeOneItem, removeFromCart} = useContext(ProductContext);
   
   const handleAddItem = () => {
-    setCounter((prev) => prev + 1); // in future we should use func from localStorage there
+    addOneItem(item);
   };
 
   const handleRemoveOneItem = () => {
     if (isOneItem) {
-      return;
+      removeFromCart(item);
+    } else {
+      removeOneItem(item);
     }
-    setCounter((prev) => prev - 1); // in future we should use func from localStorage there
   };
 
-  const totalPrice = item.fullPrice * counter;
+  const handleCloseButton = () => {
+    removeFromCart(item);
+  };
+
+  const totalPrice = quantity * product.price
+    ? product.price
+    : product.fullPrice;
 
   return (
     <section className={style.cartItem}>
       <div className={style.cartItem__gadget_info}>
         <button
           className={style.cartItem__close_btn}
-          onClick={() => onClose(item.id)}
+          onClick={handleCloseButton}
         >
           <Cross />
         </button>
@@ -43,11 +50,11 @@ export const CartItem: FC<Props> = ({ item, onClose }) => {
           <img
             className={style.cartItem__gadget_image}
             alt={'Gadget image'}
-            src={image}
+            src={item.product.image}
           />
         </div>
         <span className={style.cartItem__gadget_decscription}>
-          {item.name}
+          {product.name}
         </span>
       </div>
 
@@ -65,10 +72,11 @@ export const CartItem: FC<Props> = ({ item, onClose }) => {
           <span
             className={style.cartItem__count}
           >
-            {counter}
+            {quantity}
           </span>
           <button
             className={style.cartItem__btn}
+            type="button"
             onClick={handleAddItem}
           >
             <img

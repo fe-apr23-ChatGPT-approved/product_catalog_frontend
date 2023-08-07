@@ -6,7 +6,7 @@ import style from '../Selectors/PageSelector/PageSelector.module.scss';
 import layoutStyle from './CatalogLayout.module.scss';
 import paginationStyle from '../Pagination/Pagination.module.scss';
 import { getProducts } from '../../api/getProductsFromServer';
-import { Product } from '../../types/product';
+import { Product } from '../../types/productType';
 import { Button } from '../Button';
 import { ProductList } from '../ProductList';
 import { Data } from '../../types/dataFromServer';
@@ -15,8 +15,8 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 
 const sortOptions = [
   { value: 'age', label: 'Newest' },
-  { value: 'title', label: 'Alphabetically' },
-  { value: 'price', label: 'Cheapest' },
+  { value: 'name', label: 'Alphabetically' },
+  { value: 'priceRegular', label: 'Cheapest' },
 ];
 
 export const CatalogLayout = () => {
@@ -41,8 +41,7 @@ export const CatalogLayout = () => {
     if (isReloaded) {
       setIsReloaded(false);
     }
-    console.log(searchParams.toString());
-    console.log(location.pathname);
+
     getProducts(`${location.pathname}?${searchParams.toString()}`)
       .then((data: Data) => {
         if ('rows' in data) {
@@ -54,7 +53,7 @@ export const CatalogLayout = () => {
       })
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
-  }, [isReloaded, searchParams, location.pathname]);
+  }, [isReloaded, searchParams]);
 
   const canShowCatalog = !isLoading && !isError;
 
@@ -70,7 +69,7 @@ export const CatalogLayout = () => {
     }
 
     if (sortOption !== 'age') {
-      searchParams.set('sort', sortOption);
+      searchParams.set('sortBy', sortOption);
     }
 
     setSearchParams(searchParams);
@@ -139,7 +138,7 @@ export const CatalogLayout = () => {
       </div>
 
       {isError && (
-        <div>
+        <div className={style['catalog-layout__error']}>
           <span>Something went wrong</span>
           <Button
             buttonTarget={'Reload'}

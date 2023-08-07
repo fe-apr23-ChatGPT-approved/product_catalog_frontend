@@ -2,21 +2,24 @@ import React, { FC, useState, useEffect, useContext } from 'react';
 import style from './ModalCart.module.scss';
 import { Button } from '../Button';
 import classNames from 'classnames';
-import { NavLink } from 'react-router-dom';
 import card from '../../icons/empty-cart.png';
+import { ProductContext } from '../cartContext/ProductContext';
 
-// import { CartContext } from '../../context/CartContext'; імпорт контексту
+interface Props {
+  onCloseClick: () => void;
+}
 
-export const ModalCart:FC = () => {
+export const ModalCart:FC<Props> = ({ onCloseClick }) => {
   const [isModal, setIsModal] = useState(false);
   const [isClear, setIsClear] = useState(false);
 
-  // const { clearCart } = useContext(CartContext); передаємо функцію clearCart з контексту
+  const { cleareCart } = useContext(ProductContext);
 
   useEffect(() => {
     if (isClear) {
       const timer = setTimeout(() => {
         setIsModal(true);
+        onCloseClick();
       }, 1000);
 
       return () => clearTimeout(timer);
@@ -25,12 +28,7 @@ export const ModalCart:FC = () => {
 
   const handleClearCard = () => {
     setIsClear(true);
-
-    // clearCart(); Викликаємо функцію з контексту для очищення корзини
-  };
-
-  const closeModal = () => {
-    setIsModal(true);
+    cleareCart();
   };
 
   return (
@@ -46,12 +44,10 @@ export const ModalCart:FC = () => {
 
             <div className={style['modal-cart__button-wrapper']}>
               
-              <NavLink onClick={closeModal} to="/">
-                <Button
-                  buttonTarget={'NO'}
-                  onClick={closeModal}
-                />
-              </NavLink>
+              <Button
+                buttonTarget={'NO'}
+                onClick={onCloseClick}
+              />
 
               <Button
                 buttonTarget={'YES, CLEAR THE CARD'}

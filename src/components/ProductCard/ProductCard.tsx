@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import cn from 'classnames';
 import style from './ProductCard.module.scss';
-import { Product } from '../../types/product';
+import { Product } from '../../types/productType';
 import { Link } from 'react-router-dom';
 
 import heart from '../../icons/Add to fovourites.svg';
 import favouriteheart from '../../icons/Favourites Filled (Heart Like).svg';
+import { ProductContext } from '../cartContext/ProductContext';
 
 interface Props {
   product: Product;
@@ -14,11 +15,14 @@ interface Props {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const [productAdded, setProductAdded] = useState(false);
   const [productFavourite, setProductFavourite] = useState(false);
+  const { addToCart } = useContext(ProductContext);
 
   const buttonText = productAdded ? 'Added' : 'Add to cart';
 
-  const handleAddProduct = () => {
-    setProductAdded(!productAdded);
+  const handleAddProduct = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setProductAdded(true);
+    addToCart(product);
   };
 
   const handleAddFavourite = () => {
@@ -92,7 +96,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           className={cn(style['add-to-cart-button'], {
             [style['add-to-cart-button--active']]: productAdded,
           })}
-          onClick={() => handleAddProduct()}
+          onClick={handleAddProduct}
         >
           {buttonText}
         </button>
@@ -102,6 +106,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           className={cn(style['favourites-add-button'], {
             [style['favourites-add-button--active']]: productFavourite,
           })}
+          type="button"
           onClick={() => handleAddFavourite()}
         >
           {productFavourite ? (

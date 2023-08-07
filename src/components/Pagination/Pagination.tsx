@@ -85,7 +85,7 @@ export const Pagination: FC<Props> = ({
           })}
           onClick={() => onPageClick(page)}
         >
-          {page}
+          <span className={style['pagination__element-text']}>{page}</span>
         </li>
 
       ))}

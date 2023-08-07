@@ -1,4 +1,7 @@
 export function getNumbers(numberOfPages: number): number[] {
+  if (!numberOfPages) {
+    return [];
+  }
   const numbers = Array(numberOfPages)
     .fill(0)
     .map((_, index) => index + 1);
