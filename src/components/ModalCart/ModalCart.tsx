@@ -2,7 +2,6 @@ import React, { FC, useState, useEffect, useContext } from 'react';
 import style from './ModalCart.module.scss';
 import { Button } from '../Button';
 import classNames from 'classnames';
-import { NavLink } from 'react-router-dom';
 import card from '../../icons/empty-cart.png';
 import { ProductContext } from '../cartContext/ProductContext';
 

@@ -1,0 +1,30 @@
+@import '../../utils/_vars.scss';
+@import '../../utils/_mixins.scss';
+@import '../../utils/normalize.scss';
+@import '../../utils/reset.scss';
+
+.products-page {
+  position: relative;
+  padding-top: 24px;
+  display: block;
+
+  &__container {
+    @include sectionContainer;
+  }
+
+  &__title {
+    @include h1_Mobile;
+
+    @include onTablet {
+      @include h1_DestopAndTablet
+    }
+
+  }
+
+  &__total {
+    font-size: 14px;
+    font-weight: 600;
+    color: $secondaryColor;
+    margin-top: 8px;
+  }
+}

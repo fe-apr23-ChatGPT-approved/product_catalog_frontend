@@ -1,8 +1,11 @@
 import React from 'react';
 import { createHashRouter } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
-import { ProductPage } from './components/ProductsPage';
+import { PhonesPage } from './pages/PhonesPage';
+
 import { CartPage } from './pages/CartPage';
+import { TabletsPage } from './pages/TabletsPage';
+import { AccessoriesPage } from './pages/AccessoriesPage';
 // import { NotFoundPage } from './pages/NotFoundPage';
 // import { HomePage } from './pages/HomePage/HomePage';
 
@@ -25,17 +28,17 @@ export const AppRouter = createHashRouter([
 
       {
         path: '/phones',
-        element: <ProductPage title="Mobile phones" />
+        element: <PhonesPage />
       },
 
       {
         path: '/tablets',
-        element: <ProductPage title="Tablets" />
+        element: <TabletsPage />
       },
 
       {
         path: '/accessories',
-        element: <ProductPage title="Accessories" />
+        element: <AccessoriesPage />
       },
 
       {
