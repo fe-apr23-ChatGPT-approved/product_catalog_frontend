@@ -1,5 +1,5 @@
 import React from 'react';
-import { createHashRouter } from 'react-router-dom';
+import { Navigate, createHashRouter } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 import { PhonesPage } from './pages/PhonesPage';
 
@@ -7,8 +7,8 @@ import { CartPage } from './pages/CartPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import { NotFoundPage } from './pages/NotFoundPages/NotFoundPage';
+import { HomePage } from './pages/HomePage/HomePage';
 import { ProductDetails } from './pages/ProductDetails';
-// import { HomePage } from './pages/HomePage/HomePage';
 
 export const AppRouter = createHashRouter([
   {
@@ -16,16 +16,15 @@ export const AppRouter = createHashRouter([
     element: <Layout />,
     errorElement: <NotFoundPage />,
     children: [
-      // {
-      //   index: true,
-      //   element: <HomePage />
-      // },
+      {
+        index: true,
+        element: <HomePage />
+      },
 
-      //   {
-      //     path: '/home',
-      //     // eslint-disable-next-line react/jsx-curly-brace-presence
-      //     element: <Navigate to="/" replace />
-      //   },
+      {
+        path: '/home',
+        element: <Navigate to="/" replace />
+      },
 
       {
         path: '/phones',

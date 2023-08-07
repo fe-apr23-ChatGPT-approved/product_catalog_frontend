@@ -1,0 +1,88 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars';
+
+.pictures-slider {
+  @include sectionContainer;
+
+  margin-top: 24px;
+  margin-bottom: 56px;
+
+  @include onTablet {
+    margin-top: 32px;
+  }
+
+  @include onDesktop {
+    margin-top: 56px;
+  }
+
+  @include onMobile {
+    &_noPadding {
+      padding: 0;
+    }
+  }
+
+  &__container {
+    display: grid;
+    gap: 16px;
+
+    @include onTablet {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(24, 1fr);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 8px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    background-color: $backgroundColor;
+
+    border-radius: 48px;
+    border: 1px solid $iconsAndPlaceholders;
+
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  &__photo {
+    object-fit: cover;
+    object-position: center;
+
+    height: 100%;
+    width: 100%;
+
+    @include onTablet {
+      grid-column: 2/12;
+      border-radius: 8px;
+    }
+
+    @include onDesktop {
+      grid-column: 2/24;
+    }
+
+    &_mobile {
+      @media (min-width: 640px) {
+        display: none;
+      }
+    }
+
+    &_tableAndDesktop {
+      @media (max-width: 639px) {
+        display: none;
+      }
+    }
+  }
+}

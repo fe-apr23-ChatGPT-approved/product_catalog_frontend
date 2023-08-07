@@ -1,0 +1,27 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.shop-by-categories {
+  @include sectionContainer;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+    gap: $gap;
+    
+    @include onTablet {
+      flex-direction: row
+    }
+  }
+
+  &__title {
+    @include h2_Mobile;
+    margin-bottom: 24px;
+
+    @include onTablet {
+      @include h2_DestopAndTablet;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@import '../../utils/_vars.scss';
+@import '../../utils/_mixins.scss';
+@import '../../utils/normalize.scss';
+@import '../../utils/reset.scss';
+
+.home-page {
+  position: relative;
+  padding-top: 24px;
+  display: block;
+
+  @include onTablet {
+    padding-top: 32px;
+  }
+
+  @include onDesktop {
+    padding-top: 56px;
+  }
+
+  &__title {
+    margin: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 100%;
+    max-width: 1200px;
+    overflow: hidden;
+  
+    @include onTablet {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  
+    @include onDesktop {
+      margin: auto;
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+    
+    @include h1_Mobile;
+
+    @include onTablet {
+      @include h1_DestopAndTablet
+    }
+
+  }
+}
