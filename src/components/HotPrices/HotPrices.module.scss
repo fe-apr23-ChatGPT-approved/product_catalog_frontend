@@ -1,0 +1,15 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.hot_prices {
+  @include sectionContainer;
+
+  &__title {
+    @include h2_Mobile;
+    margin-bottom: 24px;
+
+    @include onTablet {
+      @include h2_DestopAndTablet;
+    }
+  }
+}
