@@ -6,7 +6,7 @@ import style from '../Selectors/PageSelector/PageSelector.module.scss';
 import layoutStyle from './CatalogLayout.module.scss';
 import paginationStyle from '../Pagination/Pagination.module.scss';
 import { getProducts } from '../../api/getProductsFromServer';
-import { Product } from '../../types/product';
+import { Product } from '../../types/productType';
 import { Button } from '../Button';
 import { ProductList } from '../ProductList';
 import { Data } from '../../types/dataFromServer';

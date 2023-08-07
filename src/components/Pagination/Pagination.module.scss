@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
+  list-style: none;
 
   padding: 24px 0 64px;
 
@@ -30,7 +31,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
+    // flex-shrink: 0;
 
     @include bodyText;
 
@@ -67,5 +68,12 @@
     &:hover:not(.pagination__element--disabled) {
       border-color: $primaryColor;
     }
+  }
+
+  &__element-text {
+    margin: 0;
+    height: 33px;
+    text-align: center;
+    display: block;
   }
 }

@@ -1,67 +1,25 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useContext, useMemo, useState } from 'react';
 import { TotalCost } from '../../components/TotalCost';
 import style from './CartPage.module.scss';
 import { CartItem } from '../../components/CartItem';
 import { BackButton } from '../../components/BackButton';
-
-export interface item {
-  id: number;
-  name: string;
-  fullPrice: number;
-  price?: number;
-}
-
-// const item = {
-//   id: 1,
-//   name: ' Apple iPhone 14 Pro 128GB Silver (MQ023)',
-//   price: 859,
-// }; // item for example
-
-const items: item[] = [
-  {
-    id: 1,
-    name: ' Apple iPhone 13 Pro 128GB Silver (MQ023)',
-    fullPrice: 1100,
-    price: 1050,
-  },
-  {
-    id: 2,
-    name: ' Apple iPhone 12 Pro 128GB Silver (MQ023)',
-    fullPrice: 1100,
-    price: 1050,
-  },
-  {
-    id: 3,
-    name: ' Apple iPhone 14 Pro 128GB Silver (MQ023)',
-    fullPrice: 300,
-  },
-  {
-    id: 4,
-    name: ' Apple iPhone 14 Pro 128GB Silver (MQ023)',
-    fullPrice: 250,
-  },
-  {
-    id: 5,
-    name: ' Apple iPhone 11 Pro 128GB Silver (MQ023)',
-    fullPrice: 1100,
-    price: 1050,
-  },
-]; //imitating arr from local storage
+import { ProductContext } from '../../components/cartContext/ProductContext';
+import { ModalCart } from '../../components/ModalCart';
 
 export const CartPage: FC = () => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
-  const [cartItems, setCartItems] = useState(items);
+  const {cartItems} = useContext(ProductContext);
 
-  const removeFromCart = (itemId: number) => {
-    const filteredCart = cartItems.filter((item) => item.id !== itemId);
-    setCartItems(filteredCart);
-  }; //we need to use this function in localStorage
+  const totalPrice = useMemo(() => cartItems.reduce((accumulator, cartItem) => (
+    accumulator + (cartItem.product.price || cartItem.product.fullPrice) * cartItem.quantity),
+  0), [cartItems]);
 
-  const totalPrice = cartItems.reduce((accumulator, cartItem) => (
-    accumulator + (cartItem.price || cartItem.fullPrice)), 0);
+  const handleClickOpenModal = () => {
+    setIsVisibleModal(true);
+  };
 
-  const handleClickModal = () => {
-    setIsVisibleModal(!isVisibleModal);
+  const handleClickCloseModal = () => {
+    setIsVisibleModal(false);
   };
 
   return (
@@ -76,20 +34,17 @@ export const CartPage: FC = () => {
             <ul className={style['cart-page__cart-list']}>
               {cartItems.map((item) => (
                 <li key={item.id} className={style['cart-page__cart-item']}>
-                  {<CartItem
-                    item={item}
-                    onClose={removeFromCart}
-                  />}
+                  {<CartItem item={item} />}
                 </li>
               ))}
             </ul>
             <div className={style['cart-page__total-cost']}>
               <TotalCost
                 totalPrice={totalPrice}
-                products={items}
-                onClickModal={handleClickModal}
+                onClickModal={handleClickOpenModal}
               />
             </div>
+            { isVisibleModal && <ModalCart onCloseClick={handleClickCloseModal} />}
           </div>
         ) : (
           <h1 className={style['cart-page__empty-cart-msg']}>

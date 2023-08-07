@@ -53,7 +53,7 @@ export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
         </Link>
         <Link
           className={`${style.header__button} ${style['header__button--tablet']}`}
-          to={'cart'}
+          to={'/cart'}
         >
           <img src={cart} alt={'cart button'} />
         </Link>
