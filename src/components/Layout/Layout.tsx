@@ -11,10 +11,7 @@ export const Layout: FC = () => {
     <>
       <Header isOpenMenu={isOpenMenu} setIsOpenMenu={setIsOpenMenu} />
       {isOpenMenu && <Menu setIsOpenMenu={setIsOpenMenu} />}
-      
-      <main>
-        <Outlet />
-      </main>
+      <Outlet />
       {!isOpenMenu && <Footer />}
     </>
   );

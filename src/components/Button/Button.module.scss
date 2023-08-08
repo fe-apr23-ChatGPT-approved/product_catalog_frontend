@@ -1,7 +1,7 @@
 @import '../../utils/vars';
 @import '../../utils/mixins';
 
-.button{
+.button {
   width: 100%;
   padding: 13px;
 
@@ -28,6 +28,6 @@
 
     background-color: $backgroundColor;
     border: 1px solid $elementsColor;
-    box-shadow:none;
+    box-shadow: none;
   }
 }

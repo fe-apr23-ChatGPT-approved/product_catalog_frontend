@@ -1,7 +1,6 @@
 @import '../../utils/vars';
 @import '../../utils/mixins';
 
-
 .pagination {
   display: flex;
   justify-content: center;
@@ -19,9 +18,9 @@
     padding: 40px 0 80px;
   }
 
-  &__container{
+  &__container {
     &--hidden {
-      visibility: hidden;
+      display: none;
     }
   }
 
