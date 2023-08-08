@@ -38,9 +38,7 @@ export const Footer: FC = () => {
         </ul>
 
         <div className={style['footer__back-to-top']}>
-          <span className={style['footer__back-to-top-text']}>
-            Back to top
-          </span>
+          <span className={style['footer__back-to-top-text']}>Back to top</span>
           <button
             type={'button'}
             className={style['footer__back-to-top-btn']}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../images/logo.svg';
 import cart from '../../images/Cart.svg';
 import close from '../../images/Close.svg';
@@ -8,6 +8,7 @@ import { NavLink, Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import style from './Header.module.scss';
+import { ProductContext } from '../cartContext/ProductContext';
 
 interface Props {
   isOpenMenu: boolean;
@@ -16,6 +17,7 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
   const pages = ['home', 'phones', 'tablets', 'accessories'];
+  const { totalCount } = useContext(ProductContext);
 
   const handleClick = () => {
     setIsOpenMenu((prevState) => !prevState);

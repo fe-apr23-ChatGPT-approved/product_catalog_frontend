@@ -1,0 +1,43 @@
+@import '../../utils/mixins';
+@import '../../utils/vars';
+
+.product-description {
+  &__title {
+    color: $primaryColor;
+    @include h4_DestopAndTablet;
+
+    @include onTablet {
+      @include h3_DestopAndTablet;
+    }
+
+    &::after {
+      position: absolute;
+      display: block;
+
+      margin-top: 16px;
+      content: '';
+
+      width: 100%;
+      height: 1px;
+      background-color: $elementsColor;
+    }
+  }
+
+  &__article-title {
+    margin: 32px 0 16px 0;
+
+    color: $primaryColor;
+    @include h4_Mobile;
+
+    @include onTablet {
+      @include h4_DestopAndTablet;
+    }
+  }
+
+  &__article-text {
+    @include bodyText;
+    font-weight: 600;
+    color: $secondaryColor;
+  }
+
+}

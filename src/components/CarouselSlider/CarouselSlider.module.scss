@@ -1,0 +1,84 @@
+@import '../../utils/_vars.scss';
+@import '../../utils/_mixins.scss';
+
+//need to remove it after we add card
+.card {
+  width: 212px;
+  height: 439px;
+
+  background-color: green;
+  border: 3px solid black;
+
+  @include onTablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include onDesktop {
+    width: 272px;
+    height: 506px;
+  }
+}
+
+.carousel {
+  position: relative;
+
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @include h3_DestopAndTablet;
+
+    @include onTablet {
+      @include h2_DestopAndTablet;
+    }
+
+    @include onDesktop {
+      @include h2_DestopAndTablet;
+    }
+  }
+
+  &-button-group {
+    position: absolute;
+    top: 0px;
+    right: 16px;
+    display: flex;
+  }
+
+  &__button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+
+    background-color: #fff;
+    border-radius: 50%;
+    align-items: center;
+
+    border: 1px solid #b4bdc3;
+
+    &:hover {
+      border-color: #0f0f11;
+    }
+
+    &--left {
+      transform: rotate(180deg);
+      margin-right: 16px;
+    }
+
+    // &--disabled {
+    //   opacity: 0.5;
+    //   cursor: default;
+
+    //   &:hover {
+    //     border-color: #b4bdc3;
+    //   }
+    // }
+  }
+}
