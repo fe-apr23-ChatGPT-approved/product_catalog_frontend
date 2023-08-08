@@ -13,6 +13,6 @@ function request(url: string) {
 
 export const getFromServer = (url: string) => request(url);
 
-export const getRecommended = (url: string) => getFromServer(`${url}/recomended`);
+export const getRecommended = (url: string) => getFromServer(`/products/${url}/recomended`);
 export const getNewModels = () => getFromServer('/products/new');
 export const getDiscountModels = () => getFromServer('/products/discount');

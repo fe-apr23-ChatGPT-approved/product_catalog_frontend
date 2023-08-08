@@ -4,8 +4,9 @@ import { BackButton } from '../../components/BackButton';
 import { useLocation } from 'react-router';
 import { ProductInterface } from '../../types/oneProductType';
 import { getFromServer, getRecommended } from '../../api/getProductsFromServer';
-import { BrandNewModels } from '../../components/BrandNewModels';
 import { Product } from '../../types/productType';
+import { CaruselContainer } from '../../components/CaruselContainer';
+import { ProductDescription } from '../../components/ProductDescription';
 
 export const ProductDetails: FC = () => {
   const { pathname } = useLocation();
@@ -21,13 +22,15 @@ export const ProductDetails: FC = () => {
       .then((data) => setProduct(data))
       .catch(() => {
         setIsError(true);
-      }).finally(() => {
+      })
+      .finally(() => {
         setIsLoading(false);
       });
   }, []);
 
   useEffect(() => {
-    getRecommended(pathname)
+    const [category] = location.pathname.split('/').slice(-2, -1);
+    getRecommended(category.toString())
       .then((data) => {
         setRecommended(data);
         setIsRecommended(true);
@@ -41,31 +44,31 @@ export const ProductDetails: FC = () => {
         <div className={style['product-details__back-btn']}>
           <BackButton />
         </div>
+        
         <h2 className={style['product-details__title']}>
           {product?.name}
         </h2>
+
         <section className={style['product-details__main-info']}>
           <div className={style['product-details__photos']}>
-              Photo container
+            Photo container
           </div>
           <div className={style['product-details__variants']}>Variants</div>
         </section>
         <section className={style['product-details__aditional-info']}>
           <article className={style['product-details__block']}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
-            deserunt. A ad quibusdam harum voluptatum veritatis fuga, numquam
-            autem maxim
+            {product && (
+              <ProductDescription description={product.description} />
+            )}
           </article>
           <article className={style['product-details__block']}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
             deserunt. A ad quibusdam harum voluptatum veritatis fuga, numquam
             autem maxim
           </article>
         </section>
 
-        <section className={style['product-details__recommended']}>
-          <BrandNewModels sliderProducts={recommended} />
-        </section>
+        <CaruselContainer title={'You may also like'} products={recommended} />
       </div>
     </main>
   );

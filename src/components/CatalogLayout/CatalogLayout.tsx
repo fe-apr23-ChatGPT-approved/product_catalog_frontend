@@ -14,7 +14,7 @@ import { Data } from '../../types/dataFromServer';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
 const sortOptions = [
-  { value: 'age', label: 'Newest' },
+  { value: 'year', label: 'Newest' },
   { value: 'name', label: 'Alphabetically' },
   { value: 'fullPrice', label: 'Cheapest' },
 ];
@@ -29,7 +29,7 @@ export const CatalogLayout = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(initialPage);
   const [limit, setLimit] = useState<number>(total);
-  const [sortOption, setSortOption] = useState<string>('age');
+  const [sortOption, setSortOption] = useState<string>('year');
   const location = useLocation();
   location.pathname;
 
@@ -68,7 +68,7 @@ export const CatalogLayout = () => {
       searchParams.set('offset', offset.toString());
     }
 
-    if (sortOption !== 'age') {
+    if (sortOption !== 'year') {
       searchParams.set('sortBy', sortOption);
     }
 

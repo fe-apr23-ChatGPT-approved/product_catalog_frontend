@@ -3,6 +3,8 @@ import 'react-multi-carousel/lib/styles.css';
 import style from './CarouselSlider.module.scss';
 import arrow from '../../icons/Arrow.svg';
 import cn from 'classnames';
+import { Product } from '../../types/productType';
+import { ProductCard } from '../ProductCard';
 
 const ButtonGroup = ({ next, previous }: ButtonGroupProps) => {
   const handleClickPrev = () => {
@@ -39,10 +41,10 @@ const ButtonGroup = ({ next, previous }: ButtonGroupProps) => {
 
 interface Props {
   title: string,
-  //need to add endpoint
+  products: Product[];
 }
 
-export const CarouselSlider: React.FC<Props> = ({ title }) => {
+export const CarouselSlider: React.FC<Props> = ({ title, products }) => {
   //state for data array from api
   const responsive = {
     desktop: {
@@ -60,8 +62,6 @@ export const CarouselSlider: React.FC<Props> = ({ title }) => {
   };
 
   return (
-    //we will take recomended from props
-    //and render items from data array
     <div className={style.carousel}>
       <div className={style.carousel__navigation}>
         <div className={style.carousel__title}>{title}</div>
@@ -75,17 +75,11 @@ export const CarouselSlider: React.FC<Props> = ({ title }) => {
         infinite={true}
         arrows={false}
       >
-        {/*dataArray.map(product => <Card product={product}/>)*/}
-        <div className={style.card}>Item 1</div>
-        <div className={style.card}>Item 2</div>
-        <div className={style.card}>Item 3</div>
-        <div className={style.card}>Item 4</div>
-        <div className={style.card}>Item 5</div>
-        <div className={style.card}>Item 6</div>
-        <div className={style.card}>Item 7</div>
-        <div className={style.card}>Item 8</div>
-        <div className={style.card}>Item 9</div>
-        <div className={style.card}>Item 10</div>
+        {products.map((product) => (
+          <div key={product.id} className={style.card} >
+            <ProductCard product={product} />
+          </div>
+        ))}
       </Carousel>
     </div>
   );

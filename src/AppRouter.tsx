@@ -39,9 +39,15 @@ export const AppRouter = createBrowserRouter([
         path: 'phones/:phoneId',
         element: <ProductDetails />,
       },
+
       {
         path: '/accessories',
         element: <AccessoriesPage />,
+      },
+
+      {
+        path: 'accessories/:accessoryId',
+        element: <ProductDetails />,
       },
 
       {
@@ -50,11 +56,16 @@ export const AppRouter = createBrowserRouter([
       },
 
       {
+        path: 'tablets/:tabletId',
+        element: <ProductDetails />,
+      },
+
+      {
         path: '/cart',
         element: <CartPage />,
       },
       {
-        path: '*',
+        path: '/*',
         element: <NotFoundPage />,
       },
       //   {

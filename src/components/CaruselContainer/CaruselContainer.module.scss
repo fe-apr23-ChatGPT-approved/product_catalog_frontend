@@ -1,5 +1,7 @@
 @import '../../utils/mixins.scss';
 @import '../../utils/vars';
+@import '../../utils//reset.scss';
+@import '../../utils/reset.scss';
 
 .brand-new-models {
   @include sectionContainer;
