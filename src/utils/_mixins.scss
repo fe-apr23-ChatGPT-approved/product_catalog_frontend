@@ -87,6 +87,15 @@
   line-height: normal;
 }
 
+@mixin counterText {
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color:  #fff;
+  line-height: 14px;
+}
+
 @mixin h1_Mobile {
   font-size: 32px;
   line-height: 41;

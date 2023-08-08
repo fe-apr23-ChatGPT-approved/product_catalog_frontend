@@ -52,12 +52,14 @@ export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
           to={'/like'}
         >
           <img src={like} alt={'like button'} />
+          <div className={style.header__counter}>1</div>
         </Link>
         <Link
           className={`${style.header__button} ${style['header__button--tablet']}`}
           to={'/cart'}
         >
           <img src={cart} alt={'cart button'} />
+          <div className={style.header__counter}>33</div>
         </Link>
         <div
           className={`${style.header__button} ${style['header__button--mobile']}`}
