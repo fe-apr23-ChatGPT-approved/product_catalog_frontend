@@ -1,0 +1,24 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+.favourites-add-button {
+  position: relative;
+  width: 44.8px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  border: 1px solid $iconsAndPlaceholders;
+  border-radius: 48px;
+
+  background-color: $backgroundColor;
+
+  &--active {
+    border-color: $elementsColor;
+  }
+
+  cursor: pointer;
+}

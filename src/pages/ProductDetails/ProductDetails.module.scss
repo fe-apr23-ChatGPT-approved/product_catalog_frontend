@@ -80,4 +80,35 @@
       margin-bottom: 80px;
     }
   }
+
+  &__price {
+    padding-top: 32px;
+    margin-bottom: 16px;
+
+    @include h2_DestopAndTablet;
+    color: $primaryColor;
+
+    &-discount {
+      margin-right: 8px;
+    }
+
+    &-full {
+      font-weight: 500;
+      color: $secondaryColor;
+      text-decoration: line-through;
+    }
+  }
+
+  &__buttons-wrapper {
+    max-width: 320px;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &____recommended {
+    @include sectionContainer;
+    margin-bottom: 100px;
+  }
 }

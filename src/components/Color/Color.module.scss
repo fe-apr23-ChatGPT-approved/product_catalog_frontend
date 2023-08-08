@@ -1,0 +1,59 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+.color {
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__productId {
+    width: 170px;
+    @include smallText;
+    text-align: right;
+    color: $iconsAndPlaceholders;
+  }
+  &__title {
+    margin-bottom: 8px;
+
+    @include smallText;
+    color: $secondaryColor;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__link {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    @include square(30px);
+    color: $primaryColor;
+
+    border-radius: 36px;
+    border: 1.5px solid $elementsColor;
+
+    transition: border $transitionDuration ease;
+    cursor: pointer;
+
+    &:hover {
+      border: 1.5px solid $iconsAndPlaceholders;
+    }
+
+    &--active {
+      border-color: $primaryColor;
+    }
+  }
+
+  &__item {
+    @include square(23px);
+    border-radius: 36px;
+    border: none;
+    cursor: pointer;
+  }
+}
