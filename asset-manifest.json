@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/product_catalog_frontend/static/css/main.556a06a4.css",
+    "main.js": "/product_catalog_frontend/static/js/main.d9a70f30.js",
+    "static/media/category-photo-tablets.png": "/product_catalog_frontend/static/media/category-photo-tablets.51782e18205a1ca01ce8.png",
+    "static/media/PicturesSlider-photo-little.png": "/product_catalog_frontend/static/media/PicturesSlider-photo-little.c0578933cc6114902d49.png",
+    "static/media/astronaut.png": "/product_catalog_frontend/static/media/astronaut.bfa6491278f7c0f9fdf5.png",
+    "static/media/category-photo-accessories.png": "/product_catalog_frontend/static/media/category-photo-accessories.4c991b18c87db0771dfd.png",
+    "static/media/logo.svg": "/product_catalog_frontend/static/media/logo.f762cc6d7b70c320ffd7ac7f401f445b.svg",
+    "static/media/category-photo-phones.png": "/product_catalog_frontend/static/media/category-photo-phones.d1c29b5787b1df6d7fb5.png",
+    "static/media/Mont-Regular.otf": "/product_catalog_frontend/static/media/Mont-Regular.1d26d89f7339866d3133.otf",
+    "static/media/Mont-SemiBold.otf": "/product_catalog_frontend/static/media/Mont-SemiBold.8979d71a3146ca1d761f.otf",
+    "static/media/Mont-Bold.otf": "/product_catalog_frontend/static/media/Mont-Bold.03c8c2f6127c1da0fc39.otf",
+    "static/media/PicturesSlider-photo-big.png": "/product_catalog_frontend/static/media/PicturesSlider-photo-big.71e7e0917555f044d60b.png",
+    "static/media/empty-cart.png": "/product_catalog_frontend/static/media/empty-cart.49d7ad2b13360e514657.png",
+    "static/media/revicons.eot": "/product_catalog_frontend/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/product_catalog_frontend/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/product_catalog_frontend/static/media/revicons.e8746a624ed098489406.woff",
+    "static/media/Cart.svg": "/product_catalog_frontend/static/media/Cart.52527587f4b84b53b46653f8a09a88be.svg",
+    "static/media/Add to fovourites.svg": "/product_catalog_frontend/static/media/Add to fovourites.0ad5a817197d674a1400aa52dedf7bd5.svg",
+    "static/media/Like.svg": "/product_catalog_frontend/static/media/Like.aec7ca3156c0efbb301b0029686f7b54.svg",
+    "static/media/Favourites Filled (Heart Like).svg": "/product_catalog_frontend/static/media/Favourites Filled (Heart Like).fa27128128a0943e4e9dc52071347cd6.svg",
+    "static/media/Close.svg": "/product_catalog_frontend/static/media/Close.3ea864f59fecb8596c4be9c8a455c02a.svg",
+    "static/media/Plus.svg": "/product_catalog_frontend/static/media/Plus.2739164729ef9f37062a4fc90e168edf.svg",
+    "static/media/Menu.svg": "/product_catalog_frontend/static/media/Menu.744ac0b04d84e4feeeb5288d215af5b2.svg",
+    "static/media/arrow_down.svg": "/product_catalog_frontend/static/media/arrow_down.9083e0a423e06a4b7c45.svg",
+    "static/media/arrow_up_grey.svg": "/product_catalog_frontend/static/media/arrow_up_grey.bca5376b1db38a7323e969ebeb063e2d.svg",
+    "static/media/Arrow.svg": "/product_catalog_frontend/static/media/Arrow.1681557de013e6041c2470380f71392b.svg",
+    "static/media/arrow_up.svg": "/product_catalog_frontend/static/media/arrow_up.beef78840566ab1d5156fbeddb58d6bd.svg",
+    "index.html": "/product_catalog_frontend/index.html",
+    "main.556a06a4.css.map": "/product_catalog_frontend/static/css/main.556a06a4.css.map",
+    "main.d9a70f30.js.map": "/product_catalog_frontend/static/js/main.d9a70f30.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.556a06a4.css",
+    "static/js/main.d9a70f30.js"
+  ]
+}
