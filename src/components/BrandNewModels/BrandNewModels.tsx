@@ -1,10 +1,9 @@
 import React from 'react';
 import style from './BrandNewModels.module.scss';
+import { CarouselSlider } from '../CarouselSlider';
 
 export const BrandNewModels: React.FC = () => (
   <section className={style['brand-new-models']}>
-    <h2 className={style['brand-new-models__title']}>Brand new models</h2>
-
-    {/* <ProductList products={}/> потрібно передати картки які будуть відображатись */}
+    <CarouselSlider title={'New'} />
   </section>
 );
