@@ -7,14 +7,12 @@ function request(url: string) {
         throw new Error(`${response.status} - ${response.statusText}`);
       }
 
-    return response.json();
-  });
+      return response.json();
+    });
 }
 
-export const getProducts = (url: string) => request(url);
+export const getFromServer = (url: string) => request(url);
 
-export const getRecommended = (url: string) => getProducts(`${url}/recomended`);
-export const getNewModels = () => getProducts('/products/new');
-export const getDiscountModels = () => getProducts('/products/discount');
-
-///products/:id/recomended
+export const getRecommended = (url: string) => getFromServer(`${url}/recomended`);
+export const getNewModels = () => getFromServer('/products/new');
+export const getDiscountModels = () => getFromServer('/products/discount');

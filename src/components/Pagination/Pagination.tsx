@@ -7,7 +7,7 @@ import { getNumbers } from '../../constants/getNumbersPagination';
 
 interface Props {
   total: number;
-  limit: number | string;
+  limit: number;
   currentPage: number;
   onPageChange: (page: number) => void;
 }
@@ -18,9 +18,7 @@ export const Pagination: FC<Props> = ({
   currentPage,
   onPageChange,
 }) => {
-  const numberOfPages = typeof limit === 'number'
-    ? Math.ceil(total / limit)
-    : 0;
+  const numberOfPages = Math.ceil(total / limit) | 0;
   const maxDisplayedPages = 4;
 
   const [displayedPages, setDisplayedPages] = useState<number[]>([]);
