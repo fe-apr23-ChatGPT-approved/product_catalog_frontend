@@ -8,7 +8,6 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { TabletsPage } from './pages/TabletsPage';
 import { ProductDetails } from './pages/ProductDetails';
 import { Layout } from './components/Layout/Layout';
-// import { ProductDetails } from './pages/ProductDetails';
 
 export const AppRouter = createBrowserRouter([
   {
@@ -16,10 +15,6 @@ export const AppRouter = createBrowserRouter([
     element: <Layout />,
     // errorElement: <NotFoundPage />,
     children: [
-      {
-        path: 'phones',
-        element: <PhonesPage />,
-      },
       {
         index: true,
         element: <HomePage />

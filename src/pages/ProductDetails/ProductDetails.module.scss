@@ -75,13 +75,9 @@
     @include onDesktop {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      gap: 65px;
       column-gap: 64px;
       margin-bottom: 80px;
     }
-  }
-
-  &____recommended {
-    @include sectionContainer;
-    margin-bottom: 100px;
   }
 }

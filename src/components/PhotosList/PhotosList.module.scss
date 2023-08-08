@@ -1,5 +1,7 @@
 @import '../../utils/vars';
 @import '../../utils/mixins';
+@import '../../utils/reset.scss';
+@import '../../utils/normalize.scss';
 
 @keyframes fadeIn {
   from {
@@ -55,6 +57,7 @@
     display: flex;
     overflow: hidden;
     flex-direction: row;
+    margin: 0;
 
     gap: 8px;
 
@@ -80,6 +83,7 @@
   &__list-item {
     display: flex;
     justify-content: center;
+    margin: 0;
 
     border: 1px solid $iconsAndPlaceholders;
     border-radius: 4px;

@@ -11,7 +11,6 @@
     }
 
     &::after {
-      position: absolute;
       display: block;
 
       margin-top: 16px;
@@ -36,7 +35,7 @@
 
   &__article-text {
     @include bodyText;
-    font-weight: 600;
+    font-weight: 700;
     color: $secondaryColor;
   }
 
