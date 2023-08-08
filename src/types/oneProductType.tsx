@@ -1,4 +1,7 @@
-export type DescriptionArray = string[];
+export interface Description {
+  title: string;
+  text: string[];
+}
 
 export interface ProductInterface {
   id: string;
@@ -12,7 +15,7 @@ export interface ProductInterface {
   color: string;
   screen: string;
   images: string[]
-  description: DescriptionArray[];
+  description: Description[];
   resolution: string;
   processor: string;
   ram: string;

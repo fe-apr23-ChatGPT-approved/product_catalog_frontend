@@ -1,24 +1,52 @@
-
-// import { BrandNewModels } from '../../components/BrandNewModels';
-import { HotPrices } from '../../components/HotPrices';
+import { useEffect, useState } from 'react';
+import {
+  getDiscountModels,
+  getNewModels,
+} from '../../api/getProductsFromServer';
+import { Product } from '../../types/productType';
 import { PicturesSlider } from '../../components/PicturesSlider';
 import { ShopByCategories } from '../../components/ShopByCategories';
 import style from './HomePage.module.scss';
+import { CaruselContainer } from '../../components/CaruselContainer';
 
-export const HomePage: React.FC = () => (
-  <main className={style['home-page']}>
-      
-    <h1 className={style['home-page__title']}>
-      Welcome to Nice Gadgets store!
-    </h1>
+export const HomePage: React.FC = () => {
+  const [newModels, setNewModels] = useState<Product[]>([]);
+  const [discountModels, setDiscountModels] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
-    <PicturesSlider />
+  useEffect(() => {
+    setIsLoading(true);
+    getNewModels()
+      .then((data) => setNewModels(data))
+      .catch(() => setIsError(true))
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
-    {/* <BrandNewModels /> */}
+  useEffect(() => {
+    setIsLoading(true);
+    getDiscountModels()
+      .then((data) => setDiscountModels(data))
+      .catch(() => setIsError(true))
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
-    <ShopByCategories />
+  return (
+    <main className={style['home-page']}>
+      <h1 className={style['home-page__title']}>
+        Welcome to Nice Gadgets store!
+      </h1>
+      <PicturesSlider />
 
-    <HotPrices />
+      <CaruselContainer title="Brand new models" products={newModels} />
 
-  </main>
-);
+      <ShopByCategories />
+
+      <CaruselContainer title="Hot prices" products={discountModels} />
+    </main>
+  );
+};

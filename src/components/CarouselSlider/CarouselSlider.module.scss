@@ -6,9 +6,6 @@
   width: 212px;
   height: 439px;
 
-  background-color: green;
-  border: 3px solid black;
-
   @include onTablet {
     width: 237px;
     height: 512px;

@@ -1,5 +1,7 @@
 @import '../../utils/vars';
 @import '../../utils/mixins';
+@import '../../utils/reset.scss';
+@import '../../utils//normalize.scss';
 
 .product-details {
   max-width: 1200px;
@@ -76,5 +78,10 @@
       column-gap: 64px;
       margin-bottom: 80px;
     }
+  }
+
+  &____recommended {
+    @include sectionContainer;
+    margin-bottom: 100px;
   }
 }

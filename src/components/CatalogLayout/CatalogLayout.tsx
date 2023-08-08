@@ -28,7 +28,7 @@ export const CatalogLayout = () => {
   const [isReloaded, setIsReloaded] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(initialPage);
-  const [limit, setLimit] = useState<number | string>('All');
+  const [limit, setLimit] = useState<number>(total);
   const [sortOption, setSortOption] = useState<string>('year');
   const location = useLocation();
   location.pathname;
