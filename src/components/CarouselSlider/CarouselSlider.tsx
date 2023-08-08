@@ -5,12 +5,6 @@ import arrow from '../../icons/Arrow.svg';
 import cn from 'classnames';
 
 const ButtonGroup = ({ next, previous }: ButtonGroupProps) => {
-  // const currentSlide = carouselState?.currentSlide ?? 0;
-  // const startSlider = currentSlide === 0;
-  // now i hardoced it we need to use dataArray.length -1
-  //NEED TO FIX IT **
-  // const finishSlider = currentSlide === 6;
-
   const handleClickPrev = () => {
     if (previous) {
       previous();
@@ -45,9 +39,11 @@ const ButtonGroup = ({ next, previous }: ButtonGroupProps) => {
 
 interface Props {
   title: string,
+  //need to add endpoint
 }
 
 export const CarouselSlider: React.FC<Props> = ({ title }) => {
+  //state for data array from api
   const responsive = {
     desktop: {
       breakpoint: { max: 4000, min: 1200 },
@@ -79,6 +75,7 @@ export const CarouselSlider: React.FC<Props> = ({ title }) => {
         infinite={true}
         arrows={false}
       >
+        {/*dataArray.map(product => <Card product={product}/>)*/}
         <div className={style.card}>Item 1</div>
         <div className={style.card}>Item 2</div>
         <div className={style.card}>Item 3</div>
