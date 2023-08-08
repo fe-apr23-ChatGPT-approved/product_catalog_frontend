@@ -40,10 +40,11 @@ export const Menu: React.FC<Props> = ({ setIsOpenMenu }) => {
       <div className={style.menu__buttons}>
         <Link
           className={`${style.menu__button} ${style['menu__button--tablet']}`}
-          to={'/cart'}
+          to={'/favourites'}
           onClick={handleClick}
         >
-          <img src={like} alt={'like button'} />
+          <img src={like} alt={'favourites button'} />
+          <div className={`${style.menu__counter} ${style['menu__counter--favourits']}`}>1</div>
         </Link>
         <Link
           className={`${style.menu__button} ${style['menu__button--tablet']}`}
@@ -51,6 +52,7 @@ export const Menu: React.FC<Props> = ({ setIsOpenMenu }) => {
           onClick={handleClick}
         >
           <img src={cart} alt={'cart button'} />
+          <div className={`${style.menu__counter} ${style['menu__counter--cart']}`}>33</div>
         </Link>
       </div>
     </div>
