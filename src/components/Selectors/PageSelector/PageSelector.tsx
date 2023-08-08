@@ -10,14 +10,9 @@ interface Props {
 
 export const PageSelector:FC<Props> = ({ value, total, onChange }) => (
   <div className={style.selector}>
-    <p className={style.selector__info}>
-      Items on page
-    </p>
+    <p className={style.selector__info}>Items on page</p>
     <select
-      className={cn(
-        style.selector__field,
-        style['selector__arrow-select'],
-      )}
+      className={cn(style.selector__field, style['selector__arrow-select'])}
       value={value}
       onChange={onChange}
     >
