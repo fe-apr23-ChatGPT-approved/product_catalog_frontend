@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/product_catalog_frontend/static/css/main.556a06a4.css",
-    "main.js": "/product_catalog_frontend/static/js/main.d9a70f30.js",
+    "main.css": "/product_catalog_frontend/static/css/main.2aaaa9f1.css",
+    "main.js": "/product_catalog_frontend/static/js/main.84aaaed0.js",
     "static/media/category-photo-tablets.png": "/product_catalog_frontend/static/media/category-photo-tablets.51782e18205a1ca01ce8.png",
     "static/media/PicturesSlider-photo-little.png": "/product_catalog_frontend/static/media/PicturesSlider-photo-little.c0578933cc6114902d49.png",
     "static/media/astronaut.png": "/product_catalog_frontend/static/media/astronaut.bfa6491278f7c0f9fdf5.png",
@@ -28,11 +28,11 @@
     "static/media/Arrow.svg": "/product_catalog_frontend/static/media/Arrow.1681557de013e6041c2470380f71392b.svg",
     "static/media/arrow_up.svg": "/product_catalog_frontend/static/media/arrow_up.beef78840566ab1d5156fbeddb58d6bd.svg",
     "index.html": "/product_catalog_frontend/index.html",
-    "main.556a06a4.css.map": "/product_catalog_frontend/static/css/main.556a06a4.css.map",
-    "main.d9a70f30.js.map": "/product_catalog_frontend/static/js/main.d9a70f30.js.map"
+    "main.2aaaa9f1.css.map": "/product_catalog_frontend/static/css/main.2aaaa9f1.css.map",
+    "main.84aaaed0.js.map": "/product_catalog_frontend/static/js/main.84aaaed0.js.map"
   },
   "entrypoints": [
-    "static/css/main.556a06a4.css",
-    "static/js/main.d9a70f30.js"
+    "static/css/main.2aaaa9f1.css",
+    "static/js/main.84aaaed0.js"
   ]
 }
