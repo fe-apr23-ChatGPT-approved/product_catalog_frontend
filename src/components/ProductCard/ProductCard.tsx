@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import heart from '../../icons/Add to fovourites.svg';
 import favouriteheart from '../../icons/Favourites Filled (Heart Like).svg';
 import { ProductContext } from '../cartContext/ProductContext';
+import { FavouritesContext } from '../FavouritesContext/FavouritesContext';
 
 interface Props {
   product: Product;
@@ -16,6 +17,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const [productAdded, setProductAdded] = useState(false);
   const [productFavourite, setProductFavourite] = useState(false);
   const { addToCart } = useContext(ProductContext);
+  const { onClickFavourites } = useContext(FavouritesContext);
 
   const buttonText = productAdded ? 'Added' : 'Add to cart';
 
@@ -25,8 +27,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     addToCart(product);
   };
 
-  const handleAddFavourite = () => {
+  const handleClickFavourite = () => {
     setProductFavourite(!productFavourite);
+    onClickFavourites(product);
   };
 
   const {
@@ -107,7 +110,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             [style['favourites-add-button--active']]: productFavourite,
           })}
           type="button"
-          onClick={() => handleAddFavourite()}
+          onClick={() => handleClickFavourite()}
         >
           {productFavourite ? (
             <img src={favouriteheart} />

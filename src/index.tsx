@@ -4,8 +4,10 @@ import { RouterProvider } from 'react-router-dom';
 import './index.scss';
 import { AppRouter } from './AppRouter';
 import {
-  ProductContextProvider
+  ProductContextProvider,
 } from './components/cartContext/ProductContextProvider';
+import { FavouritesContextProvider } from
+  './components/FavouritesContext/FavouritesContextProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -13,7 +15,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ProductContextProvider>
-      <RouterProvider router={AppRouter} />
+      <FavouritesContextProvider>
+        <RouterProvider router={AppRouter} />
+      </FavouritesContextProvider>
     </ProductContextProvider>
   </React.StrictMode>
 );

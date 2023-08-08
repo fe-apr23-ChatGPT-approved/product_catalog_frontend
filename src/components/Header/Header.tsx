@@ -9,6 +9,7 @@ import cn from 'classnames';
 
 import style from './Header.module.scss';
 import { ProductContext } from '../cartContext/ProductContext';
+import { FavouritesContext } from '../FavouritesContext/FavouritesContext';
 
 interface Props {
   isOpenMenu: boolean;
@@ -18,7 +19,7 @@ interface Props {
 export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
   const pages = ['home', 'phones', 'tablets', 'accessories'];
   const { totalCount } = useContext(ProductContext);
-  // {totalFavCount} = useContext(FavContext);
+  const { totalFavCount } = useContext(FavouritesContext);
 
   const cartCounterIsActive = totalCount() !== 0;
   // const cartCounterIsActive = totalFavCoun() !== 0;
@@ -56,10 +57,11 @@ export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
           to={'/favourites'}
         >
           <img src={like} alt={'favourites button'} />
-          {/*cartCounterIsActive &&*/
+          {cartCounterIsActive && (
             <div className={style.header__counter}>
-              {/*totalFavCount()*/}
-            </div>}
+              {totalFavCount()}
+            </div>
+          )}
         </Link>
         <Link
           className={`${style.header__button} ${style['header__button--tablet']}`}
