@@ -106,9 +106,4 @@
     justify-content: space-between;
     gap: 8px;
   }
-
-  &____recommended {
-    @include sectionContainer;
-    margin-bottom: 100px;
-  }
 }

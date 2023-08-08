@@ -65,7 +65,7 @@ export const ProductDetails: FC = () => {
         <div className={style['product-details__back-btn']}>
           <BackButton />
         </div>
-        
+
         <h2 className={style['product-details__title']}>
           {product && product.name}
         </h2>
@@ -74,9 +74,12 @@ export const ProductDetails: FC = () => {
           <section className={style['product-details__main-info']}>
             <div className={style['product-details__photos']}>
               {product && (
-              <PhotosList images={product?.images} name={product.name} />
-            )}
+                <PhotosList
+                  images={product?.images}
+                  name={product.name} />
+              )}
             </div>
+
             <div className={style['product-details__variants']}>
               <Color
                 productDetailsId={product.id}
@@ -113,18 +116,22 @@ export const ProductDetails: FC = () => {
             </div>
           </section>
         )}
-        <div className={style['product-details__aditional-info']}>
+
+        <section className={style['product-details__aditional-info']}>
           <article className={style['product-details__block']}>
             {product && (
               <ProductDescription description={product.description} />
             )}
           </article>
+          
           <article className={style['product-details__block']}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
-            deserunt. A ad quibusdam harum voluptatum veritatis fuga, numquam
-            autem maxim
+            {product && (
+              <ProductTechSpecs
+                product={product}
+              />
+            )}
           </article>
-        </div>
+        </section>
 
         <CaruselContainer title={'You may also like'} products={recommended} />
       </div>
