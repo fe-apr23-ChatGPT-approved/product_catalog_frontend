@@ -28,6 +28,7 @@
     border: 1px solid $iconsAndPlaceholders;
 
     &--active {
+      border: 1px solid $primaryColor;
       background-color: $primaryColor;
       color: $backgroundColor;
     }

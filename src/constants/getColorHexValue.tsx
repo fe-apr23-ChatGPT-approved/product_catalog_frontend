@@ -5,17 +5,15 @@ export const getColorHexValue = (color: string): string => {
   case 'black':
     return '#20211A';
   case 'gold':
-    return '#FFD971';
+    return '#F9E5C9';
   case 'rosegold':
     return '#CBA3B2';
   case 'silver':
     return '#B0B5B9';
   case 'midnightgreen':
     return '#32494B';
-  case 'green':
-    return '#66A586';
   case 'purple':
-    return '#D3C2CF';
+    return '#B8AFE6';
   case 'red':
     return '#C8102E';
   case 'white':
@@ -24,6 +22,24 @@ export const getColorHexValue = (color: string): string => {
     return '#ED846D';
   case 'yellow':
     return '#FFFF9F';
+  case 'sierrablue':
+    return '#9BB5CE';
+  case 'midnight':
+    return '#171E27';
+  case 'graphite':
+    return '#5C5B57';
+  case 'pink':
+    return ' #FAE0D8';
+  case 'blue':
+    return '#215E7C';
+  case 'green':
+    return ' #AEE1CD';
+  case 'starlight':
+    return '#F4EDC6';
+  case 'sky-blue':
+    return '#87CEEB';
+  case 'spaceblack':
+    return '#333334';
   default:
     return color;
   }

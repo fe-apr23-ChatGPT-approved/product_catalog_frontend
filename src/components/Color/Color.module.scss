@@ -41,7 +41,7 @@
     transition: border $transitionDuration ease;
     cursor: pointer;
 
-    &:hover {
+    &:hover:not(.color__link--active) {
       border: 1.5px solid $iconsAndPlaceholders;
     }
 
