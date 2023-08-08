@@ -16,7 +16,7 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 const sortOptions = [
   { value: 'age', label: 'Newest' },
   { value: 'name', label: 'Alphabetically' },
-  { value: 'priceRegular', label: 'Cheapest' },
+  { value: 'fullPrice', label: 'Cheapest' },
 ];
 
 export const CatalogLayout = () => {
@@ -28,7 +28,7 @@ export const CatalogLayout = () => {
   const [isReloaded, setIsReloaded] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(initialPage);
-  const [limit, setLimit] = useState<number | string>('All');
+  const [limit, setLimit] = useState<number>(total);
   const [sortOption, setSortOption] = useState<string>('age');
   const location = useLocation();
   location.pathname;
@@ -59,11 +59,11 @@ export const CatalogLayout = () => {
 
   useEffect(() => {
     const searchParams = new URLSearchParams();
-    if (typeof limit === 'number') {
+    if (limit !== total) {
       searchParams.set('limit', limit.toString());
     }
 
-    if (typeof limit === 'number' && currentPage !== initialPage) {
+    if (currentPage !== initialPage) {
       const offset = (currentPage - 1) * limit;
       searchParams.set('offset', offset.toString());
     }
@@ -79,6 +79,8 @@ export const CatalogLayout = () => {
     setCurrentPage(page);
   };
 
+  const showPagination = limit !== total;
+
   const onSelect = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     const newLimit = Number(event.target.value);
     setLimit(newLimit);
@@ -92,8 +94,6 @@ export const CatalogLayout = () => {
     setSortOption(newSortOption);
     setCurrentPage(initialPage);
   };
-
-  const showPagination = typeof limit === 'number';
 
   const handleReloadButton = () => {
     setIsReloaded(true);
@@ -129,7 +129,11 @@ export const CatalogLayout = () => {
           </select>
         </div>
 
-        <PageSelector value={limit} onChange={onSelect} />
+        <PageSelector
+          value={limit}
+          onChange={onSelect}
+          total={total}
+        />
       </div>
 
       {isError && (

@@ -1,5 +1,5 @@
 
-import { BrandNewModels } from '../../components/BrandNewModels';
+// import { BrandNewModels } from '../../components/BrandNewModels';
 import { HotPrices } from '../../components/HotPrices';
 import { PicturesSlider } from '../../components/PicturesSlider';
 import { ShopByCategories } from '../../components/ShopByCategories';
@@ -14,7 +14,7 @@ export const HomePage: React.FC = () => (
 
     <PicturesSlider />
 
-    <BrandNewModels />
+    {/* <BrandNewModels /> */}
 
     <ShopByCategories />
 

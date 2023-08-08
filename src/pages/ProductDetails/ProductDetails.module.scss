@@ -41,6 +41,7 @@
   }
 
   &__block {
+    display: block;
     margin-bottom: 56px;
 
     @include onTablet {
