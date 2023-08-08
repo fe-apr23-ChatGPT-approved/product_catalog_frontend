@@ -2,8 +2,11 @@
 @import '../../utils/mixins';
 
 .product-characteristics {
-  max-width: 320px;
   margin-top: 32px;
+
+  @include onTablet {
+    max-width: 320px;
+  }
 
   &__container {
     display: flex;

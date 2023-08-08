@@ -2,10 +2,14 @@
 @import '../../utils/mixins';
 
 .capacity {
-  max-width: 320px;
   padding: 24px 0;
   border-top: 1px solid $elementsColor;
   border-bottom: 1px solid $elementsColor;
+
+  @include onTablet {
+    max-width: 320px;
+  }
+
   &__title {
     @include smallText;
     color: $secondaryColor;
