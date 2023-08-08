@@ -11,9 +11,9 @@ export const ProductDetails: FC = () => {
   const { pathname } = useLocation();
   const [product, setProduct] = useState<ProductInterface | null>(null);
   const [recommended, setRecommended] = useState<Product[]>([]);
-  // const [isError, setIsError] = useState<boolean>(false);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [isRecommended, setIsRecommended] = useState(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isRecommended, setIsRecommended] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
