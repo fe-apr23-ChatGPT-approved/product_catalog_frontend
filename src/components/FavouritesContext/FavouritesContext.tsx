@@ -1,16 +1,16 @@
 import { createContext } from 'react';
 import { Product } from '../../types/productType';
 
-export interface FavouritesContextType {
-  favouriteItems: Product[],
-  onClickFavourites: (product: Product) => void
+export interface FavoritesContextType {
+  favoriteItems: Product[],
+  onClickFavorites: (product: Product) => void
   totalFavCount: () => number;
 }
 
-const defaultFavouritesContext: FavouritesContextType = {
-  favouriteItems: [],
-  onClickFavourites: () => { /*empty*/ },
+const defaultFavoritesContext: FavoritesContextType = {
+  favoriteItems: [],
+  onClickFavorites: () => { /*empty*/ },
   totalFavCount: () => 0,
 };
 
-export const FavouritesContext = createContext(defaultFavouritesContext);
+export const FavoritesContext = createContext(defaultFavoritesContext);

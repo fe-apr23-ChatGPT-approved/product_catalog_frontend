@@ -1,41 +1,43 @@
 import React, { FC, ReactNode } from 'react';
 import { Product } from '../../types/productType';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { FavouritesContext, FavouritesContextType } from './FavouritesContext';
+import { FavoritesContext, FavoritesContextType } from './FavouritesContext';
 
 interface Props {
   children: ReactNode;
 }
 
-export const FavouritesContextProvider: FC<Props> = ({ children }) => {
-  const [favouriteItems, setFavouriteItems] = useLocalStorage<Product[]>(
-    'favouriteProducts', []
+export const FavoritesContextProvider: FC<Props> = ({ children }) => {
+  const [favoriteItems, setFavoriteItems] = useLocalStorage<Product[]>(
+    'favoriteProducts',
+    [],
   );
 
-  const onClickFavourites = (product: Product) => {
-    const inFavourites = favouriteItems.find((item) => (
-      item.id === product.id) || null
+  const onClickFavorites = (product: Product) => {
+    const inFavourites = favoriteItems.find(
+      (item) => item.id === product.id || null,
     );
 
     if (!inFavourites) {
-      setFavouriteItems([...favouriteItems, product]);
+      setFavoriteItems([...favoriteItems, product]);
     } else {
-      setFavouriteItems(favouriteItems.filter(item => (
-        item.id !== product.id)));
+      setFavoriteItems(
+        favoriteItems.filter((item) => item.id !== product.id),
+      );
     }
   };
 
-  const totalFavCount = () => favouriteItems.length;
+  const totalFavCount = () => favoriteItems.length;
 
-  const value: FavouritesContextType = {
-    favouriteItems,
-    onClickFavourites,
-    totalFavCount
+  const value: FavoritesContextType = {
+    favoriteItems: favoriteItems,
+    onClickFavorites: onClickFavorites,
+    totalFavCount,
   };
 
   return (
-    <FavouritesContext.Provider value={value}>
+    <FavoritesContext.Provider value={value}>
       {children}
-    </FavouritesContext.Provider>
+    </FavoritesContext.Provider>
   );
 };

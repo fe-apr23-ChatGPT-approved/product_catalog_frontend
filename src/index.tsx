@@ -3,11 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import './index.scss';
 import { AppRouter } from './AppRouter';
-import {
-  ProductContextProvider,
-} from './components/cartContext/ProductContextProvider';
-import { FavouritesContextProvider } from
-  './components/FavouritesContext/FavouritesContextProvider';
+import { ProductContextProvider } from './components/cartContext/ProductContextProvider';
+import { FavoritesContextProvider } from './components/FavouritesContext/FavouritesContextProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -15,9 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ProductContextProvider>
-      <FavouritesContextProvider>
+      <FavoritesContextProvider>
         <RouterProvider router={AppRouter} />
-      </FavouritesContextProvider>
+      </FavoritesContextProvider>
     </ProductContextProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
