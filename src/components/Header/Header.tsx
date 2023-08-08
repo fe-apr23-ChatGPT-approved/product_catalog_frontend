@@ -49,9 +49,9 @@ export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
       <div className={style.header__buttons}>
         <Link
           className={`${style.header__button} ${style['header__button--tablet']}`}
-          to={'/like'}
+          to={'/favourites'}
         >
-          <img src={like} alt={'like button'} />
+          <img src={like} alt={'favourites button'} />
           <div className={style.header__counter}>1</div>
         </Link>
         <Link
