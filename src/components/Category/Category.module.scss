@@ -2,26 +2,30 @@
 @import '../../utils/vars.scss';
 
 .category {
-
   &__photo-container {
+    display: block;
     margin: auto;
     margin-bottom: 24px;
 
-    background-color: #6d6474;
+    width: 100%;
+
     border-radius: 8px;
 
     @media (width: 1200px) {
       border-radius: 0;
     }
 
+    overflow: hidden;
+
   }
 
   &__photo {
+    width: 100%;
+    height: 100%;
 
-    width: 100px;
-    height: 100px;
     object-fit: cover;
-    object-position: bottom right;
+    object-position: center;
+    
     transition: 0.5s ease-in-out;
 
     &:hover {
@@ -30,8 +34,9 @@
   }
 
   &__title {
-    @include h4_DestopAndTablet;
+    @include h2_Mobile;
     text-decoration: none;
+    color: $primaryColor;
   }
 
   &__quantity {

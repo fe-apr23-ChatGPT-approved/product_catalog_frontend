@@ -16,6 +16,10 @@
     }
   }
 
+  &__list-item {
+    width: 100%;
+  }
+
   &__title {
     @include h2_Mobile;
     margin-bottom: 24px;
