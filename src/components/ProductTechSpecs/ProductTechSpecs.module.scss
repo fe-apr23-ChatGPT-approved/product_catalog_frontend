@@ -1,0 +1,62 @@
+@import '../../utils/_vars.scss';
+@import '../../utils/_mixins.scss';
+
+
+.product-techSpecs {
+
+  &__article {
+    margin-top: 46px;
+
+    @include onTablet {
+      margin-top: 41px;
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    color: $primaryColor;
+    @include h4_DestopAndTablet;
+
+    @include onTablet {
+      @include h3_DestopAndTablet;
+    }
+
+    &::after {
+      position: absolute;
+      display: block;
+
+      margin-top: 16px;
+      content: '';
+
+      width: 100%;
+      height: 1px;
+      background-color: $elementsColor;
+    }
+  }
+
+  &__wrapper {
+   display: flex;
+   justify-content: space-between;
+  }
+
+  &__value {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+
+    color: $primaryColor;
+  }
+
+  &__specs-title {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+  vertical-align: baseline;
+  color: $secondaryColor;
+  }
+}
