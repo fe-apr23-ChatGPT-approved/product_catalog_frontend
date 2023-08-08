@@ -1,24 +1,20 @@
 import React from 'react';
 import style from './ProductTechSpecs.module.scss';
+import { ProductInterface } from '../../types/oneProductType';
 
-// interface Props {
-//   title: string;
-// }
+interface Props {
+  product: ProductInterface;
+}
 
-export const product = {
-  'screen': '6.1 IPS',
-  'resolution': '1792x828',
-  'processor': 'Apple A13 Bionic',
-  'ram': '4GB',
-  'camera': '12 Mp + 12 Mp + 12MP',
-  'zoom': 'Digital, 5x',
-}; // should be deleted
-
-// eslint-disable-next-line max-len
-// export const ProductTechSpecs: React.FC<Props> = ({ screen, resolution, processor, ram, camera, zoom }) => (
-export const ProductTechSpecs: React.FC = () => {
-
-  const { screen, resolution, processor, ram, camera, zoom } = product; // should be deleted
+export const ProductTechSpecs: React.FC<Props> = ({ product }) => {
+  const {
+    screen,
+    resolution,
+    processor,
+    ram,
+    camera,
+    zoom
+  } = product;
 
   return (
     <section className="product-techSpecs">

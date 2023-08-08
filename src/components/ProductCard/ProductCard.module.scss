@@ -19,11 +19,11 @@
   border: 1px solid $elementsColor;
   transition: 0.4s;
 
-  @include onDesktop {
+  @include onTablet {
     height: 506px;
   }
 
-  @include onTablet {
+  @include onDesktop {
     height: 506px;
   }
 

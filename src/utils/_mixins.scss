@@ -120,8 +120,6 @@
 
 @mixin sectionContainer {
   margin: auto;
-  padding-left: 16px;
-  padding-right: 16px;
   padding-bottom: 64px;
   height: 100%;
   max-width: 1200px;
@@ -129,16 +127,11 @@
 
   @include onTablet {
     margin: auto;
-    padding-left: 24px;
-    padding-right: 24px;
     padding-bottom: 64px;
   }
 
   @include onDesktop {
     margin: auto;
-    padding-left: 32px;
-    padding-right: 32px;
-
     padding-bottom: 80px;
   }
 }

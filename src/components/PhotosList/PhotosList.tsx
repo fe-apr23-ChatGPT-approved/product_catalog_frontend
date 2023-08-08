@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
-
 import style from './PhotosList.module.scss';
 import classNames from 'classnames';
 
-export const images = [
-  'img/phones/apple-iphone-11/black/00.webp',
-  'img/phones/apple-iphone-11/black/01.webp',
-  'img/phones/apple-iphone-11/black/02.webp',
-  'img/phones/apple-iphone-11/black/03.webp',
-  'img/phones/apple-iphone-11/black/04.webp'
-]; // later should be deleted
+interface Props {
+  images: string[];
+  name: string;
+}
 
-// export const PhotosList: React.FC = ({ photos, name }) => {
-export const PhotosList: React.FC = () => {
+export const PhotosList: React.FC<Props> = ({ images, name }) => {
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
 
   const handleSelectPhoto = (index: number) => {

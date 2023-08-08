@@ -6,6 +6,7 @@ import { Cross } from '../Cross/Cross';
 import { Minus } from '../Minus/Minus';
 import { ProductContext } from '../cartContext/ProductContext';
 import { CartItemType } from '../../types/cartItemType';
+import { Link } from 'react-router-dom';
 
 interface Props {
   item: CartItemType,
@@ -15,6 +16,12 @@ export const CartItem: FC<Props> = ({ item }) => {
   const {quantity, product} = item;
   const isOneItem = quantity === 1;
   const {addOneItem, removeOneItem, removeFromCart} = useContext(ProductContext);
+
+  const {
+    itemId,
+    image,
+    category,
+  } = product;
   
   const handleAddItem = () => {
     addOneItem(item);
@@ -32,6 +39,9 @@ export const CartItem: FC<Props> = ({ item }) => {
     removeFromCart(item);
   };
 
+  const productPageLink = `/${category}/${itemId}`;
+  const imageLink = `https://gadget-store-api.onrender.com/${image}`;
+
   const totalPrice = quantity * product.price
     ? product.price
     : product.fullPrice;
@@ -46,16 +56,17 @@ export const CartItem: FC<Props> = ({ item }) => {
           <Cross />
         </button>
 
-        <div className={style.cartItem__image_container}>
+        <Link to={productPageLink} className={style.cartItem__image_container}>
           <img
             className={style.cartItem__gadget_image}
             alt={'Gadget image'}
-            src={item.product.image}
+            src={imageLink}
           />
-        </div>
-        <span className={style.cartItem__gadget_decscription}>
+        </Link>
+
+        <Link to={productPageLink} className={style.cartItem__gadget_decscription}>
           {product.name}
-        </span>
+        </Link>
       </div>
 
       <div className={style.cartItem__details}>

@@ -7,6 +7,8 @@ import { getFromServer, getRecommended } from '../../api/getProductsFromServer';
 import { Product } from '../../types/productType';
 import { CaruselContainer } from '../../components/CaruselContainer';
 import { ProductDescription } from '../../components/ProductDescription';
+import { ProductTechSpecs } from '../../components/ProductTechSpecs';
+import { PhotosList } from '../../components/PhotosList';
 
 export const ProductDetails: FC = () => {
   const { pathname } = useLocation();
@@ -46,25 +48,29 @@ export const ProductDetails: FC = () => {
         </div>
         
         <h2 className={style['product-details__title']}>
-          {product?.name}
+          {product && product.name}
         </h2>
 
         <section className={style['product-details__main-info']}>
           <div className={style['product-details__photos']}>
-            Photo container
+            {product && (
+              <PhotosList images={product?.images} name={product.name} />
+            )}
           </div>
           <div className={style['product-details__variants']}>Variants</div>
         </section>
+
         <section className={style['product-details__aditional-info']}>
           <article className={style['product-details__block']}>
             {product && (
               <ProductDescription description={product.description} />
             )}
           </article>
+
           <article className={style['product-details__block']}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
-            deserunt. A ad quibusdam harum voluptatum veritatis fuga, numquam
-            autem maxim
+            {product && (
+              <ProductTechSpecs product={product} />
+            )}
           </article>
         </section>
 
