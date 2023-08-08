@@ -37,7 +37,7 @@ export const ShopByCategories: React.FC = () => (
 
     <ul className={style['shop-by-categories__list']}>
       {categories.map(category => (
-        <li key={category.id}>
+        <li key={category.id} className={style['shop-by-categories__list-item']}>
           <Category
             title={category.title}
             quantity={category.quantity}
