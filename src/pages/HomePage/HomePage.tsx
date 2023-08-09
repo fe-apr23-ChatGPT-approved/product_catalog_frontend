@@ -8,6 +8,7 @@ import { PicturesSlider } from '../../components/PicturesSlider';
 import { ShopByCategories } from '../../components/ShopByCategories';
 import style from './HomePage.module.scss';
 import { CaruselContainer } from '../../components/CaruselContainer';
+import { Loader } from '../../components/Loader';
 
 export const HomePage: React.FC = () => {
   const [newModels, setNewModels] = useState<Product[]>([]);
@@ -40,6 +41,11 @@ export const HomePage: React.FC = () => {
       <h1 className={style['home-page__title']}>
         Welcome to Nice Gadgets store!
       </h1>
+
+      {isLoading && (
+        <Loader />
+      )}
+      
       <PicturesSlider />
 
       <CaruselContainer title="Brand new models" products={newModels} />

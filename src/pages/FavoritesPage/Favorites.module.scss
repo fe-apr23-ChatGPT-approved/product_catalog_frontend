@@ -7,6 +7,11 @@
   position: relative;
   padding-top: 24px;
   display: block;
+  height: $page-height-mobile;
+
+  @include onTablet {
+    height: $page-height-desk;
+  }
 
   &__container {
     @include sectionContainer;

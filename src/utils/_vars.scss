@@ -19,4 +19,6 @@ $transitionDuration: 0.3s;
 
 /*HEADER*/
 $menu-height: calc(100vh - 50px);
+$page-height-desk: calc(100vh - 49px - 96px);
+$page-height-mobile: calc(100vh - 49px - 257px);
 $activeLinkColor: #313237;

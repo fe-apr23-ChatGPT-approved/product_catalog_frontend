@@ -16,6 +16,7 @@ import { Color } from '../../components/Color';
 import { AddToCartButton } from '../../components/AddToCartButton';
 import { AddToFavoritesButton } from '../../components/AddToFavoritesButton';
 import { ProductCharacteristics } from '../../components/ProductCharacteristics';
+import { Loader } from '../../components/Loader';
 // import { FavoritesContext } from '../../components/FavouritesContext/FavouritesContext';
 // import { ProductContext } from '../../components/cartContext/ProductContext';
 
@@ -73,6 +74,10 @@ export const ProductDetails: FC = () => {
         <div className={style['product-details__back-btn']}>
           <BackButton />
         </div>
+
+        {isLoading && (
+          <Loader />
+        )}
 
         <h2 className={style['product-details__title']}>
           {product && product.name}
