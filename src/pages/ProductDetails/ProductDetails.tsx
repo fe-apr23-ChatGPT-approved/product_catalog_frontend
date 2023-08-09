@@ -1,5 +1,6 @@
 import { FC, useEffect, useState, useContext } from 'react';
 import style from './ProductDetails.module.scss';
+import cn from 'classnames';
 import { BackButton } from '../../components/BackButton';
 import { useLocation } from 'react-router';
 import { ProductInterface } from '../../types/oneProductType';
@@ -125,13 +126,15 @@ export const ProductDetails: FC = () => {
         )}
 
         <section className={style['product-details__aditional-info']}>
-          <article className={style['product-details__block']}>
+          <article className={cn(style['product-details__block'],
+            style['product-details__description'])}>
             {product && (
               <ProductDescription description={product.description} />
             )}
           </article>
           
-          <article className={style['product-details__block']}>
+          <article className={cn(style['product-details__block'],
+            style['product-details__techSpecs'])}>
             {product && (
               <ProductTechSpecs
                 product={product}

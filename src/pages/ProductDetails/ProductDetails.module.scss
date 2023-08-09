@@ -34,11 +34,31 @@
     @include onMobile {
       margin-bottom: 40px;
     }
+
+    @include onTablet {
+      grid-column-start: 1;
+      grid-column-end: 8;
+    }
+
+    @include onDesktop {
+      grid-column-start: 1;
+      grid-column-end: 13;
+    }
   }
 
   &__variants {
     @include onMobile {
       margin-bottom: 56px;
+    }
+
+    @include onTablet {
+      grid-column-start: 8;
+      grid-column-end: 13;
+    }
+
+    @include onDesktop {
+      grid-column-start: 14;
+      grid-column-end: 25;
     }
   }
 
@@ -58,14 +78,14 @@
   &__main-info {
     @include onTablet {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 17px;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 16px;
 
       margin-bottom: 64px;
     }
 
     @include onDesktop {
-      column-gap: 64px;
+      grid-template-columns: repeat(24, 1fr);
 
       margin-bottom: 80px;
     }
@@ -74,10 +94,23 @@
   &__aditional-info {
     @include onDesktop {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 65px;
-      column-gap: 64px;
+      grid-template-columns: repeat(24, 1fr);
+      column-gap: 16px;
       margin-bottom: 80px;
+    }
+  }
+
+  &__description {
+    @include onDesktop {
+      grid-column-start: 1;
+      grid-column-end: 13;
+    }
+  }
+
+  &__techSpecs {
+    @include onDesktop {
+      grid-column-start: 14;
+      grid-column-end: 25;
     }
   }
 

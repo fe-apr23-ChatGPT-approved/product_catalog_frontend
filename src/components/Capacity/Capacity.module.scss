@@ -32,7 +32,7 @@
    
    color: $primaryColor;
 
-   @include bodyText;
+    @include bodyText;
 
     border-radius: 4px;
     border: 1px solid $iconsAndPlaceholders;
