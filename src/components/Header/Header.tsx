@@ -22,7 +22,7 @@ export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
   const { totalFavCount } = useContext(FavoritesContext);
 
   const cartCounterIsActive = totalCount() !== 0;
-  const favCounterIsActive = totalFavCount() !== 0;
+  const favCounterIsActive = totalFavCount !== 0;
 
   const handleClick = () => {
     setIsOpenMenu((prevState) => !prevState);

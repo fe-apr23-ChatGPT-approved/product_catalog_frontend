@@ -14,21 +14,21 @@ interface Props {
 }
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const [productAdded, setProductAdded] = useState(false);
-  const [productFavourite, setProductFavourite] = useState(false);
   const { addToCart } = useContext(ProductContext);
-  const { onClickFavorites } = useContext(FavoritesContext);
+  const { onClickFavorites, isInFavorite } = useContext(FavoritesContext);
+  const [isProductAdded, setIsProductAdded] = useState(false);
+  const [isFavourite, setIsFavourite] = useState(isInFavorite(product.itemId));
 
-  const buttonText = productAdded ? 'Added' : 'Add to cart';
+  const buttonText = isProductAdded ? 'Added' : 'Add to cart';
 
   const handleAddProduct = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    setProductAdded(true);
+    setIsProductAdded(true);
     addToCart(product);
   };
 
   const handleClickFavourite = () => {
-    setProductFavourite(!productFavourite);
+    setIsFavourite(!isFavourite);
     onClickFavorites(product);
   };
 
@@ -97,7 +97,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         {/* button below should be separete component */}
         <button
           className={cn(style['add-to-cart-button'], {
-            [style['add-to-cart-button--active']]: productAdded,
+            [style['add-to-cart-button--active']]: isProductAdded,
           })}
           onClick={handleAddProduct}
         >
@@ -107,12 +107,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         {/* button below should be separete component */}
         <button
           className={cn(style['favourites-add-button'], {
-            [style['favourites-add-button--active']]: productFavourite,
+            [style['favourites-add-button--active']]: isFavourite,
           })}
           type="button"
           onClick={() => handleClickFavourite()}
         >
-          {productFavourite ? (
+          {isFavourite ? (
             <img src={favouriteheart} />
           ) : (
             <img src={heart} />

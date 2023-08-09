@@ -5,7 +5,7 @@ import { Product } from '../../types/productType';
 
 export interface ProductContextType {
   cartItems: CartItemType[];
-  addToCart: (product: any) => void;
+  addToCart: (product: Product) => void;
   removeFromCart: (cartItem: CartItemType) => void;
   addOneItem: (cartItem: CartItemType) => void;
   removeOneItem: (cartItem: CartItemType) => void;

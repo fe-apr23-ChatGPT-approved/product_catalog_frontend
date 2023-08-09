@@ -30,7 +30,7 @@ export const PhotosList: React.FC<Props> = ({ images, name }) => {
                 style['photos-list__photo'],
                 {['photos-list__photo--selected']: selectedPhotoIndex === index
                 })}
-              // alt={name}
+              alt={name}
               onClick={() => handleSelectPhoto(index)}
             />
           </li>
