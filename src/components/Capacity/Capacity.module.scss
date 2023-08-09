@@ -1,0 +1,40 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+.capacity {
+  padding: 24px 0;
+  border-top: 1px solid $elementsColor;
+  border-bottom: 1px solid $elementsColor;
+
+  @include onTablet {
+    max-width: 320px;
+  }
+
+  &__title {
+    @include smallText;
+    color: $secondaryColor;
+    margin-bottom: 8px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__link {
+   padding: 7px 8px 4px;
+   color: $primaryColor;
+
+   @include bodyText;
+
+    border-radius: 4px;
+    border: 1px solid $iconsAndPlaceholders;
+
+    &--active {
+      border: 1px solid $primaryColor;
+      background-color: $primaryColor;
+      color: $backgroundColor;
+    }
+  }
+}

@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import style from './Button.module.scss';
+
 interface Props {
   buttonTarget: string;
-  onClick: () => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 export const Button: FC<Props> = ({ buttonTarget, onClick }) => (

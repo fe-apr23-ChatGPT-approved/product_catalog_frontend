@@ -1,0 +1,32 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+.product-characteristics {
+  margin-top: 32px;
+
+  @include onTablet {
+    max-width: 320px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__label {
+    @include smallText;
+    color: $secondaryColor;
+  }
+
+  &__value {
+    @include smallText;
+    color: $primaryColor;
+  }
+}
