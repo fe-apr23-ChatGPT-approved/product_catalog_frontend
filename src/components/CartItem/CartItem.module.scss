@@ -57,6 +57,7 @@
   &__gadget_image {
     @include square(66px);
     transition: transform 0.2s ease-in;
+    object-fit: contain;
 
     &:hover {
       transform: scale(1.1);

@@ -5,6 +5,14 @@
   margin: 0 auto;
   max-width: 1200px;
 
+  &--empty {
+    height: $page-height-mobile;
+
+    @include onTablet {
+      height: $page-height-desk;
+    }
+  }
+
   &__container {
     padding: 24px 16px 56px;
 

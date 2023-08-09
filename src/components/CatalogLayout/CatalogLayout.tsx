@@ -12,6 +12,7 @@ import { ProductList } from '../ProductList';
 import { Data } from '../../types/dataFromServer';
 // import { useLocation } from 'react-router';
 import { useLocation, useSearchParams } from 'react-router-dom';
+import { Loader } from '../Loader';
 
 const sortOptions = [
   { value: 'year', label: 'Newest' },
@@ -143,11 +144,12 @@ export const CatalogLayout = () => {
         </div>
       )}
 
-      {/* {isLoading && (
+      {isLoading && (
         <Loader />
-      )} */}
+      )}
+
       {/*
-      {!isLoadedData && (
+      {!LoadedData &  products.length && (
         <span>There are no phones yet</span>
       )} */}
 

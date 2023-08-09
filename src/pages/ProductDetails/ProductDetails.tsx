@@ -16,27 +16,27 @@ import { Color } from '../../components/Color';
 import { AddToCartButton } from '../../components/AddToCartButton';
 import { AddToFavoritesButton } from '../../components/AddToFavoritesButton';
 import { ProductCharacteristics } from '../../components/ProductCharacteristics';
-// import { FavoritesContext } from '../../components/FavouritesContext/FavouritesContext';
-// import { ProductContext } from '../../components/cartContext/ProductContext';
+import { FavoritesContext } from '../../components/FavouritesContext/FavouritesContext';
+import { Loader } from '../../components/Loader';
 
 export const ProductDetails: FC = () => {
   const { pathname } = useLocation();
   // const { addToCart } = useContext(ProductContext);
-  // const { onClickFavorites, isInFavorite } = useContext(FavoritesContext);
-
+  const { onClickFavorites, isInFavorite } = useContext(FavoritesContext);
   const [product, setProduct] = useState<ProductInterface | null>(null);
   const [recommended, setRecommended] = useState<Product[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isRecommended, setIsRecommended] = useState(false);
   const [isFavourite, setIsFavourite] = useState(false);
-  const [isProductInCart, setIsProductInCart] = useState<boolean>(false);
+  const [isInCart, setIsInCart] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
     getFromServer(pathname)
       .then((data) => {
         setProduct(data);
+        setIsFavourite(isInFavorite(data.id));
       })
       .catch(() => {
         setIsError(true);
@@ -56,15 +56,15 @@ export const ProductDetails: FC = () => {
       .catch(() => setIsRecommended(false));
   }, []);
 
-  const handleAddProduct = () => {
-    setIsProductInCart(true);
+  const handleAddProduct = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setIsInCart(true);
     // addToCart(product);
   };
 
   const handleAddFavourite = () => {
     setIsFavourite(!isFavourite);
     // onClickFavorites(product);
-
   };
 
   return (
@@ -74,6 +74,12 @@ export const ProductDetails: FC = () => {
           <BackButton />
         </div>
 
+        {isLoading && (
+          <div className={style['product-details__loader-container']}>
+            <Loader />
+          </div>
+        )}
+
         <h2 className={style['product-details__title']}>
           {product && product.name}
         </h2>
@@ -82,9 +88,7 @@ export const ProductDetails: FC = () => {
           <section className={style['product-details__main-info']}>
             <div className={style['product-details__photos']}>
               {product && (
-                <PhotosList
-                  images={product?.images}
-                  name={product.name} />
+                <PhotosList images={product?.images} name={product.name} />
               )}
             </div>
 
@@ -107,7 +111,7 @@ export const ProductDetails: FC = () => {
               </p>
               <div className={style['product-details__buttons-wrapper']}>
                 <AddToCartButton
-                  productAdded={isProductInCart}
+                  productAdded={isInCart}
                   onClick={handleAddProduct}
                 />
                 <AddToFavoritesButton
@@ -126,25 +130,29 @@ export const ProductDetails: FC = () => {
         )}
 
         <section className={style['product-details__aditional-info']}>
-          <article className={cn(style['product-details__block'],
-            style['product-details__description'])}>
+          <article
+            className={cn(
+              style['product-details__block'],
+              style['product-details__description'],
+            )}
+          >
             {product && (
               <ProductDescription description={product.description} />
             )}
           </article>
-          
-          <article className={cn(style['product-details__block'],
-            style['product-details__techSpecs'])}>
-            {product && (
-              <ProductTechSpecs
-                product={product}
-              />
+
+          <article
+            className={cn(
+              style['product-details__block'],
+              style['product-details__techSpecs'],
             )}
+          >
+            {product && <ProductTechSpecs product={product} />}
           </article>
         </section>
-      </div>
 
-      <CaruselContainer title={'You may also like'} products={recommended} />
+        <CaruselContainer title={'You may also like'} products={recommended} />
+      </div>
     </main>
   );
 };
