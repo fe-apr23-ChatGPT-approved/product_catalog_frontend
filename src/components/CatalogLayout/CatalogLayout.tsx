@@ -149,7 +149,7 @@ export const CatalogLayout = () => {
       )}
 
       {/*
-      {!LoadedData &  products. length && (
+      {!LoadedData &  products.length && (
         <span>There are no phones yet</span>
       )} */}
 
