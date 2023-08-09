@@ -129,17 +129,17 @@ export const CatalogLayout = () => {
       {isError && (
         <div className={style['catalog-layout__error']}>
           <span>Something went wrong</span>
-          <Button buttonTarget={'Reload'} onClick={handleReloadButton} />
+          {/* <Button buttonTarget={'Reload'} onClick={} /> */}
         </div>
       )}
 
-      {/* {isLoading && (
+      {isLoading && (
         <Loader />
-      )} */}
-      {/*
-      {!LoadedData &  products.length && (
+      )}
+ 
+      {/* {!LoadedData && products.length && (
         <span>There are no phones yet</span>
-      )} */}
+      )}  */}
 
       {canShowCatalog && (
         <ProductList products={products} />

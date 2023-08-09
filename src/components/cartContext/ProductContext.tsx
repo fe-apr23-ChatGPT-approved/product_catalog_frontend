@@ -10,7 +10,7 @@ export interface ProductContextType {
   removeOneItem: (cartItem: CartItemType) => void;
   cleareCart: () => void;
   totalCount: number;
-  isInCart: (productId: number) => boolean;
+  isInCart: (productId: string) => boolean;
 }
 
 const defaultProductContext: ProductContextType = {

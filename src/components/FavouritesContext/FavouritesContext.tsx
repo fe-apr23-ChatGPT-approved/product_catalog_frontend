@@ -5,7 +5,7 @@ export interface FavoritesContextType {
   favoriteItems: Product[],
   onClickFavorites: (product: Product) => void
   totalFavCount: number;
-  isInFavorite: (productId: number) => boolean;
+  isInFavorite: (productId: string) => boolean;
 }
 
 const defaultFavoritesContext: FavoritesContextType = {

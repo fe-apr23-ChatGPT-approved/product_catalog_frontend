@@ -31,21 +31,29 @@ export const ProductDetails: FC = () => {
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isRecommended, setIsRecommended] = useState(false);
-  const [isFavourite, setIsFavourite] = useState(false);
-  const [isProductInCart, setIsProductInCart] = useState<boolean>(false);
+  const [isFavourite, setIsFavourite] = useState(
+    product ? isInFavorite(product.id) : false
+  );
+  const [isProductInCart, setIsProductInCart] = useState<boolean>(
+    product ? isInCart(product.id) : false
+  );
 
   useEffect(() => {
     setIsLoading(true);
 
     getFromServer(pathname)
       .then((data) => {
-        setProduct(data);
         if (isInFavorite(data.id)) {
           setIsFavourite(true);
+        } else {
+          setIsFavourite(false);
         }
         if (isInCart(data.id)) {
           setIsProductInCart(true);
+        } else {
+          setIsProductInCart(false);
         }
+        setProduct(data);
       })
       .catch(() => {
         setIsError(true);

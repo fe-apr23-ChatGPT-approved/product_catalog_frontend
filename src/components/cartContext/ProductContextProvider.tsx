@@ -56,8 +56,8 @@ export const ProductContextProvider: FC<Props> = ({ children }) => {
     accumulator + cartItem.quantity),
   0);
 
-  const isInCart = (productId: number) => (
-    cartItems.some(item => item.product.id === productId)
+  const isInCart = (productId: string) => (
+    cartItems.some(item => item.product.itemId === productId)
   );
 
   const value: ProductContextType = {

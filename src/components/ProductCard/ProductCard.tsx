@@ -14,22 +14,25 @@ interface Props {
 }
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { addToCart } = useContext(ProductContext);
+  const { addToCart, isInCart } = useContext(ProductContext);
   const { onClickFavorites, isInFavorite } = useContext(FavoritesContext);
-  const [isProductAdded, setIsProductAdded] = useState(false);
-  const [isFavourite, setIsFavourite] = useState(isInFavorite(product.id));
+  const [isProductAdded, setIsProductAdded] = useState(isInCart(product.itemId));
+  const [isFavourite, setIsFavourite] = useState(isInFavorite(product.itemId));
 
   const buttonText = isProductAdded ? 'Added' : 'Add to cart';
 
-  const handleAddProduct = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    setIsProductAdded(true);
+  const handleAddProduct = () => {
+    if (isProductAdded) {
+      return;
+    }
     addToCart(product);
+    setIsProductAdded(true);
   };
 
   const handleClickFavourite = () => {
-    setIsFavourite(!isFavourite);
     onClickFavorites(product);
+    setIsFavourite(!isFavourite);
+    
   };
 
   const {
