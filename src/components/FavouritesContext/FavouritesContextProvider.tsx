@@ -13,6 +13,10 @@ export const FavoritesContextProvider: FC<Props> = ({ children }) => {
     [],
   );
 
+  const isInFavorite = (productId: string) => (
+    favoriteItems.some(item => item.itemId === productId)
+  );
+
   const onClickFavorites = (product: Product) => {
     const inFavourites = favoriteItems.find(
       (item) => item.id === product.id || null,
@@ -27,12 +31,13 @@ export const FavoritesContextProvider: FC<Props> = ({ children }) => {
     }
   };
 
-  const totalFavCount = () => favoriteItems.length;
+  const totalFavCount = favoriteItems.length;
 
   const value: FavoritesContextType = {
     favoriteItems: favoriteItems,
     onClickFavorites: onClickFavorites,
     totalFavCount,
+    isInFavorite,
   };
 
   return (

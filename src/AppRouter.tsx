@@ -8,6 +8,7 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { TabletsPage } from './pages/TabletsPage';
 import { ProductDetails } from './pages/ProductDetails';
 import { Layout } from './components/Layout/Layout';
+import { FavoritesPage } from './pages/FavoritesPage';
 
 export const AppRouter = createBrowserRouter([
   {
@@ -59,14 +60,16 @@ export const AppRouter = createBrowserRouter([
         path: '/cart',
         element: <CartPage />,
       },
+
+      {
+        path: '/favourites',
+        element: <FavoritesPage />
+      },
+
       {
         path: '/*',
         element: <NotFoundPage />,
       },
-      //   {
-      //     path: '/favourites',
-      //     element: <FavouritesPage />
-      //   }
     ],
   },
 ]);
