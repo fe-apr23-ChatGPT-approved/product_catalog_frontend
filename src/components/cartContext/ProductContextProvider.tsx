@@ -27,14 +27,6 @@ export const ProductContextProvider: FC<Props> = ({ children }) => {
         product,
       };
       setCartItems([...cartItems, newCartItem]);
-    } else {
-      setCartItems(
-        cartItems.map((item) =>
-          item.product.id === product.id
-            ? { ...item, quantity: item.quantity++ }
-            : item,
-        ),
-      );
     }
   };
 

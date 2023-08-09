@@ -14,7 +14,6 @@ export const AppRouter = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
-    // errorElement: <NotFoundPage />,
     children: [
       {
         index: true,
