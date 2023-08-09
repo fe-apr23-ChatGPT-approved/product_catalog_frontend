@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './NotFoundPage.module.scss';
 import astronaut from '../../images/astronaut.png';
+import { Link } from 'react-router-dom';
 
 export const NotFoundPage: React.FC = () => (
   <div className={style['not-found-page']}>
@@ -9,12 +10,12 @@ export const NotFoundPage: React.FC = () => (
     <h3 className={style['not-found-page__text']}>
       LOST IN
       <span className={style['not-found-page__text--crossedOut']}> SPACE </span>
-      App-Name? Hmm, looks like this page is not found.
+      Nice Gadgets? Hmm, looks like this page is not found.
     </h3>
 
-    <a href="#">
+    <Link to={'/home'}>
       <button className={style['not-found-page__link']}>Go Home</button>
-    </a>
+    </Link>
 
     <img
       className={style['not-found-page__img']}
