@@ -2,6 +2,7 @@
 @import '../../utils/vars';
 
 .pictures-slider {
+  position: relative;
   @include sectionContainer;
 
   margin-top: 24px;
