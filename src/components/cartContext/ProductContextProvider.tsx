@@ -27,14 +27,6 @@ export const ProductContextProvider: FC<Props> = ({ children }) => {
         product,
       };
       setCartItems([...cartItems, newCartItem]);
-    } else {
-      setCartItems(
-        cartItems.map((item) =>
-          item.product.id === product.id
-            ? { ...item, quantity: item.quantity++ }
-            : item,
-        ),
-      );
     }
   };
 
@@ -64,8 +56,8 @@ export const ProductContextProvider: FC<Props> = ({ children }) => {
     accumulator + cartItem.quantity),
   0);
 
-  const isInCart = (productId: string) => (
-    cartItems.some(item => item.product.itemId === productId)
+  const isInCart = (productId: number) => (
+    cartItems.some(item => item.product.id === productId)
   );
 
   const value: ProductContextType = {

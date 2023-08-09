@@ -26,7 +26,6 @@ export const CatalogLayout = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [total, setTotal] = useState<number>(0);
   const [isError, setIsError] = useState<boolean>(false);
-  const [isReloaded, setIsReloaded] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(initialPage);
   const [limit, setLimit] = useState<number>(total);
@@ -36,12 +35,6 @@ export const CatalogLayout = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    setProducts([]);
-    setTotal(0);
-
-    if (isReloaded) {
-      setIsReloaded(false);
-    }
 
     getFromServer(`${location.pathname}?${searchParams.toString()}`)
       .then((data: Data) => {
@@ -54,13 +47,13 @@ export const CatalogLayout = () => {
       })
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
-  }, [isReloaded, searchParams]);
+  }, [searchParams]);
 
   const canShowCatalog = !isLoading && !isError;
 
   useEffect(() => {
     const searchParams = new URLSearchParams();
-    if (limit !== total) {
+    if (limit !== total && limit ) {
       searchParams.set('limit', limit.toString());
     }
 
@@ -80,7 +73,7 @@ export const CatalogLayout = () => {
     setCurrentPage(page);
   };
 
-  const showPagination = limit !== total;
+  const showPagination = limit !== total && limit !== 0;
 
   const onSelect = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     const newLimit = Number(event.target.value);
@@ -94,10 +87,6 @@ export const CatalogLayout = () => {
     const newSortOption = event.target.value;
     setSortOption(newSortOption);
     setCurrentPage(initialPage);
-  };
-
-  const handleReloadButton = () => {
-    setIsReloaded(true);
   };
 
   return (
@@ -144,33 +133,32 @@ export const CatalogLayout = () => {
         </div>
       )}
 
-      {isLoading && (
+      {/* {isLoading && (
         <Loader />
-      )}
-
+      )} */}
       {/*
       {!LoadedData &  products.length && (
         <span>There are no phones yet</span>
       )} */}
 
       {canShowCatalog && (
-        <>
-          <ProductList products={products} />
+        <ProductList products={products} />
+      )}
 
-          <div
-            className={cn(paginationStyle.pagination__container, {
-              [paginationStyle['pagination__container--hidden']]:
-                !showPagination,
-            })}
-          >
-            <Pagination
-              total={total}
-              limit={limit}
-              currentPage={currentPage}
-              onPageChange={handlePageChange}
-            />
-          </div>
-        </>
+      {showPagination && (
+        <div
+          className={cn(paginationStyle.pagination__container, {
+            [paginationStyle['pagination__container--hidden']]:
+              !showPagination,
+          })}
+        >
+          <Pagination
+            total={total}
+            limit={limit}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
+        </div>
       )}
     </div>
   );

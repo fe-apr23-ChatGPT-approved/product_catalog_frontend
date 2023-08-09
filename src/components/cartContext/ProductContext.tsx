@@ -1,5 +1,4 @@
 import { createContext } from 'react';
-// import { Product } from '../../types/productType';
 import { CartItemType } from '../../types/cartItemType';
 import { Product } from '../../types/productType';
 
@@ -11,7 +10,7 @@ export interface ProductContextType {
   removeOneItem: (cartItem: CartItemType) => void;
   cleareCart: () => void;
   totalCount: number;
-  isInCart: (productId: string) => boolean;
+  isInCart: (productId: number) => boolean;
 }
 
 const defaultProductContext: ProductContextType = {

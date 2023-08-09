@@ -1,7 +1,7 @@
 // import { Breadcrumbs } from '../Breadcrumbs';
-import { ProductPage } from '../../components/ProductsPage';
+import { ProductPageLayout } from '../../components/ProductsPageLayout';
 // import { Pagination } from '../Pagination';
 
 export const TabletsPage: React.FC = () => (
-  <ProductPage title="Tablets" />
+  <ProductPageLayout title="Tablets" />
 );

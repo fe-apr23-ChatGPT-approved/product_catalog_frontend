@@ -17,7 +17,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const { addToCart } = useContext(ProductContext);
   const { onClickFavorites, isInFavorite } = useContext(FavoritesContext);
   const [isProductAdded, setIsProductAdded] = useState(false);
-  const [isFavourite, setIsFavourite] = useState(isInFavorite(product.itemId));
+  const [isFavourite, setIsFavourite] = useState(isInFavorite(product.id));
 
   const buttonText = isProductAdded ? 'Added' : 'Add to cart';
 

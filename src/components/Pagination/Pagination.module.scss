@@ -30,7 +30,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // flex-shrink: 0;
 
     @include bodyText;
 
@@ -71,7 +70,6 @@
 
   &__element-text {
     margin: 0;
-    height: 33px;
     text-align: center;
     display: block;
   }
