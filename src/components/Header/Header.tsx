@@ -58,7 +58,7 @@ export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
         >
           <img src={like} alt={'favourites button'} />
           {favCounterIsActive && (
-            <div className={style.header__counter}>{totalFavCount()}</div>
+            <div className={style.header__counter}>{totalFavCount}</div>
           )}
         </Link>
         <Link
