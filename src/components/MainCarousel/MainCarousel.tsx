@@ -1,8 +1,27 @@
-import Carousel, { ButtonGroupProps } from 'react-multi-carousel';
+import Carousel, { ButtonGroupProps, DotProps } from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import style from './MainCarousel.module.scss';
 import cn from 'classnames';
-import mainArrow from './MainArrow.svg';
+import mainArrow from '../../icons/Arrow.svg';
+import image1 from '../../images/carousel_img1.png';
+import image2 from '../../images/carousel_img2.png';
+import image3 from '../../images/carousel_img3.png';
+import React from 'react';
+
+const items = [
+  {
+    title: 'Item 1',
+    image: image1,
+  },
+  {
+    title: 'Item 2',
+    image: image2,
+  },
+  {
+    title: 'Item 3',
+    image: image3,
+  },
+];
 
 const ButtonGroup = ({ next, previous }: ButtonGroupProps) => {
   const handleClickPrev = () => {
@@ -37,6 +56,17 @@ const ButtonGroup = ({ next, previous }: ButtonGroupProps) => {
   );
 };
 
+const CustomDot = ({ active, onClick}: DotProps) => (
+  <li >
+    <button
+      className={cn(style['custom-dot'], {
+        [style['custom-dot--active']]: active
+      })}
+      onClick={onClick}
+    />
+  </li>
+);
+
 const responsive = {
   all: {
     breakpoint: { max: 3000, min: 0 },
@@ -51,6 +81,8 @@ const responsive = {
 
 export const MainCarousel: React.FC = () => (
   <Carousel
+    dotListClass={style['dots-group']}
+    customDot={<CustomDot />}
     swipeable={true}
     draggable={true}
     showDots={true}
@@ -60,14 +92,16 @@ export const MainCarousel: React.FC = () => (
     autoPlay={true}
     keyBoardControl={true}
     transitionDuration={1000}
-    containerClass="carousel-container"
-    removeArrowOnDeviceType={['mobile']}
+    containerClass={style['main-carousel-container']}
     customButtonGroup={<ButtonGroup />}
-    // renderDotsOutside={true}
+    renderDotsOutside={true}
     arrows={false}
   >
-    <div className={style['main-carousel-item']}></div>
-    <div className={style['main-carousel-item']}></div>
-    <div className={style['main-carousel-item']}></div>
+
+    {items.map(item => (
+      <div key={item.title} className={style['item-container']}>
+        <img className={style['main-carousel-item']} src={item.image}></img>
+      </div>
+    ))}
   </Carousel>
 );
