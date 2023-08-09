@@ -37,11 +37,13 @@ export const PhotosList: React.FC<Props> = ({ images, name }) => {
         ))}
       </ul>
 
-      <img
-        src={`https://gadget-store-api.onrender.com/${images[selectedPhotoIndex]}`}
-        className={style['photos-list__current-photo']}
-        // alt={name}
-      />
+      <div className={style['photos-list__current-photo-container']}>
+        <img
+          src={`https://gadget-store-api.onrender.com/${images[selectedPhotoIndex]}`}
+          className={style['photos-list__current-photo']}
+          alt={name}
+        />
+      </div>
     </section>
   );
 };
