@@ -10,7 +10,8 @@ export interface ProductContextType {
   addOneItem: (cartItem: CartItemType) => void;
   removeOneItem: (cartItem: CartItemType) => void;
   cleareCart: () => void;
-  totalCount: () => number;
+  totalCount: number;
+  isInCart: (productId: string) => boolean;
 }
 
 const defaultProductContext: ProductContextType = {
@@ -20,7 +21,8 @@ const defaultProductContext: ProductContextType = {
   addOneItem: () => { /*empty*/ },
   removeOneItem: () => { /*empty*/ },
   cleareCart: () => { /*empty*/ },
-  totalCount: () => 0,
+  totalCount: 0,
+  isInCart: () => false,
 };
 
 export const ProductContext = createContext(defaultProductContext);

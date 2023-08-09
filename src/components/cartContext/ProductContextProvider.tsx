@@ -60,9 +60,13 @@ export const ProductContextProvider: FC<Props> = ({ children }) => {
     setCartItems([]);
   };
 
-  const totalCount = () => cartItems.reduce((accumulator, cartItem) => (
+  const totalCount = cartItems.reduce((accumulator, cartItem) => (
     accumulator + cartItem.quantity),
   0);
+
+  const isInCart = (productId: string) => (
+    cartItems.some(item => item.product.itemId === productId)
+  );
 
   const value: ProductContextType = {
     cartItems,
@@ -71,7 +75,8 @@ export const ProductContextProvider: FC<Props> = ({ children }) => {
     addOneItem,
     removeOneItem,
     cleareCart,
-    totalCount
+    totalCount,
+    isInCart,
   };
 
   return (

@@ -6,14 +6,18 @@
 .product-details {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 25px 16px 56px;
+ 
 
-  @include onTablet {
-    padding: 25px 24px 64px;
-  }
+  &__layout {
+    padding: 25px 16px 56px;
 
-  @include onDesktop {
-    padding: 25px 32px 81px;
+    @include onTablet {
+      padding: 25px 24px 64px;
+    }
+  
+    @include onDesktop {
+      padding: 25px 32px 81px;
+    }
   }
 
   &__back-btn {
@@ -64,15 +68,6 @@
 
   &__block {
     display: block;
-    margin-bottom: 56px;
-
-    @include onTablet {
-      margin-bottom: 64px;
-    }
-
-    @include onDesktop {
-      margin-bottom: 0;
-    }
   }
 
   &__main-info {
