@@ -5,10 +5,11 @@
 .product-techSpecs {
 
   &__article {
-    margin-top: 46px;
+    padding-top: 30px;
+    border-top: 1px solid $elementsColor;
 
     @include onTablet {
-      margin-top: 41px;
+      padding-top: 25px;
     }
 
     display: flex;
@@ -17,24 +18,12 @@
   }
 
   &__title {
+    margin-bottom: 16px;
     color: $primaryColor;
     @include h4_DestopAndTablet;
 
     @include onTablet {
       @include h3_DestopAndTablet;
-    }
-
-    &::after {
-      position: absolute;
-      display: block;
-
-      margin-top: 16px;
-      content: '';
-
-      width: 100%;
-      max-width: 512px;
-      height: 1px;
-      background-color: $elementsColor;
     }
   }
 
