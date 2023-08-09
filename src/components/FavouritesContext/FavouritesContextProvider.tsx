@@ -25,9 +25,7 @@ export const FavoritesContextProvider: FC<Props> = ({ children }) => {
     if (!inFavourites) {
       setFavoriteItems([...favoriteItems, product]);
     } else {
-      setFavoriteItems(
-        favoriteItems.filter((item) => item.id !== product.id),
-      );
+      setFavoriteItems(favoriteItems.filter((item) => item.id !== product.id));
     }
   };
 
