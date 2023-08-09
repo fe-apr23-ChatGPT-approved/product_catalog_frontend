@@ -23,7 +23,13 @@
   }
 
   &__link {
-   padding: 7px 8px 4px;
+   width: 60px;
+   height: 32px;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   
    color: $primaryColor;
 
    @include bodyText;
