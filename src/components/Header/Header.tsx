@@ -9,7 +9,7 @@ import cn from 'classnames';
 
 import style from './Header.module.scss';
 import { ProductContext } from '../cartContext/ProductContext';
-import { FavouritesContext } from '../FavouritesContext/FavouritesContext';
+import { FavoritesContext } from '../FavouritesContext/FavouritesContext';
 
 interface Props {
   isOpenMenu: boolean;
@@ -19,10 +19,10 @@ interface Props {
 export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
   const pages = ['home', 'phones', 'tablets', 'accessories'];
   const { totalCount } = useContext(ProductContext);
-  const { totalFavCount } = useContext(FavouritesContext);
+  const { totalFavCount } = useContext(FavoritesContext);
 
   const cartCounterIsActive = totalCount() !== 0;
-  // const cartCounterIsActive = totalFavCoun() !== 0;
+  const favCounterIsActive = totalFavCount() !== 0;
 
   const handleClick = () => {
     setIsOpenMenu((prevState) => !prevState);
@@ -57,10 +57,8 @@ export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
           to={'/favourites'}
         >
           <img src={like} alt={'favourites button'} />
-          {cartCounterIsActive && (
-            <div className={style.header__counter}>
-              {totalFavCount()}
-            </div>
+          {favCounterIsActive && (
+            <div className={style.header__counter}>{totalFavCount()}</div>
           )}
         </Link>
         <Link
@@ -68,7 +66,9 @@ export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
           to={'/cart'}
         >
           <img src={cart} alt={'cart button'} />
-          {cartCounterIsActive && <div className={style.header__counter}>{totalCount()}</div>}
+          {cartCounterIsActive && (
+            <div className={style.header__counter}>{totalCount()}</div>
+          )}
         </Link>
         <div
           className={`${style.header__button} ${style['header__button--mobile']}`}
