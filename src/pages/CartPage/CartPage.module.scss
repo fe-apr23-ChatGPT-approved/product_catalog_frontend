@@ -4,10 +4,13 @@
 .cart-page {
   margin: 0 auto;
   max-width: 1200px;
-  height: $page-height-mobile;
 
-  @include onTablet {
-    height: $page-height-desk;
+  &--empty {
+    height: $page-height-mobile;
+
+    @include onTablet {
+      height: $page-height-desk;
+    }
   }
 
   &__container {

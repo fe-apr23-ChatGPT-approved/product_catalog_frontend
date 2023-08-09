@@ -1,6 +1,7 @@
 import React, { FC, useContext, useMemo, useState } from 'react';
 import { TotalCost } from '../../components/TotalCost';
 import style from './CartPage.module.scss';
+import cn from 'classnames';
 import { CartItem } from '../../components/CartItem';
 import { BackButton } from '../../components/BackButton';
 import { ProductContext } from '../../components/cartContext/ProductContext';
@@ -23,7 +24,9 @@ export const CartPage: FC = () => {
   };
 
   return (
-    <section className={style['cart-page']}>
+    <section className={cn(style['cart-page'], {
+      [style['cart-page--empty']]: !cartItems.length})}
+    >
       <div className={style['cart-page__container']}>
         <BackButton />
 
@@ -33,7 +36,10 @@ export const CartPage: FC = () => {
           <div className={style['cart-page__content']}>
             <ul className={style['cart-page__cart-list']}>
               {cartItems.map((item) => (
-                <li key={item.id} className={style['cart-page__cart-item']}>
+                <li
+                  key={item.id}
+                  className={style['cart-page__cart-item']}
+                >
                   {<CartItem item={item} />}
                 </li>
               ))}
