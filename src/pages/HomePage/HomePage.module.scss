@@ -4,11 +4,10 @@
 @import '../../utils/reset.scss';
 
 .home-page {
-  display: block;
   position: relative;
   padding-top: 24px;
- 
-  @include sectionContainer;
+  display: block;
+  padding-bottom: 64px;
 
   @include onTablet {
     padding-top: 32px;
@@ -16,6 +15,7 @@
 
   @include onDesktop {
     padding-top: 56px;
+    padding-bottom: 80px;
   }
 
   &__title {

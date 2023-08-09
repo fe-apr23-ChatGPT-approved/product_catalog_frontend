@@ -4,6 +4,8 @@
 @import '../../utils/reset.scss';
 
 .brand-new-models {
+  @include sectionContainer;
+
   &__title {
     @include h2_Mobile;
     margin-bottom: 24px;

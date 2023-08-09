@@ -15,26 +15,27 @@ import { Color } from '../../components/Color';
 import { AddToCartButton } from '../../components/AddToCartButton';
 import { AddToFavoritesButton } from '../../components/AddToFavoritesButton';
 import { ProductCharacteristics } from '../../components/ProductCharacteristics';
-import { FavoritesContext } from '../../components/FavouritesContext/FavouritesContext';
+// import { FavoritesContext } from '../../components/FavouritesContext/FavouritesContext';
+// import { ProductContext } from '../../components/cartContext/ProductContext';
 
 export const ProductDetails: FC = () => {
   const { pathname } = useLocation();
   // const { addToCart } = useContext(ProductContext);
-  const { onClickFavorites, isInFavorite } = useContext(FavoritesContext);
+  // const { onClickFavorites, isInFavorite } = useContext(FavoritesContext);
+
   const [product, setProduct] = useState<ProductInterface | null>(null);
   const [recommended, setRecommended] = useState<Product[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isRecommended, setIsRecommended] = useState(false);
   const [isFavourite, setIsFavourite] = useState(false);
-  const [isInCart, setIsInCart] = useState(false);
+  const [isProductInCart, setIsProductInCart] = useState<boolean>(false);
 
   useEffect(() => {
     setIsLoading(true);
     getFromServer(pathname)
       .then((data) => {
         setProduct(data);
-        setIsFavourite(isInFavorite(data.id));
       })
       .catch(() => {
         setIsError(true);
@@ -42,7 +43,7 @@ export const ProductDetails: FC = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     const [category] = location.pathname.split('/').slice(-2, -1);
@@ -54,9 +55,8 @@ export const ProductDetails: FC = () => {
       .catch(() => setIsRecommended(false));
   }, []);
 
-  const handleAddProduct = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    setIsInCart(true);
+  const handleAddProduct = () => {
+    setIsProductInCart(true);
     // addToCart(product);
   };
 
@@ -106,7 +106,7 @@ export const ProductDetails: FC = () => {
               </p>
               <div className={style['product-details__buttons-wrapper']}>
                 <AddToCartButton
-                  productAdded={isInCart}
+                  productAdded={isProductInCart}
                   onClick={handleAddProduct}
                 />
                 <AddToFavoritesButton
@@ -139,9 +139,9 @@ export const ProductDetails: FC = () => {
             )}
           </article>
         </section>
-
-        <CaruselContainer title={'You may also like'} products={recommended} />
       </div>
+
+      <CaruselContainer title={'You may also like'} products={recommended} />
     </main>
   );
 };
