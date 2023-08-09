@@ -1,18 +1,25 @@
 import { Link, useLocation} from 'react-router-dom';
 import style from './Breadcrumbs.module.scss';
-import arrowRight from '../../icons/Chevron (Arrow Right)black.svg';
 
 export const Breadcrumbs: React.FC = () => {
   const { pathname } = useLocation();
+  const [category] = pathname.split('/').filter(Boolean);
 
   return (
     <div className={style.breadcrumbs}>
-      <nav className={style.path}>
-        <Link to={'/'}>
-          <img src={arrowRight} alt="arrow to right" />
-          <span className={style.breadcrumbs__path}>{pathname}</span>
-        </Link>
-      </nav>
+      <Link className={style.breadcrumbs__home} to="/" />
+
+      <span
+        className={style.breadcrumbs__arrow}
+      >
+      </span>
+    
+      <Link
+        className={style.breadcrumbs__path}
+        to={`/${category}`}
+      >
+        {category}
+      </Link>
     </div>
   );
 };
