@@ -9,7 +9,7 @@ import cn from 'classnames';
 
 import style from './Header.module.scss';
 import { ProductContext } from '../cartContext/ProductContext';
-import { FavouritesContext } from '../FavouritesContext/FavouritesContext';
+import { FavoritesContext } from '../FavouritesContext/FavouritesContext';
 
 interface Props {
   isOpenMenu: boolean;
@@ -19,7 +19,7 @@ interface Props {
 export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
   const pages = ['home', 'phones', 'tablets', 'accessories'];
   const { totalCount } = useContext(ProductContext);
-  const { totalFavCount } = useContext(FavouritesContext);
+  const { totalFavCount } = useContext(FavoritesContext);
 
   const cartCounterIsActive = totalCount() !== 0;
   // const cartCounterIsActive = totalFavCoun() !== 0;
