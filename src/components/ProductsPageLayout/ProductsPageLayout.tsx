@@ -1,6 +1,5 @@
 import style from './ProductsPageLayout.module.scss';
 import React, { useEffect, useState } from 'react';
-import cn from 'classnames';
 import { Pagination } from '../../components/Pagination';
 import { PageSelector } from '../../components/Selectors/PageSelector';
 import { getFromServer } from '../../api/getProductsFromServer';
@@ -139,13 +138,15 @@ export const ProductsPageLayout: React.FC<Props> = ({ title }) => {
               total={total}
             />
 
-            <Search
-              searchQuery={searchQuery}
-              onChange={onQueryChange}
-              onApplyChange={onApplyChange}
-              currentDelay={delay}
-              clearSearch={clearSearch}
-            />
+            <div className={style['products-page__search']}>
+              <Search
+                searchQuery={searchQuery}
+                onChange={onQueryChange}
+                onApplyChange={onApplyChange}
+                currentDelay={delay}
+                clearSearch={clearSearch}
+              />
+            </div>
           </section>
 
           {isError && (
