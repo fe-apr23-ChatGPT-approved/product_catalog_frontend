@@ -11,6 +11,7 @@ import { Data } from '../../types/dataFromServer';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Loader } from '../../components/Loader';
 import { Search } from '../../components/Search/Search';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 const sortOptions = [
   { value: 'year', label: 'Newest' },
@@ -97,6 +98,8 @@ export const ProductPageLayout: React.FC<Props> = ({ title }) => {
   return (
     <main className={style['products-page']}>
       <div className={style['products-page__container']}>
+      
+        <Breadcrumbs />
         <h1 className={style['products-page__title']}>{title}</h1>
 
         <div className={style['products-page__catalog']}>

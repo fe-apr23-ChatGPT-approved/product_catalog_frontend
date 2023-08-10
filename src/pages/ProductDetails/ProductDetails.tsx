@@ -18,6 +18,7 @@ import { getFromServer, getRecommended } from '../../api/getProductsFromServer';
 import { FavoritesContext } from '../../components/FavouritesContext/FavouritesContext';
 import { ProductContext } from '../../components/cartContext/ProductContext';
 import { Loader } from '../../components/Loader';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductDetails: FC = () => {
   const { pathname } = useLocation();
@@ -94,6 +95,8 @@ export const ProductDetails: FC = () => {
   return (
     <main className={style['product-details']}>
       <div className={style['product-details__layout']}>
+
+        <Breadcrumbs productName={product?.name} />
         <div className={style['product-details__back-btn']}>
           <BackButton />
         </div>

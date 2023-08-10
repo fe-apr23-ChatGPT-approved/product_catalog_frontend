@@ -1,10 +1,13 @@
 @import '../../utils/_vars.scss';
+@import '../../utils/mixins';
 
 .breadcrumbs {
   display: flex;
   flex-direction: row;
   align-items: center; 
   gap: 8px; 
+
+  margin-bottom: 40px;
 
   &__home {
     height: 16px;
@@ -23,10 +26,25 @@
   }
 
   &__path {
-    font-size: 12px;
-    font-weight: 600px;
-    color: $secondaryColor;
+    @include smallText;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    
+    color: $primaryColor;
     transform: translateY(1px);
+
+    &--light {
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+
+      color: $secondaryColor;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     
     &::first-letter {
       text-transform: uppercase;

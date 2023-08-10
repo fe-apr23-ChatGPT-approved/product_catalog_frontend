@@ -3,6 +3,7 @@ import { FavoritesContext } from '../../components/FavouritesContext/FavouritesC
 import style from './Favorites.module.scss';
 import cn from 'classnames';
 import { ProductList } from '../../components/ProductList';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const FavoritesPage: React.FC = () => {
   const { favoriteItems, totalFavCount } = useContext(FavoritesContext);
@@ -12,7 +13,9 @@ export const FavoritesPage: React.FC = () => {
       [style['favorites-page--empty']]: !favoriteItems.length})}
     >
       <div className={style['favorites-page__container']}>
-        
+
+        <Breadcrumbs />
+
         <h1 className={style['favorites-page__title']}>
           Favourites
         </h1>
