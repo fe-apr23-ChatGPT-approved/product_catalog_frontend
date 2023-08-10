@@ -1,20 +1,18 @@
-import {
-  FC, useEffect, useState, useContext,
-} from 'react';
+import { FC, useEffect, useState, useContext } from 'react';
 import style from './ProductDetails.module.scss';
 import cn from 'classnames';
-import { BackButton } from '../../components/BackButton';
+import { BackButton } from '../../components/Buttons/BackButton';
 import { useLocation } from 'react-router';
 import { ProductInterface } from '../../types/oneProductType';
 import { Product } from '../../types/productType';
-import { CaruselContainer } from '../../components/CaruselContainer';
+import { CaruselContainer } from '../../components/Carusels/CaruselContainer';
 import { ProductDescription } from '../../components/ProductDescription';
 import { ProductTechSpecs } from '../../components/ProductTechSpecs';
 import { PhotosList } from '../../components/PhotosList';
 import { Capacity } from '../../components/Capacity/Capacity';
 import { Color } from '../../components/Color';
-import { AddToCartButton } from '../../components/AddToCartButton';
-import { AddToFavoritesButton } from '../../components/AddToFavoritesButton';
+import { AddToCartButton } from '../../components/Buttons/AddToCartButton';
+import { AddToFavoritesButton } from '../../components/Buttons/AddToFavoritesButton';
 import { ProductCharacteristics } from '../../components/ProductCharacteristics';
 import { getFromServer, getRecommended } from '../../api/getProductsFromServer';
 import { FavoritesContext } from '../../components/FavouritesContext/FavouritesContext';
@@ -32,10 +30,10 @@ export const ProductDetails: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isRecommended, setIsRecommended] = useState(false);
   const [isFavourite, setIsFavourite] = useState(
-    product ? isInFavorite(product.id) : false
+    product ? isInFavorite(product.id) : false,
   );
   const [isProductInCart, setIsProductInCart] = useState<boolean>(
-    product ? isInCart(product.id) : false
+    product ? isInCart(product.id) : false,
   );
 
   useEffect(() => {
@@ -131,7 +129,7 @@ export const ProductDetails: FC = () => {
                 <span className={style['product-details__price-discount']}>
                   {`$${product.priceDiscount}`}
                 </span>
-                
+
                 <span className={style['product-details__price-full']}>
                   {`$${product.priceRegular}`}
                 </span>

@@ -16,7 +16,7 @@ export const FavoritesPage: React.FC = () => {
         <h1 className={style['favorites-page__title']}>
           Favourites
         </h1>
-        <span className={style['catalog-layout__total']}>
+        <span className={style['favorites-page__total']}>
           {`${totalFavCount} models`}
         </span>
         <ProductList products={favoriteItems} />

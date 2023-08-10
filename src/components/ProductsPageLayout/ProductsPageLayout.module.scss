@@ -18,13 +18,35 @@
     @include onTablet {
       @include h1_DestopAndTablet
     }
-
   }
 
-  &__total {
-    font-size: 14px;
-    font-weight: 600;
+  &__catalog{
+    padding-bottom: 8px;
+  }
+  
+  &__catalog-selectors {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 16px;
+
+    @include onTablet {
+      margin-top: 40px;
+    }
+  }
+  
+  &__catalog-selector-text {
+    @include bodyText;
+  }
+  
+  &__catalog-total {
     color: $secondaryColor;
-    margin-top: 8px;
+    @include bodyText;
+  }
+
+  &__error {
+    margin: auto;
+    text-align: center;
   }
 }

@@ -79,7 +79,9 @@
   }
 
   &__name-container {
-    padding: 8px 0;
+    display: inline-block;
+    height: 58px;
+    padding-top: 8px;
   }
 
   &__name {

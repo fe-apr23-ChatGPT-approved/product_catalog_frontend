@@ -3,8 +3,8 @@ import 'react-multi-carousel/lib/styles.css';
 import style from './CarouselSlider.module.scss';
 import arrow from '../../icons/Arrow.svg';
 import cn from 'classnames';
-import { Product } from '../../types/productType';
-import { ProductCard } from '../ProductCard';
+import { Product } from '../../../types/productType';
+import { ProductCard } from '../../ProductCard';
 
 const ButtonGroup = ({ next, previous }: ButtonGroupProps) => {
   const handleClickPrev = () => {
@@ -40,7 +40,7 @@ const ButtonGroup = ({ next, previous }: ButtonGroupProps) => {
 };
 
 interface Props {
-  title: string,
+  title: string;
   products: Product[];
 }
 
@@ -92,7 +92,7 @@ export const CarouselSlider: React.FC<Props> = ({ title, products }) => {
         arrows={false}
       >
         {products.map((product) => (
-          <div key={product.id} className={style.card} >
+          <div key={product.id} className={style.card}>
             <ProductCard product={product} />
           </div>
         ))}

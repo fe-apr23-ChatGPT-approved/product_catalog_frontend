@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect, useContext } from 'react';
 import style from './ModalCart.module.scss';
-import { Button } from '../Button';
+import { Button } from '../Buttons/Button';
 import classNames from 'classnames';
 import card from '../../icons/empty-cart.png';
 import { ProductContext } from '../cartContext/ProductContext';
@@ -9,7 +9,7 @@ interface Props {
   onCloseClick: () => void;
 }
 
-export const ModalCart:FC<Props> = ({ onCloseClick }) => {
+export const ModalCart: FC<Props> = ({ onCloseClick }) => {
   const [isModal, setIsModal] = useState(false);
   const [isClear, setIsClear] = useState(false);
 
@@ -32,41 +32,39 @@ export const ModalCart:FC<Props> = ({ onCloseClick }) => {
   };
 
   return (
-    <article className={classNames(style['modal-cart'],
-      { [style['modal-cart--not-active']]: isModal })}>
-
+    <article
+      className={classNames(style['modal-cart'], {
+        [style['modal-cart--not-active']]: isModal,
+      })}
+    >
       <span className={style['modal-cart__content']}>
         {!isClear ? (
           <>
             <p className={style['modal-cart__text']}>
-               Checkout is not implemented yet. Do you want to clear the Cart?
-            </p >
+              Checkout is not implemented yet. Do you want to clear the Cart?
+            </p>
 
             <div className={style['modal-cart__button-wrapper']}>
-              
-              <Button
-                buttonTarget={'NO'}
-                onClick={onCloseClick}
-              />
+              <Button buttonTarget={'NO'} onClick={onCloseClick} />
 
               <Button
                 buttonTarget={'YES, CLEAR THE CARD'}
                 onClick={handleClearCard}
               />
-
             </div>
           </>
         ) : (
           <>
-            <p className={style['modal-cart__text']}>
-              {'Your Cart is empty'}
-            </p>
+            <p className={style['modal-cart__text']}>{'Your Cart is empty'}</p>
 
-            <img src={card} alt="empty card" className={style['modal-cart__photo']} />
+            <img
+              src={card}
+              alt="empty card"
+              className={style['modal-cart__photo']}
+            />
           </>
         )}
       </span>
-
     </article>
   );
 };
