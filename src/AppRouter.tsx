@@ -1,14 +1,12 @@
 import React from 'react';
 import { Navigate, createBrowserRouter } from 'react-router-dom';
-import { PhonesPage } from './pages/PhonesPage';
 import { CartPage } from './pages/CartPage';
-import { AccessoriesPage } from './pages/AccessoriesPage';
 import { NotFoundPage } from './pages/NotFoundPages/NotFoundPage';
 import { HomePage } from './pages/HomePage/HomePage';
-import { TabletsPage } from './pages/TabletsPage';
 import { ProductDetails } from './pages/ProductDetails';
 import { Layout } from './components/Layout/Layout';
 import { FavoritesPage } from './pages/FavoritesPage';
+import { ProductPageLayout } from './pages/ProductsPageLayout';
 
 export const AppRouter = createBrowserRouter([
   {
@@ -32,7 +30,7 @@ export const AppRouter = createBrowserRouter([
 
       {
         path: 'phones',
-        element: <PhonesPage />,
+        element: <ProductPageLayout title="Mobile phones" />,
       },
 
       {
@@ -42,7 +40,7 @@ export const AppRouter = createBrowserRouter([
 
       {
         path: '/accessories',
-        element: <AccessoriesPage />,
+        element: <ProductPageLayout title="Accessories" />
       },
 
       {
@@ -52,7 +50,7 @@ export const AppRouter = createBrowserRouter([
 
       {
         path: '/tablets',
-        element: <TabletsPage />,
+        element: <ProductPageLayout title="Tablets" />,
       },
 
       {

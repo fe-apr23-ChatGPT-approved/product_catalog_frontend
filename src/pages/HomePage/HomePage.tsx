@@ -7,7 +7,7 @@ import { Product } from '../../types/productType';
 import { PicturesSlider } from '../../components/PicturesSlider';
 import { ShopByCategories } from '../../components/ShopByCategories';
 import style from './HomePage.module.scss';
-import { CaruselContainer } from '../../components/CaruselContainer';
+import { CaruselContainer } from '../../components/Carusels/CaruselContainer';
 import { Loader } from '../../components/Loader';
 
 export const HomePage: React.FC = () => {
@@ -42,10 +42,8 @@ export const HomePage: React.FC = () => {
         Welcome to Nice Gadgets store!
       </h1>
 
-      {isLoading && (
-        <Loader />
-      )}
-      
+      {isLoading && <Loader />}
+
       <PicturesSlider />
 
       <CaruselContainer title="Brand new models" products={newModels} />

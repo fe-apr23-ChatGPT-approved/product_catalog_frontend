@@ -3,17 +3,23 @@ import { TotalCost } from '../../components/TotalCost';
 import style from './CartPage.module.scss';
 import cn from 'classnames';
 import { CartItem } from '../../components/CartItem';
-import { BackButton } from '../../components/BackButton';
+import { BackButton } from '../../components/Buttons/BackButton';
 import { ProductContext } from '../../components/cartContext/ProductContext';
 import { ModalCart } from '../../components/ModalCart';
 
 export const CartPage: FC = () => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
-  const {cartItems} = useContext(ProductContext);
+  const { cartItems } = useContext(ProductContext);
 
-  const totalPrice = useMemo(() => cartItems.reduce((accumulator, cartItem) => (
-    accumulator + (cartItem.product.price || cartItem.product.fullPrice) * cartItem.quantity),
-  0), [cartItems]);
+  const totalPrice = useMemo(
+    () =>
+      cartItems.reduce(
+        (accumulator, cartItem) => (
+          accumulator + (cartItem.product.price
+            || cartItem.product.fullPrice) * cartItem.quantity), 0,
+      ),
+    [cartItems],
+  );
 
   const handleClickOpenModal = () => {
     setIsVisibleModal(true);
@@ -24,8 +30,10 @@ export const CartPage: FC = () => {
   };
 
   return (
-    <section className={cn(style['cart-page'], {
-      [style['cart-page--empty']]: !cartItems.length})}
+    <section
+      className={cn(style['cart-page'], {
+        [style['cart-page--empty']]: !cartItems.length,
+      })}
     >
       <div className={style['cart-page__container']}>
         <BackButton />
@@ -36,10 +44,7 @@ export const CartPage: FC = () => {
           <div className={style['cart-page__content']}>
             <ul className={style['cart-page__cart-list']}>
               {cartItems.map((item) => (
-                <li
-                  key={item.id}
-                  className={style['cart-page__cart-item']}
-                >
+                <li key={item.id} className={style['cart-page__cart-item']}>
                   {<CartItem item={item} />}
                 </li>
               ))}
@@ -50,7 +55,9 @@ export const CartPage: FC = () => {
                 onClickModal={handleClickOpenModal}
               />
             </div>
-            { isVisibleModal && <ModalCart onCloseClick={handleClickCloseModal} />}
+            {isVisibleModal && (
+              <ModalCart onCloseClick={handleClickCloseModal} />
+            )}
           </div>
         ) : (
           <h1 className={style['cart-page__empty-cart-msg']}>
