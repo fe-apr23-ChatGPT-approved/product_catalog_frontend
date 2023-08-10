@@ -14,7 +14,6 @@ export const ProductTechSpecs: React.FC<Props> = ({ product }) => {
     ram,
     camera,
     zoom,
-    cell,
   } = product;
 
   const techSpecs = [
@@ -24,7 +23,6 @@ export const ProductTechSpecs: React.FC<Props> = ({ product }) => {
     { label: 'RAM', value: ram },
     { label: 'Camera', value: camera },
     { label: 'Zoom', value: zoom },
-    { label: 'Cell', value: cell },
   ];
 
   return (
