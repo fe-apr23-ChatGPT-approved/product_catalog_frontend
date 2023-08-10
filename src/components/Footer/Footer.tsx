@@ -7,7 +7,7 @@ import arrowUpHovered from '../../icons/arrow_up.svg';
 import arrowUp from '../../icons/arrow_up_grey.svg';
 
 import style from './Footer.module.scss';
-import { scrollToTop } from '../../constants/ScrollToTop';
+import { scrollToTop } from '../../functions/ScrollToTop';
 
 export const Footer: FC = () => {
   const [isHovered, setIsHovered] = useState(false);

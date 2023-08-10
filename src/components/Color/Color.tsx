@@ -2,7 +2,7 @@ import { FC, useCallback } from 'react';
 import style from './Color.module.scss';
 import { NavLink, useLocation } from 'react-router-dom';
 import cn from 'classnames';
-import { getColorHexValue } from '../../constants/getColorHexValue';
+import { getColorHexValue } from '../../functions/getColorHexValue';
 
 type Props = {
   productDetailsId: string,

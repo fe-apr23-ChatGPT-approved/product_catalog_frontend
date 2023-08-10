@@ -11,6 +11,7 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { Loader } from '../../components/Loader';
 import { Search } from '../../components/Search/Search';
 import { normalizeQuery } from '../../functions/normalizeQuery';
+import { SortSelector } from '../Selectors/SortSelector';
 
 const sortOptions = [
   { value: 'year', label: 'Newest' },
@@ -32,7 +33,6 @@ export const ProductsPageLayout: React.FC<Props> = ({ title }) => {
   const [currentPage, setCurrentPage] = useState<number>(initialPage);
   const [limit, setLimit] = useState<number>(total);
   const [sortOption, setSortOption] = useState<string>('year');
-
   const [searchQuery, setSearchQuery] = useState('');
   const [appliedQuery, setAppliedQuery] = useState('');
   const delay = 1000;
@@ -127,31 +127,17 @@ export const ProductsPageLayout: React.FC<Props> = ({ title }) => {
             {`${total} models`}
           </p>
           <section className={style['products-page__catalog-selectors']}>
-            <div className={style.selector}>
-              <p className={style.selector__info}>Sort By:</p>
+            <SortSelector
+              sortOption={sortOption}
+              sortOptions={sortOptions}
+              handleSortChange={handleSortChange}
+            />
 
-              <select
-                className={cn(
-                  style.selector__field,
-                  style['selector__arrow-select'],
-                )}
-                id={'sort'}
-                value={sortOption}
-                onChange={handleSortChange}
-              >
-                {sortOptions.map((option) => (
-                  <option
-                    key={option.value}
-                    className={style['products-page__catalog-selector-text']}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <PageSelector value={limit} onChange={onSelect} total={total} />
+            <PageSelector
+              value={limit}
+              onChange={onSelect}
+              total={total}
+            />
 
             <Search
               searchQuery={searchQuery}

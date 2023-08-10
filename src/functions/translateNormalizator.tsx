@@ -1,5 +1,5 @@
 
-export const normalizeQuery = (splittedQuery: string[]) => {
+export const translateNormalizeQuery = (splittedQuery: string[]) => {
   const normalizationMap: Record<string, string> = {
     'апл': 'apple',
     'епл': 'apple',

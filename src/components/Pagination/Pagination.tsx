@@ -1,9 +1,9 @@
 import React, { FC, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { Arrow } from '../Arrow/Arrow';
-import { scrollToTop } from '../../constants/ScrollToTop';
+import { scrollToTop } from '../../functions/ScrollToTop';
 import style from './Pagination.module.scss';
-import { getNumbers } from '../../constants/getNumbersPagination';
+import { getNumbers } from '../../functions/getNumbersPagination';
 
 interface Props {
   total: number;
@@ -85,7 +85,6 @@ export const Pagination: FC<Props> = ({
         >
           <span className={style['pagination__element-text']}>{page}</span>
         </li>
-
       ))}
       <li
         className={classNames(
