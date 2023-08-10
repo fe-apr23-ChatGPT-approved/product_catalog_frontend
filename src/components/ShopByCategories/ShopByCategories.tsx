@@ -17,7 +17,7 @@ export const ShopByCategories: React.FC<Props> = ({
 }) => {
   categories[0].quantity = totalPhones;
   categories[1].quantity = totalTablets;
-  categories[0].quantity = totalAccessories;
+  categories[2].quantity = totalAccessories;
 
   return (
     <section className={style['shop-by-categories']}>
