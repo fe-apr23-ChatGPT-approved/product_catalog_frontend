@@ -1,15 +1,15 @@
 import style from './ProductsPageLayout.module.scss';
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
-import { Pagination } from '../Pagination';
-import { PageSelector } from '../Selectors/PageSelector';
+import { Pagination } from '../../components/Pagination';
+import { PageSelector } from '../../components/Selectors/PageSelector';
 // import style from '../Selectors/PageSelector/PageSelector.module.scss';
 import { getFromServer } from '../../api/getProductsFromServer';
 import { Product } from '../../types/productType';
-import { ProductList } from '../ProductList';
+import { ProductList } from '../../components/ProductList';
 import { Data } from '../../types/dataFromServer';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { Loader } from '../Loader';
+import { Loader } from '../../components/Loader';
 
 const sortOptions = [
   { value: 'year', label: 'Newest' },
@@ -31,6 +31,9 @@ export const ProductPageLayout: React.FC<Props> = ({ title }) => {
   const [currentPage, setCurrentPage] = useState<number>(initialPage);
   const [limit, setLimit] = useState<number>(total);
   const [sortOption, setSortOption] = useState<string>('year');
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const [appliedQuery, setAppliedQuery] = useState('');
   const location = useLocation();
   location.pathname;
 
@@ -100,7 +103,6 @@ export const ProductPageLayout: React.FC<Props> = ({ title }) => {
             {`${total} models`}
           </p>
           <section className={style['products-page__catalog-selectors']}>
-
             <div className={style.selector}>
               <p className={style.selector__info}>Sort By:</p>
 
