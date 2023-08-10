@@ -12,6 +12,7 @@ import { Search } from '../../components/Search/Search';
 import { normalizeQuery } from '../../functions/normalizeQuery';
 import { SortSelector } from '../Selectors/SortSelector';
 import { ErrorMessage } from '../ErrorMessage';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 const sortOptions = [
   { value: 'year', label: 'Newest' },
@@ -119,6 +120,8 @@ export const ProductsPageLayout: React.FC<Props> = ({ title }) => {
   return (
     <main className={style['products-page']}>
       <div className={style['products-page__container']}>
+
+        <Breadcrumbs />
         <h1 className={style['products-page__title']}>{title}</h1>
 
         <div className={style['products-page__catalog']}>

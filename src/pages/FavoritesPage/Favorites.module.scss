@@ -34,4 +34,33 @@
     color: $secondaryColor;
     margin-top: 8px;
   }
+
+  &__empty-favourites-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+  }
+
+  &__empty-favourites-message {
+    padding:  50px 0 ;
+    
+    text-align: center;
+    color: $secondaryColor;
+    @include h4_Mobile;
+
+    @include onTablet {
+      @include h4_DestopAndTablet;
+    }
+  }
+
+  &__empty-favourites-image {
+    width: 200px;
+
+    margin: 0 auto;
+
+    @include onTablet {
+      width: 20%;
+    }
+  }
 }

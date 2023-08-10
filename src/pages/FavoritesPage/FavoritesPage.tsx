@@ -4,6 +4,7 @@ import style from './Favorites.module.scss';
 import cn from 'classnames';
 import { ProductList } from '../../components/ProductList';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import emptyFav from '../../images/empty-Fav.png';
 
 export const FavoritesPage: React.FC = () => {
   const { favoriteItems, totalFavCount } = useContext(FavoritesContext);
@@ -21,7 +22,23 @@ export const FavoritesPage: React.FC = () => {
         <span className={style['favorites-page__total']}>
           {`${totalFavCount} models`}
         </span>
-        <ProductList products={favoriteItems} />
+
+        {favoriteItems.length !== 0
+          ? (<ProductList products={favoriteItems} />)
+          : (
+            <div className={style['favorites-page__empty-favourites-wrapper']}>
+  
+              <h1 className={style['favorites-page__empty-favourites-message']}>
+                Your Favorites List Is Currently Empty
+              </h1>
+  
+              <img
+                src={emptyFav}
+                alt="empty-favourites-card"
+                className={style['favorites-page__empty-favourites-image']} />
+  
+            </div>
+          )}
       </div>
     </main>
   );
