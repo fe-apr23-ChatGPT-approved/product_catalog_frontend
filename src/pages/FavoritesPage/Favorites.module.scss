@@ -9,7 +9,7 @@
   display: block;
   
   &--empty {
-    height: $page-height-mobile;
+    height: 80vh;
 
     @include onTablet {
       height: $page-height-desk;

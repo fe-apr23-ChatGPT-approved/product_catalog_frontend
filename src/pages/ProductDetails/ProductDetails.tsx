@@ -20,6 +20,7 @@ import { ProductContext } from '../../components/cartContext/ProductContext';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { scrollToTop } from '../../functions/ScrollToTop';
+import { ErrorMessage } from '../../components/ErrorMessage';
 
 export const ProductDetails: FC = () => {
   const { pathname } = useLocation();
@@ -37,6 +38,8 @@ export const ProductDetails: FC = () => {
   const [isProductInCart, setIsProductInCart] = useState<boolean>(
     product ? isInCart(product.id) : false,
   );
+  const canShowLoader = !isError && isLoading;
+  const canShowPage = !isError && !isLoading;
 
   useEffect(() => {
     setIsLoading(true);
@@ -101,86 +104,98 @@ export const ProductDetails: FC = () => {
           <BackButton />
         </div>
 
-        {isLoading && (
+        {isError && (
+          <div className={style['products-page__error']}>
+            <ErrorMessage />
+          </div>
+        )}
+
+        {canShowLoader && (
           <div className={style['product-details__loader-container']}>
             <Loader />
           </div>
         )}
 
-        <h2 className={style['product-details__title']}>
-          {product && product.name}
-        </h2>
+        {canShowPage && (
+          <>
+            <h2 className={style['product-details__title']}>
+              {product && product.name}
+            </h2>
 
-        {product && (
-          <section className={style['product-details__main-info']}>
-            <div className={style['product-details__photos']}>
-              {product && (
-                <PhotosList images={product?.images} name={product.name} />
-              )}
-            </div>
-
-            <div className={style['product-details__variants']}>
-              <Color
-                productDetailsId={product.id}
-                colors={product.colorsAvailable}
-              />
-              <Capacity
-                capacities={product.capacityAvailable}
-                productDetailsId={product.id}
-              />
-              <p className={style['product-details__price']}>
-                <span className={style['product-details__price-discount']}>
-                  {`$${product.priceDiscount}`}
-                </span>
-
-                <span className={style['product-details__price-full']}>
-                  {`$${product.priceRegular}`}
-                </span>
-              </p>
-              <div className={style['product-details__buttons-wrapper']}>
-                <AddToCartButton
-                  productAdded={isProductInCart}
-                  onClick={handleAddProduct}
-                />
-                <AddToFavoritesButton
-                  productFavourite={isFavourite}
-                  onClick={handleAddFavourite}
-                />
-              </div>
-              <ProductCharacteristics
-                screen={product.screen}
-                resolution={product.resolution}
-                processor={product.processor}
-                ram={product.ram}
-              />
-            </div>
-          </section>
-        )}
-
-        <section className={style['product-details__aditional-info']}>
-          <article
-            className={cn(
-              style['product-details__block'],
-              style['product-details__description'],
-            )}
-          >
             {product && (
-              <ProductDescription description={product.description} />
-            )}
-          </article>
+              <section className={style['product-details__main-info']}>
+                <div className={style['product-details__photos']}>
+                  {product && (
+                    <PhotosList images={product?.images} name={product.name} />
+                  )}
+                </div>
 
-          <article
-            className={cn(
-              style['product-details__block'],
-              style['product-details__techSpecs'],
+                <div className={style['product-details__variants']}>
+                  <Color
+                    productDetailsId={product.id}
+                    colors={product.colorsAvailable}
+                  />
+                  <Capacity
+                    capacities={product.capacityAvailable}
+                    productDetailsId={product.id}
+                  />
+                  <p className={style['product-details__price']}>
+                    <span className={style['product-details__price-discount']}>
+                      {`$${product.priceDiscount}`}
+                    </span>
+
+                    <span className={style['product-details__price-full']}>
+                      {`$${product.priceRegular}`}
+                    </span>
+                  </p>
+                  <div className={style['product-details__buttons-wrapper']}>
+                    <AddToCartButton
+                      productAdded={isProductInCart}
+                      onClick={handleAddProduct}
+                    />
+                    <AddToFavoritesButton
+                      productFavourite={isFavourite}
+                      onClick={handleAddFavourite}
+                    />
+                  </div>
+                  <ProductCharacteristics
+                    screen={product.screen}
+                    resolution={product.resolution}
+                    processor={product.processor}
+                    ram={product.ram}
+                  />
+                </div>
+              </section>
             )}
-          >
-            {product && <ProductTechSpecs product={product} />}
-          </article>
-        </section>
+
+            <section className={style['product-details__aditional-info']}>
+              <article
+                className={cn(
+                  style['product-details__block'],
+                  style['product-details__description'],
+                )}
+              >
+                {product && (
+                  <ProductDescription description={product.description} />
+                )}
+              </article>
+
+              <article
+                className={cn(
+                  style['product-details__block'],
+                  style['product-details__techSpecs'],
+                )}
+              >
+                {product && <ProductTechSpecs product={product} />}
+              </article>
+            </section>
+          </>
+        )}
       </div>
 
-      <CaruselContainer title={'You may also like'} products={recommended} />
+      {canShowPage && (
+        <CaruselContainer title={'You may also like'} products={recommended} />
+      )}
     </main>
   );
 };
