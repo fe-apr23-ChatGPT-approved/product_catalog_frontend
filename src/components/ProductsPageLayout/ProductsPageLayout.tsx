@@ -1,5 +1,5 @@
 import style from './ProductsPageLayout.module.scss';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Pagination } from '../../components/Pagination';
 import { PageSelector } from '../../components/Selectors/PageSelector';
 import { getFromServer } from '../../api/getProductsFromServer';
@@ -79,39 +79,37 @@ export const ProductsPageLayout: React.FC<Props> = ({ title }) => {
     setSearchParams(searchParams);
   }, [limit, currentPage, sortOption, appliedQuery]);
 
-  const handlePageChange = (page: number) => {
+  const handlePageChange = useCallback((page: number) => {
     setCurrentPage(page);
-  };
+  }, []);
 
-  const onSelect = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+  const onSelect = useCallback((event: React.ChangeEvent<HTMLSelectElement>): void => {
     const newLimit = Number(event.target.value);
     setLimit(newLimit);
     setCurrentPage(initialPage);
-  };
+  }, []);
 
-  const handleSortChange = (
+  const handleSortChange = useCallback((
     event: React.ChangeEvent<HTMLSelectElement>,
   ): void => {
     const newSortOption = event.target.value;
     setSortOption(newSortOption);
     setCurrentPage(initialPage);
-  };
+  }, []);
 
-  const onQueryChange = (value: string) => {
+  const onQueryChange = useCallback((value: string) => {
     setSearchQuery(value);
-  };
+  }, []);
 
-  const onApplyChange = (value: string) => {
+  const onApplyChange = useCallback((value: string) => {
     const newQuery = value.trim();
-    if (newQuery) {
-      setAppliedQuery(value);
-    }
-  };
+    setAppliedQuery(value);
+  }, []);
 
-  const clearSearch = () => {
+  const clearSearch = useCallback(() => {
     setSearchQuery('');
     setAppliedQuery('');
-  };
+  }, []);
 
   const canShowLoader = !isError && isLoading;
   const canShowPage = !isError && !isLoading;
