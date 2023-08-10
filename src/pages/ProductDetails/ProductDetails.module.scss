@@ -68,14 +68,6 @@
 
   &__block {
     display: block;
-
-    @include onMobile {
-      // margin-bottom: 56px;
-    }
-
-    @include onTablet {
-      // margin-bottom: 64px;
-    }
   }
 
   &__main-info {
@@ -103,7 +95,16 @@
   }
 
   &__description {
+    @include onMobile {
+      margin-bottom: 56px;
+    }
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
     @include onDesktop {
+      margin-bottom: 0;
       grid-column-start: 1;
       grid-column-end: 13;
     }
