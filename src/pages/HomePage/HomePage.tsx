@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import {
   getDiscountModels,
+  getFromServer,
   getNewModels,
 } from '../../api/getProductsFromServer';
 import { Product } from '../../types/productType';
@@ -15,6 +16,9 @@ export const HomePage: React.FC = () => {
   const [discountModels, setDiscountModels] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [totalPhones, setTotalPhones] = useState(0);
+  const [totalTablets, setTotalTablets] = useState(0);
+  const [totalAccessories, setTotalAccessories] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
@@ -24,6 +28,24 @@ export const HomePage: React.FC = () => {
       .finally(() => {
         setIsLoading(false);
       });
+  }, []);
+
+  useEffect(() => {
+    getFromServer('/phones')
+      .then((data) => setTotalPhones(data.count))
+      .catch(() => setIsError(true));
+  }, []);
+
+  useEffect(() => {
+    getFromServer('/tablets')
+      .then((data) => setTotalTablets(data.count))
+      .catch(() => setIsError(true));
+  }, []);
+
+  useEffect(() => {
+    getFromServer('/accessories')
+      .then((data) => setTotalAccessories(data.count))
+      .catch(() => setIsError(true));
   }, []);
 
   useEffect(() => {
@@ -48,7 +70,11 @@ export const HomePage: React.FC = () => {
 
       <CaruselContainer title="Brand new models" products={newModels} />
 
-      <ShopByCategories />
+      <ShopByCategories
+        totalPhones={totalPhones}
+        totalTablets={totalTablets}
+        totalAccessories={totalAccessories}
+      />
 
       <CaruselContainer title="Hot prices" products={discountModels} />
     </main>
