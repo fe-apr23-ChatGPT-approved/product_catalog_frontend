@@ -19,6 +19,7 @@ import { FavoritesContext } from '../../components/FavouritesContext/FavouritesC
 import { ProductContext } from '../../components/cartContext/ProductContext';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { scrollToTop } from '../../constants/ScrollToTop';
 
 export const ProductDetails: FC = () => {
   const { pathname } = useLocation();
@@ -53,7 +54,7 @@ export const ProductDetails: FC = () => {
           setIsProductInCart(false);
         }
         setProduct(data);
-        window.scrollTo(0, 0);
+        scrollToTop();
       })
       .catch(() => {
         setIsError(true);
