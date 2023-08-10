@@ -56,12 +56,32 @@
     }
   }
 
-  &__empty-cart-msg {
+  &__empty-cart-wrapper {
+    display: flex;
+    flex-direction: column;
+
+
+  }
+
+  &__empty-cart-message {
+    padding: 20px 50px 50px 20px;
+    
+    text-align: center;
     color: $secondaryColor;
     @include h4_Mobile;
 
     @include onTablet {
       @include h4_DestopAndTablet;
+    }
+  }
+
+  &__empty-cart-message-image {
+    width: 300px;
+
+    margin: 0 auto;
+
+    @include onTablet {
+      width: 50%;
     }
   }
 }
