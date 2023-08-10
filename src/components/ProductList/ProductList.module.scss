@@ -7,6 +7,7 @@
 
   column-gap: 16px;
   row-gap: 40px;
+  padding: 24px 0 40px;
 
   max-width: 1200px;
   justify-content: center;
@@ -16,7 +17,6 @@
 
   @include onTablet {
     grid-template-columns: repeat(2, 1fr);
-    padding: 24px 0 40px;
   }
 
   @include onTabletGrid {
@@ -25,6 +25,5 @@
 
   @include onDesktop {
     grid-template-columns: repeat(4, 1fr);
-    padding: 24px 0 40px;
   }
 }

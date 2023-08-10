@@ -1,5 +1,5 @@
 import {
-  FC, useEffect, useState, useContext, useCallback,
+  FC, useEffect, useState, useContext,
 } from 'react';
 import style from './ProductDetails.module.scss';
 import cn from 'classnames';
@@ -54,6 +54,7 @@ export const ProductDetails: FC = () => {
           setIsProductInCart(false);
         }
         setProduct(data);
+        window.scrollTo(0, 0);
       })
       .catch(() => {
         setIsError(true);
