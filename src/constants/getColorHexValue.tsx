@@ -3,12 +3,14 @@ export const getColorHexValue = (color: string): string => {
   case 'spacegray':
     return '#717378';
   case 'space-gray':
+  case 'space gray':
     return '#535150';
   case 'black':
     return '#20211A';
   case 'gold':
     return '#F9E5C9';
   case 'rosegold':
+  case 'rose gold':
     return '#CBA3B2';
   case 'silver':
     return '#B0B5B9';
@@ -39,6 +41,7 @@ export const getColorHexValue = (color: string): string => {
   case 'starlight':
     return '#F4EDC6';
   case 'sky-blue':
+  case 'sky blue':
     return '#87CEEB';
   case 'spaceblack':
     return '#333334';
