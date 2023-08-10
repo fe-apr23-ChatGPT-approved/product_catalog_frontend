@@ -6,19 +6,29 @@ import cn from 'classnames';
 type Props = {
   productDetailsId: string;
   capacities: string[];
+  nameSpacedId: string,
 };
 export const Capacity: FC<Props> = ({
   productDetailsId,
   capacities,
+  nameSpacedId,
 }) => {
   const { pathname } = useLocation();
   const [, category] = pathname.split('/');
   
   const getPhoneWithCapacity = useCallback(
     (capacity: string) => {
-      const splittedId = productDetailsId?.split('-');
-      splittedId[splittedId.length - 2] = capacity.toLowerCase();
-      const idWithNewCapacity = splittedId.join('-');
+      const capacityIndex = nameSpacedId.length;
+      const colorAndCapacity = productDetailsId.slice(capacityIndex)
+        .replace('-', '')
+        .split('-')
+        .map(item => item.includes(' ')
+          ? item.replace(' ', '-')
+          : item
+        );
+      colorAndCapacity[0] = capacity.toLowerCase();
+      const modelOptions = colorAndCapacity.join('-');
+      const idWithNewCapacity = `${nameSpacedId.toLocaleLowerCase()}-${modelOptions}`;
   
       return `/${category}/${idWithNewCapacity}`;
     },

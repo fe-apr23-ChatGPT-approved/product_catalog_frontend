@@ -1,3 +1,4 @@
+
 import { FC, useCallback } from 'react';
 import style from './Color.module.scss';
 import { NavLink, useLocation } from 'react-router-dom';
@@ -7,18 +8,24 @@ import { getColorHexValue } from '../../functions/getColorHexValue';
 type Props = {
   productDetailsId: string,
   colors: string[],
+  nameSpacedId: string,
+  capacity: string
 };
-export const Color: FC<Props> = ({ productDetailsId, colors }) => {
+export const Color: FC<Props> = ({
+  productDetailsId,
+  colors,
+  nameSpacedId,
+  capacity,
+}) => {
   const { pathname } = useLocation();
   const [, category] = pathname.split('/');
 
   const getPhoneWithColor = useCallback(
     (color: string) => {
-      const splittedId = productDetailsId?.split('-');
-      splittedId[splittedId.length - 1] = color.toLowerCase();
-      const idWithNewColor = splittedId.join('-').split(' ').join('-');
+      const model = `${nameSpacedId}-${capacity.toLowerCase()}-${color.toLowerCase()}`;
+      const idWithNewCapacity = model.replace(' ', '-');
   
-      return `/${category}/${idWithNewColor}`;
+      return `/${category}/${idWithNewCapacity}`;
     },
     [productDetailsId, category],
   );
