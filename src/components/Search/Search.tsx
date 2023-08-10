@@ -1,19 +1,33 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useCallback } from 'react';
 import style from './Search.module.scss';
 import { Cross } from '../Cross/Cross';
+import { debounce } from '../../functions/debounce';
 
-export const Search: FC = () => {
-  const [query, setQuery] = useState('');
+interface Props {
+  searchQuery: string,
+  onChange: (value: string) => void,
+  onApplyChange: (value: string) => void,
+  currentDelay: number,
+  clearSearch: () => void;
+}
 
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
+export const Search: FC<Props> = ({
+  searchQuery,
+  onChange,
+  onApplyChange,
+  currentDelay,
+  clearSearch,
+}) => {
+  const applyQuery = useCallback(
+    debounce(onApplyChange, currentDelay), [],
+  );
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(event.target.value);
+    applyQuery(event.target.value);
   };
 
-  const handleClearSearch = () => {
-    setQuery('');
-  };
-
-  const showClearIcon = query !== '';
+  const showClearIcon = searchQuery !== '';
 
   return (
     <div className={style.search}>
@@ -21,13 +35,13 @@ export const Search: FC = () => {
         className={style.search__input}
         placeholder={'Find your perfect gadget'}
         type="text"
-        onChange={handleSearch}
-        value={query}
+        onChange={handleChange}
+        value={searchQuery}
       />
       {showClearIcon && (
         <button
           className={style['search__clear-btn']}
-          onClick={handleClearSearch}
+          onClick={clearSearch}
         >
           <Cross />
         </button>
