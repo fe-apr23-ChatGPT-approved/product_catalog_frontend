@@ -17,8 +17,7 @@ export const CartPage: FC = () => {
       cartItems.reduce(
         (accumulator, cartItem) =>
           accumulator + (cartItem.product.price
-            || cartItem.product.fullPrice) * cartItem.quantity,
-        0,
+            || cartItem.product.fullPrice) * cartItem.quantity, 0,
       ),
     [cartItems],
   );

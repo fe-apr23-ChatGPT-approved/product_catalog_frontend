@@ -13,8 +13,9 @@ export const FavoritesContextProvider: FC<Props> = ({ children }) => {
     [],
   );
 
-  const isInFavorite = (productId: string) =>
-    favoriteItems.some((item) => item.itemId === productId);
+  const isInFavorite = (productId: string) =>(
+    favoriteItems.some((item) => item.itemId === productId)
+  );
 
   const onClickFavorites = (product: Product) => {
     const inFavourites = favoriteItems.find(

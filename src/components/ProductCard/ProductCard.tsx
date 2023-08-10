@@ -57,13 +57,16 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <Link className={style['product-card__name']} to={productPageLink}>
-        <p className={style['product-card__name-container']}>{name}</p>
+        <p className={style['product-card__name-container']}>
+          {name}
+        </p>
       </Link>
 
       <section className={style['product-card__price']}>
         <span className={style['product-card__price-discount']}>
           {`$${price}`}
         </span>
+
         <span className={style['product-card__price-full']}>
           {`$${fullPrice}`}
         </span>
@@ -72,16 +75,23 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <section className={style['product-card__description']}>
         <article className={style['product-card__description-title']}>
           <p>Screen:</p>
-          <p className={style['product-card__description-value']}>{screen}</p>
+
+          <p className={style['product-card__description-value']}>
+            {screen}
+          </p>
         </article>
 
         <article className={style['product-card__description-title']}>
           <p>Capacity:</p>
-          <p className={style['product-card__description-value']}>{capacity}</p>
+
+          <p className={style['product-card__description-value']}>
+            {capacity}
+          </p>
         </article>
 
         <article className={style['product-card__description-title']}>
           <p>RAM:</p>
+          
           <p className={style['product-card__description-value']}>{ram}</p>
         </article>
       </section>

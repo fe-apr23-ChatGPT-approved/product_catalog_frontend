@@ -15,21 +15,11 @@ export interface ProductContextType {
 
 const defaultProductContext: ProductContextType = {
   cartItems: [],
-  addToCart: () => {
-    /*empty*/
-  },
-  removeFromCart: () => {
-    /*empty*/
-  },
-  addOneItem: () => {
-    /*empty*/
-  },
-  removeOneItem: () => {
-    /*empty*/
-  },
-  cleareCart: () => {
-    /*empty*/
-  },
+  addToCart: () => { /*empty*/ },
+  removeFromCart: () => { /*empty*/ },
+  addOneItem: () => { /*empty*/ },
+  removeOneItem: () => { /*empty*/ },
+  cleareCart: () => { /*empty*/ },
   totalCount: 0,
   isInCart: () => false,
 };

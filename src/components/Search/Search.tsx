@@ -4,11 +4,11 @@ import { Cross } from '../Cross/Cross';
 import { debounce } from '../../functions/debounce';
 
 interface Props {
-  searchQuery: string;
-  onChange: (value: string) => void;
-  onApplyChange: (value: string) => void;
-  currentDelay: number;
-  clearSearch: () => void;
+  searchQuery: string,
+  onChange: (value: string) => void,
+  onApplyChange: (value: string) => void,
+  currentDelay: number,
+  clearSearch: () => void,
 }
 
 export const Search: FC<Props> = ({
