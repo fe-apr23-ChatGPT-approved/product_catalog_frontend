@@ -17,6 +17,9 @@ export const Menu: React.FC<Props> = ({ setIsOpenMenu }) => {
   const { totalCount } = useContext(ProductContext);
   const { totalFavCount } = useContext(FavoritesContext);
 
+  const cartCounterIsActive = totalCount !== 0;
+  const favCounterIsActive = totalFavCount !== 0;
+
   const handleClick = () => {
     setIsOpenMenu(false);
   };
@@ -48,9 +51,12 @@ export const Menu: React.FC<Props> = ({ setIsOpenMenu }) => {
           onClick={handleClick}
         >
           <img src={like} alt={'favourites button'} />
-          <div className={`${style.menu__counter} ${style['menu__counter--favourits']}`}>
-            {totalFavCount}
-          </div>
+          {favCounterIsActive && (
+            <div className={`${style.menu__counter} ${style['menu__counter--favourits']}`}>
+              {totalFavCount}
+            </div>
+          )
+          }
         </Link>
         <Link
           className={`${style.menu__button} ${style['menu__button--tablet']}`}
@@ -58,9 +64,11 @@ export const Menu: React.FC<Props> = ({ setIsOpenMenu }) => {
           onClick={handleClick}
         >
           <img src={cart} alt={'cart button'} />
-          <div className={`${style.menu__counter} ${style['menu__counter--cart']}`}>
-            {totalCount}
-          </div>
+          {cartCounterIsActive && (
+            <div className={`${style.menu__counter} ${style['menu__counter--cart']}`}>
+              {totalCount}
+            </div>
+          )}
         </Link>
       </div>
     </div>
