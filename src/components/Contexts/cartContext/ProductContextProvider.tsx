@@ -79,6 +79,8 @@ export const ProductContextProvider: FC<Props> = ({ children }) => {
   };
 
   return (
-    <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
+    <ProductContext.Provider value={value}>
+      {children}
+    </ProductContext.Provider>
   );
 };
