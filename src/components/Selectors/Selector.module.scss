@@ -1,5 +1,5 @@
-@import '../../../utils/vars';
-@import '../../../utils/mixins';
+@import '../../utils/vars';
+@import '../../utils/mixins';
 
 .selector {
   &__info {
@@ -11,7 +11,6 @@
   }
 
   &__field {
-    width: 136px;
     height: 40px;
 
     padding: 10px;
@@ -20,6 +19,26 @@
     border: 1px solid $iconsAndPlaceholders;
 
     outline: none;
+
+    &--page {
+      width: 136px;
+
+      @include onDesktop {
+        width: 128px;
+      }
+    }
+
+    &--sort-by {
+      width: 136px;
+
+      @include onTablet {
+        width: 187px;
+      }
+
+      @include onDesktop {
+        width: 176px;
+      }
+    }
   }
 
   @include onDesktop {
@@ -30,11 +49,11 @@
     appearance: none;
     padding: 8px;
     background-color: $backgroundColor;
-    border: 1px solid #ccc;
+    border: 1px solid $iconsAndPlaceholders;
     border-radius: 4px;
     cursor: pointer;
 
-    background-image: url('../.././../icons/arrow_down.svg');
+    background-image: url('../../icons/arrow_down.svg');
     background-repeat: no-repeat;
     background-position: right center;
     background-size: 16px 16px;

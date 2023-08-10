@@ -16,30 +16,45 @@
     @include h1_Mobile;
 
     @include onTablet {
-      @include h1_DestopAndTablet
+      @include h1_DestopAndTablet;
     }
   }
 
-  &__catalog{
+  &__catalog {
     padding-bottom: 8px;
   }
-  
+
   &__catalog-selectors {
+    max-width: 1200px;
+
+    margin: 0 auto;
     margin-top: 32px;
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 16px;
+
+    display: grid;
+    grid-template-columns: 136px 136px;
+    justify-content: center;
+    column-gap: 16px;
 
     @include onTablet {
       margin-top: 40px;
+      grid-template-columns: 187px 136px auto;
+      align-items: last baseline;
+      justify-content: stretch;
+    }
+    @include onDesktop {
+      grid-template-columns: 176px 128px auto;
     }
   }
-  
-  &__catalog-selector-text {
-    @include bodyText;
+
+  &__search {
+    max-width: 500px;
+    
+    @include onMobile {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
   }
-  
+
   &__catalog-total {
     color: $secondaryColor;
     @include bodyText;
