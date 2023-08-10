@@ -39,12 +39,9 @@
 
     @include onTablet {
       margin-top: 40px;
-      grid-template-columns: 187px 136px auto;
+      grid-template-columns: 176px 176px auto;
       align-items: last baseline;
       justify-content: stretch;
-    }
-    @include onDesktop {
-      grid-template-columns: 176px 128px auto;
     }
   }
 
