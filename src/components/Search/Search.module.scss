@@ -7,12 +7,13 @@
   &::before {
     content: '';
     background-image: url('../../icons/Search.svg');
-    color: transparent;
+    background-color: transparent;
     width: 16px;
     height: 16px;
     display: block;
     background-size: contain;
     background-repeat: no-repeat;
+    border: 0 solid transparent;
 
     transform: translate(50%, 180%);
   }
@@ -26,13 +27,13 @@
     border-radius: 5px;
     border: 1px solid $iconsAndPlaceholders;
     color: $primaryColor;
-    @include smallText;
+    @include buttons;
 
     &::placeholder {
       color: $iconsAndPlaceholders;
-      @include smallText;
-      font-family: 'Mont';
-      font-weight: 500;
+      @include buttons;
+      font-family: 'Mont', sans-serif;
+      font-weight: 700;
     }
   }
 

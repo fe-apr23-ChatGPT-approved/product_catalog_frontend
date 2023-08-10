@@ -12,6 +12,7 @@
 
   &__field {
     height: 40px;
+    width: 136px;
 
     padding: 10px;
 
@@ -20,29 +21,10 @@
 
     outline: none;
 
-    &--page {
-      width: 136px;
-
-      @include onDesktop {
-        width: 128px;
-      }
+    @include onTablet {
+      width: 176px;
     }
 
-    &--sort-by {
-      width: 136px;
-
-      @include onTablet {
-        width: 187px;
-      }
-
-      @include onDesktop {
-        width: 176px;
-      }
-    }
-  }
-
-  @include onDesktop {
-    width: 128px;
   }
 
   &__arrow-select {
