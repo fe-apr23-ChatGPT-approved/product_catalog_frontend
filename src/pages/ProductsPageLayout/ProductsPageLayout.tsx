@@ -10,6 +10,7 @@ import { ProductList } from '../../components/ProductList';
 import { Data } from '../../types/dataFromServer';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Loader } from '../../components/Loader';
+import { Search } from '../../components/Search/Search';
 
 const sortOptions = [
   { value: 'year', label: 'Newest' },
@@ -128,6 +129,8 @@ export const ProductPageLayout: React.FC<Props> = ({ title }) => {
             </div>
 
             <PageSelector value={limit} onChange={onSelect} total={total} />
+
+            <Search />
           </section>
 
           {isError && (
