@@ -5,8 +5,8 @@ import { NavLink, Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import style from './Menu.module.scss';
-import { ProductContext } from '../cartContext/ProductContext';
-import { FavoritesContext } from '../FavouritesContext/FavouritesContext';
+import { ProductContext } from '../Contexts/cartContext/ProductContext';
+import { FavoritesContext } from '../Contexts/FavouritesContext/FavouritesContext';
 
 interface Props {
   setIsOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -52,11 +52,12 @@ export const Menu: React.FC<Props> = ({ setIsOpenMenu }) => {
         >
           <img src={like} alt={'favourites button'} />
           {favCounterIsActive && (
-            <div className={`${style.menu__counter} ${style['menu__counter--favourits']}`}>
+            <div
+              className={`${style.menu__counter} ${style['menu__counter--favourits']}`}
+            >
               {totalFavCount}
             </div>
-          )
-          }
+          )}
         </Link>
         <Link
           className={`${style.menu__button} ${style['menu__button--tablet']}`}
@@ -65,7 +66,9 @@ export const Menu: React.FC<Props> = ({ setIsOpenMenu }) => {
         >
           <img src={cart} alt={'cart button'} />
           {cartCounterIsActive && (
-            <div className={`${style.menu__counter} ${style['menu__counter--cart']}`}>
+            <div
+              className={`${style.menu__counter} ${style['menu__counter--cart']}`}
+            >
               {totalCount}
             </div>
           )}

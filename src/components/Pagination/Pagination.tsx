@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import classNames from 'classnames';
-import { Arrow } from '../Arrow/Arrow';
+import { Arrow } from '../../icons/Arrow/Arrow';
 import { scrollToTop } from '../../functions/ScrollToTop';
 import style from './Pagination.module.scss';
 import { getNumbers } from '../../functions/getNumbersPagination';

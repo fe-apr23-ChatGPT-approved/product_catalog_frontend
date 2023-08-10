@@ -4,10 +4,10 @@ import { Cross } from '../Cross/Cross';
 import { debounce } from '../../functions/debounce';
 
 interface Props {
-  searchQuery: string,
-  onChange: (value: string) => void,
-  onApplyChange: (value: string) => void,
-  currentDelay: number,
+  searchQuery: string;
+  onChange: (value: string) => void;
+  onApplyChange: (value: string) => void;
+  currentDelay: number;
   clearSearch: () => void;
 }
 
@@ -18,9 +18,7 @@ export const Search: FC<Props> = ({
   currentDelay,
   clearSearch,
 }) => {
-  const applyQuery = useCallback(
-    debounce(onApplyChange, currentDelay), [],
-  );
+  const applyQuery = useCallback(debounce(onApplyChange, currentDelay), []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
@@ -39,10 +37,7 @@ export const Search: FC<Props> = ({
         value={searchQuery}
       />
       {showClearIcon && (
-        <button
-          className={style['search__clear-btn']}
-          onClick={clearSearch}
-        >
+        <button className={style['search__clear-btn']} onClick={clearSearch}>
           <Cross />
         </button>
       )}

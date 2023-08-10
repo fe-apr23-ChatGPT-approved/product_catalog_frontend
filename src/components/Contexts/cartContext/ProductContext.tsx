@@ -1,6 +1,6 @@
 import { createContext } from 'react';
-import { CartItemType } from '../../types/cartItemType';
-import { Product } from '../../types/productType';
+import { CartItemType } from '../../../types/cartItemType';
+import { Product } from '../../../types/productType';
 
 export interface ProductContextType {
   cartItems: CartItemType[];
@@ -15,11 +15,21 @@ export interface ProductContextType {
 
 const defaultProductContext: ProductContextType = {
   cartItems: [],
-  addToCart: () => { /*empty*/ },
-  removeFromCart: () => { /*empty*/ },
-  addOneItem: () => { /*empty*/ },
-  removeOneItem: () => { /*empty*/ },
-  cleareCart: () => { /*empty*/ },
+  addToCart: () => {
+    /*empty*/
+  },
+  removeFromCart: () => {
+    /*empty*/
+  },
+  addOneItem: () => {
+    /*empty*/
+  },
+  removeOneItem: () => {
+    /*empty*/
+  },
+  cleareCart: () => {
+    /*empty*/
+  },
   totalCount: 0,
   isInCart: () => false,
 };

@@ -3,8 +3,8 @@ import style from './ProductCard.module.scss';
 import { Product } from '../../types/productType';
 import { Link } from 'react-router-dom';
 
-import { ProductContext } from '../cartContext/ProductContext';
-import { FavoritesContext } from '../FavouritesContext/FavouritesContext';
+import { ProductContext } from '../Contexts/cartContext/ProductContext';
+import { FavoritesContext } from '../Contexts/FavouritesContext/FavouritesContext';
 import { AddToCartButton } from '../Buttons/AddToCartButton';
 import { AddToFavoritesButton } from '../Buttons/AddToFavoritesButton';
 
@@ -15,7 +15,9 @@ interface Props {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { addToCart, isInCart } = useContext(ProductContext);
   const { onClickFavorites, isInFavorite } = useContext(FavoritesContext);
-  const [isProductAdded, setIsProductAdded] = useState(isInCart(product.itemId));
+  const [isProductAdded, setIsProductAdded] = useState(
+    isInCart(product.itemId),
+  );
   const [isFavourite, setIsFavourite] = useState(isInFavorite(product.itemId));
 
   const handleAddProduct = () => {
@@ -55,9 +57,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <Link className={style['product-card__name']} to={productPageLink}>
-        <p className={style['product-card__name-container']}>
-          {name}
-        </p>
+        <p className={style['product-card__name-container']}>{name}</p>
       </Link>
 
       <section className={style['product-card__price']}>
@@ -72,23 +72,17 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <section className={style['product-card__description']}>
         <article className={style['product-card__description-title']}>
           <p>Screen:</p>
-          <p className={style['product-card__description-value']}>
-            {screen}
-          </p>
+          <p className={style['product-card__description-value']}>{screen}</p>
         </article>
 
         <article className={style['product-card__description-title']}>
           <p>Capacity:</p>
-          <p className={style['product-card__description-value']}>
-            {capacity}
-          </p>
+          <p className={style['product-card__description-value']}>{capacity}</p>
         </article>
 
         <article className={style['product-card__description-title']}>
           <p>RAM:</p>
-          <p className={style['product-card__description-value']}>
-            {ram}
-          </p>
+          <p className={style['product-card__description-value']}>{ram}</p>
         </article>
       </section>
 
