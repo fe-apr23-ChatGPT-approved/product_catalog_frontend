@@ -4,8 +4,6 @@ import cn from 'classnames';
 import { Pagination } from '../Pagination';
 import { PageSelector } from '../Selectors/PageSelector';
 // import style from '../Selectors/PageSelector/PageSelector.module.scss';
-import layoutStyle from './CatalogLayout.module.scss';
-import paginationStyle from '../Pagination/Pagination.module.scss';
 import { getFromServer } from '../../api/getProductsFromServer';
 import { Product } from '../../types/productType';
 import { ProductList } from '../ProductList';
@@ -101,7 +99,8 @@ export const ProductPageLayout: React.FC<Props> = ({ title }) => {
           <p className={style['products-page__catalog-total']}>
             {`${total} models`}
           </p>
-          <section className={layoutStyle['products-page__catalog-selectors']}>
+          <section className={style['products-page__catalog-selectors']}>
+
             <div className={style.selector}>
               <p className={style.selector__info}>Sort By:</p>
 
@@ -145,18 +144,12 @@ export const ProductPageLayout: React.FC<Props> = ({ title }) => {
           {canShowCatalog && <ProductList products={products} />}
 
           {showPagination && (
-            <div
-              className={cn(paginationStyle.pagination__container, {
-                [paginationStyle['pagination__container--hidden']]: !showPagination,
-              })}
-            >
-              <Pagination
-                total={total}
-                limit={limit}
-                currentPage={currentPage}
-                onPageChange={handlePageChange}
-              />
-            </div>
+            <Pagination
+              total={total}
+              limit={limit}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            />
           )}
         </div>
       </div>

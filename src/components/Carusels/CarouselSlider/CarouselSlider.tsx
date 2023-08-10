@@ -1,7 +1,7 @@
 import Carousel, { ButtonGroupProps } from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import style from './CarouselSlider.module.scss';
-import arrow from '../../icons/Arrow.svg';
+import arrow from '../../../icons/Arrow.svg';
 import cn from 'classnames';
 import { Product } from '../../../types/productType';
 import { ProductCard } from '../../ProductCard';

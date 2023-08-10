@@ -18,12 +18,6 @@
     padding: 40px 0 80px;
   }
 
-  &__container {
-    &--hidden {
-      display: none;
-    }
-  }
-
   &__element {
     @include square(32px);
 
