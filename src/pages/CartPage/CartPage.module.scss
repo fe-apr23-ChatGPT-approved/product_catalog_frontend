@@ -14,25 +14,23 @@
   }
 
   &__container {
-    padding: 24px 16px 56px;
+    padding-top: 24px;
+    @include sectionContainer;
 
     @include onTablet {
-      padding: 40px 24px 64px;
-    }
-
-    @include onDesktop {
-      padding: 40px 32px 80px;
+      padding-top: 40px; 
     }
   }
 
   &__title {
-    margin: 16px 0 32px;
+    margin: 24px 0 32px;
 
     color: $primaryColor;
 
     @include h1_Mobile;
 
     @include onTablet {
+      margin: 16px 0 32px;
       @include h1_DestopAndTablet;
     }
   }
