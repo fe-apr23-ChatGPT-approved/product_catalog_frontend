@@ -6,6 +6,7 @@ import { CartItem } from '../../components/CartItem';
 import { BackButton } from '../../components/Buttons/BackButton';
 import { ProductContext } from '../../components/cartContext/ProductContext';
 import { ModalCart } from '../../components/ModalCart';
+import emptyCart from '../../images/empty-cart.png';
 
 export const CartPage: FC = () => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
@@ -60,9 +61,18 @@ export const CartPage: FC = () => {
             )}
           </div>
         ) : (
-          <h1 className={style['cart-page__empty-cart-msg']}>
-            Your cart is empty
-          </h1>
+          <div className={style['cart-page__empty-cart-wrapper']}>
+
+            <h1 className={style['cart-page__empty-cart-message']}>
+              Your Cart Is Empty
+            </h1>
+
+            <img
+              src={emptyCart}
+              alt="empty-cart"
+              className={style['cart-page__empty-cart-message-image']} />
+
+          </div>
         )}
       </div>
     </section>
