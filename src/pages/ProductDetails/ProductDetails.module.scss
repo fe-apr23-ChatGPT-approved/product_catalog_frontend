@@ -70,11 +70,11 @@
     display: block;
 
     @include onMobile {
-      margin-bottom: 56px;
+      // margin-bottom: 56px;
     }
 
     @include onTablet {
-      margin-bottom: 64px;
+      // margin-bottom: 64px;
     }
   }
 
@@ -99,7 +99,6 @@
       display: grid;
       grid-template-columns: repeat(24, 1fr);
       column-gap: 16px;
-      margin-bottom: 80px;
     }
   }
 

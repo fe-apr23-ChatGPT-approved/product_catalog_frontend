@@ -35,18 +35,18 @@
   &__value {
     font-size: 14px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 21px;
 
     color: $primaryColor;
   }
 
   &__specs-title {
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 21px;
-  vertical-align: baseline;
-  color: $secondaryColor;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+    vertical-align: baseline;
+    color: $secondaryColor;
   }
 }

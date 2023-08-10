@@ -4,10 +4,8 @@
 
 .product-card {
   display: block;
-  height: 439px;
-  width: 288px;
+  height: 440px;
   max-width: 288px;
- 
   width: 100%;
 
   padding: 32px;
@@ -20,10 +18,17 @@
 
   @include onTablet {
     height: 506px;
+    min-width: 229px;
+    max-width: 288px;
+  }
+
+  @include onTabletGrid {
+    min-width: 229px;
+    max-width: 272px;
   }
 
   @include onDesktop {
-    height: 506px;
+    width: 272px;
   }
 
   cursor: pointer;
@@ -34,16 +39,20 @@
     justify-content: center;
     margin-bottom: 24px;
     height: 130px;
-
-   
-    @include onDesktop {
-      height: 196px
-    }
+    width: 223px;
 
     @include onTablet {
       height: 196px;
+      width: 224px;
     }
-    
+
+    @include onTabletGrid {
+      width: 165px;
+    }
+
+    @include onDesktop {
+      width: 208px;
+    }    
   }
 
   &__image {
@@ -70,8 +79,7 @@
   }
 
   &__name-container {
-    height: 58px;
-    padding-top: 8px;
+    padding: 8px 0;
   }
 
   &__name {

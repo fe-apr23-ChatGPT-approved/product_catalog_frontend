@@ -32,7 +32,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const handleClickFavourite = () => {
     onClickFavorites(product);
     setIsFavourite(!isFavourite);
-    
   };
 
   const {

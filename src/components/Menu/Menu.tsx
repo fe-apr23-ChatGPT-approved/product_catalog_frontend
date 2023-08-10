@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import cart from '../../images/Cart.svg';
 import like from '../../images/Like.svg';
 import { NavLink, Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import style from './Menu.module.scss';
+import { ProductContext } from '../cartContext/ProductContext';
+import { FavoritesContext } from '../FavouritesContext/FavouritesContext';
 
 interface Props {
   setIsOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,6 +14,8 @@ interface Props {
 
 export const Menu: React.FC<Props> = ({ setIsOpenMenu }) => {
   const pages = ['home', 'phones', 'tablets', 'accessories'];
+  const { totalCount } = useContext(ProductContext);
+  const { totalFavCount } = useContext(FavoritesContext);
 
   const handleClick = () => {
     setIsOpenMenu(false);
@@ -44,7 +48,9 @@ export const Menu: React.FC<Props> = ({ setIsOpenMenu }) => {
           onClick={handleClick}
         >
           <img src={like} alt={'favourites button'} />
-          <div className={`${style.menu__counter} ${style['menu__counter--favourits']}`}>1</div>
+          <div className={`${style.menu__counter} ${style['menu__counter--favourits']}`}>
+            {totalFavCount}
+          </div>
         </Link>
         <Link
           className={`${style.menu__button} ${style['menu__button--tablet']}`}
@@ -52,7 +58,9 @@ export const Menu: React.FC<Props> = ({ setIsOpenMenu }) => {
           onClick={handleClick}
         >
           <img src={cart} alt={'cart button'} />
-          <div className={`${style.menu__counter} ${style['menu__counter--cart']}`}>33</div>
+          <div className={`${style.menu__counter} ${style['menu__counter--cart']}`}>
+            {totalCount}
+          </div>
         </Link>
       </div>
     </div>

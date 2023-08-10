@@ -27,7 +27,7 @@ export const AppRouter = createBrowserRouter([
 
       {
         path: '/product_catalog_frontend',
-        element: <Navigate to="/" replace />
+        element: <HomePage />
       },
 
       {
