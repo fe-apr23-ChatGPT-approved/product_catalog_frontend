@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/product_catalog_frontend/static/css/main.8354a64e.css",
-    "main.js": "/product_catalog_frontend/static/js/main.dd57cfae.js",
+    "main.css": "/product_catalog_frontend/static/css/main.121f3658.css",
+    "main.js": "/product_catalog_frontend/static/js/main.99e40759.js",
     "static/media/astronaut.png": "/product_catalog_frontend/static/media/astronaut.bfa6491278f7c0f9fdf5.png",
     "static/media/carousel_img_2.png": "/product_catalog_frontend/static/media/carousel_img_2.2cedac2d6634ad14de3f.png",
     "static/media/carousel_img_3.png": "/product_catalog_frontend/static/media/carousel_img_3.5e995bc0638a1d609660.png",
@@ -34,11 +34,11 @@
     "static/media/Arrow.svg": "/product_catalog_frontend/static/media/Arrow.1681557de013e6041c2470380f71392b.svg",
     "static/media/arrow_up.svg": "/product_catalog_frontend/static/media/arrow_up.beef78840566ab1d5156fbeddb58d6bd.svg",
     "index.html": "/product_catalog_frontend/index.html",
-    "main.8354a64e.css.map": "/product_catalog_frontend/static/css/main.8354a64e.css.map",
-    "main.dd57cfae.js.map": "/product_catalog_frontend/static/js/main.dd57cfae.js.map"
+    "main.121f3658.css.map": "/product_catalog_frontend/static/css/main.121f3658.css.map",
+    "main.99e40759.js.map": "/product_catalog_frontend/static/js/main.99e40759.js.map"
   },
   "entrypoints": [
-    "static/css/main.8354a64e.css",
-    "static/js/main.dd57cfae.js"
+    "static/css/main.121f3658.css",
+    "static/js/main.99e40759.js"
   ]
 }
