@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { Pagination } from '../../components/Pagination';
 import { PageSelector } from '../../components/Selectors/PageSelector';
-// import style from '../Selectors/PageSelector/PageSelector.module.scss';
 import { getFromServer } from '../../api/getProductsFromServer';
 import { Product } from '../../types/productType';
 import { ProductList } from '../../components/ProductList';
@@ -12,6 +11,7 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { Loader } from '../../components/Loader';
 import { Search } from '../../components/Search/Search';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { SortSelector } from '../../components/Selectors/SortSelector';
 
 const sortOptions = [
   { value: 'year', label: 'Newest' },
@@ -107,33 +107,15 @@ export const ProductPageLayout: React.FC<Props> = ({ title }) => {
             {`${total} models`}
           </p>
           <section className={style['products-page__catalog-selectors']}>
-            <div className={style.selector}>
-              <p className={style.selector__info}>Sort By:</p>
-
-              <select
-                className={cn(
-                  style.selector__field,
-                  style['selector__arrow-select'],
-                )}
-                id={'sort'}
-                value={sortOption}
-                onChange={handleSortChange}
-              >
-                {sortOptions.map((option) => (
-                  <option
-                    key={option.value}
-                    className={style['products-page__catalog-selector-text']}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-
+            <SortSelector
+              sortOption={sortOption}
+              sortOptions={sortOptions}
+              handleSortChange={handleSortChange}
+            />
             <PageSelector value={limit} onChange={onSelect} total={total} />
-
-            <Search />
+            <div className={style['products-page__search']}>
+              <Search />
+            </div>
           </section>
 
           {isError && (
