@@ -1,0 +1,54 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+.search {
+  position: relative;
+
+  &::before {
+    content: '';
+    background-image: url('../../icons/Search.svg');
+    color: transparent;
+    width: 16px;
+    height: 16px;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    transform: translate(50%, 180%);
+  }
+
+  &__input {
+    height: 40px;
+    width: 100%;
+    padding: 5px 30px;
+
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid $iconsAndPlaceholders;
+    color: $primaryColor;
+    @include smallText;
+
+    &::placeholder {
+      color: $iconsAndPlaceholders;
+      @include smallText;
+      font-weight: 500;
+    }
+  }
+
+  &__clear-btn {
+    position: absolute;
+
+    background-color: transparent;
+    border: 0px solid transparent;
+    transform: translate(-120%, 50%);
+    color: $iconsAndPlaceholders;
+
+    &:hover {
+      color: $secondaryColor;
+    }
+
+    &:active {
+      color: $primaryColor;
+    }
+  }
+}

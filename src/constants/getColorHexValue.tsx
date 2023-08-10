@@ -2,6 +2,8 @@ export const getColorHexValue = (color: string): string => {
   switch (color) {
   case 'spacegray':
     return '#717378';
+  case 'space-gray':
+    return '#535150';
   case 'black':
     return '#20211A';
   case 'gold':
