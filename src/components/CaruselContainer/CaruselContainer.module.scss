@@ -8,7 +8,6 @@
 
   &__title {
     @include h2_Mobile;
-    margin-bottom: 24px;
 
     @include onTablet {
       @include h2_DestopAndTablet;
