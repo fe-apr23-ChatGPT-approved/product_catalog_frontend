@@ -1,11 +1,11 @@
 import { createContext } from 'react';
-import { Product } from '../../types/productType';
+import { Product } from '../../../types/productType';
 
 export interface FavoritesContextType {
   favoriteItems: Product[],
-  onClickFavorites: (product: Product) => void
-  totalFavCount: number;
-  isInFavorite: (productId: string) => boolean;
+  onClickFavorites: (product: Product) => void,
+  totalFavCount: number,
+  isInFavorite: (productId: string) => boolean,
 }
 
 const defaultFavoritesContext: FavoritesContextType = {

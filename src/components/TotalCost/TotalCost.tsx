@@ -1,7 +1,7 @@
 import React, { FC, useMemo, useContext } from 'react';
 import style from './TotalCost.module.scss';
 import { Button } from '../Buttons/Button';
-import { ProductContext } from '../cartContext/ProductContext';
+import { ProductContext } from '../Contexts/cartContext/ProductContext';
 
 interface Props {
   totalPrice: number;

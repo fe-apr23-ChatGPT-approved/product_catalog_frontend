@@ -1,6 +1,5 @@
 import style from './ProductsPageLayout.module.scss';
 import React, { useEffect, useState } from 'react';
-import cn from 'classnames';
 import { Pagination } from '../../components/Pagination';
 import { PageSelector } from '../../components/Selectors/PageSelector';
 import { getFromServer } from '../../api/getProductsFromServer';

@@ -3,7 +3,7 @@ import style from './ModalCart.module.scss';
 import { Button } from '../Buttons/Button';
 import classNames from 'classnames';
 import card from '../../icons/empty-cart.png';
-import { ProductContext } from '../cartContext/ProductContext';
+import { ProductContext } from '../Contexts/cartContext/ProductContext';
 
 interface Props {
   onCloseClick: () => void;

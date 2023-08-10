@@ -8,7 +8,7 @@ interface Props {
   onChange: (value: string) => void,
   onApplyChange: (value: string) => void,
   currentDelay: number,
-  clearSearch: () => void;
+  clearSearch: () => void,
 }
 
 export const Search: FC<Props> = ({
@@ -18,9 +18,7 @@ export const Search: FC<Props> = ({
   currentDelay,
   clearSearch,
 }) => {
-  const applyQuery = useCallback(
-    debounce(onApplyChange, currentDelay), [],
-  );
+  const applyQuery = useCallback(debounce(onApplyChange, currentDelay), []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
@@ -39,10 +37,7 @@ export const Search: FC<Props> = ({
         value={searchQuery}
       />
       {showClearIcon && (
-        <button
-          className={style['search__clear-btn']}
-          onClick={clearSearch}
-        >
+        <button className={style['search__clear-btn']} onClick={clearSearch}>
           <Cross />
         </button>
       )}

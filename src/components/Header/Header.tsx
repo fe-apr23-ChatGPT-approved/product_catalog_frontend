@@ -8,8 +8,8 @@ import { NavLink, Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import style from './Header.module.scss';
-import { ProductContext } from '../cartContext/ProductContext';
-import { FavoritesContext } from '../FavouritesContext/FavouritesContext';
+import { ProductContext } from '../Contexts/cartContext/ProductContext';
+import { FavoritesContext } from '../Contexts/FavouritesContext/FavouritesContext';
 
 interface Props {
   isOpenMenu: boolean;

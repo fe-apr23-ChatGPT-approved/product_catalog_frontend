@@ -4,7 +4,7 @@ import style from './CartPage.module.scss';
 import cn from 'classnames';
 import { CartItem } from '../../components/CartItem';
 import { BackButton } from '../../components/Buttons/BackButton';
-import { ProductContext } from '../../components/cartContext/ProductContext';
+import { ProductContext } from '../../components/Contexts/cartContext/ProductContext';
 import { ModalCart } from '../../components/ModalCart';
 import emptyCart from '../../images/empty-cart.png';
 
@@ -15,9 +15,9 @@ export const CartPage: FC = () => {
   const totalPrice = useMemo(
     () =>
       cartItems.reduce(
-        (accumulator, cartItem) => (
+        (accumulator, cartItem) =>
           accumulator + (cartItem.product.price
-            || cartItem.product.fullPrice) * cartItem.quantity), 0,
+            || cartItem.product.fullPrice) * cartItem.quantity, 0,
       ),
     [cartItems],
   );
@@ -62,7 +62,6 @@ export const CartPage: FC = () => {
           </div>
         ) : (
           <div className={style['cart-page__empty-cart-wrapper']}>
-
             <h1 className={style['cart-page__empty-cart-message']}>
               Your Cart Is Empty
             </h1>
@@ -70,8 +69,8 @@ export const CartPage: FC = () => {
             <img
               src={emptyCart}
               alt="empty-cart"
-              className={style['cart-page__empty-cart-message-image']} />
-
+              className={style['cart-page__empty-cart-message-image']}
+            />
           </div>
         )}
       </div>

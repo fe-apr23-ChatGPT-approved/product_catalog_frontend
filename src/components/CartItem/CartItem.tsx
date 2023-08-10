@@ -4,25 +4,23 @@ import style from './CartItem.module.scss';
 import plus from '../../icons/Plus.svg';
 import { Cross } from '../Cross/Cross';
 import { Minus } from '../Minus/Minus';
-import { ProductContext } from '../cartContext/ProductContext';
+import { ProductContext } from '../Contexts/cartContext/ProductContext';
 import { CartItemType } from '../../types/cartItemType';
 import { Link } from 'react-router-dom';
 
 interface Props {
-  item: CartItemType,
+  item: CartItemType;
 }
 
 export const CartItem: FC<Props> = ({ item }) => {
-  const {quantity, product} = item;
+  const { quantity, product } = item;
   const isOneItem = quantity === 1;
-  const {addOneItem, removeOneItem, removeFromCart} = useContext(ProductContext);
+  const { addOneItem, removeOneItem, removeFromCart } = useContext(
+    ProductContext
+  );
 
-  const {
-    itemId,
-    image,
-    category,
-  } = product;
-  
+  const { itemId, image, category } = product;
+
   const handleAddItem = () => {
     addOneItem(item);
   };
@@ -64,7 +62,10 @@ export const CartItem: FC<Props> = ({ item }) => {
           />
         </Link>
 
-        <Link to={productPageLink} className={style.cartItem__gadget_decscription}>
+        <Link
+          to={productPageLink}
+          className={style.cartItem__gadget_decscription}
+        >
           {product.name}
         </Link>
       </div>
@@ -80,11 +81,7 @@ export const CartItem: FC<Props> = ({ item }) => {
           >
             <Minus />
           </button>
-          <span
-            className={style.cartItem__count}
-          >
-            {quantity}
-          </span>
+          <span className={style.cartItem__count}>{quantity}</span>
           <button
             className={style.cartItem__btn}
             type="button"
@@ -97,9 +94,7 @@ export const CartItem: FC<Props> = ({ item }) => {
             />
           </button>
         </div>
-        <span className={style.cartItem__total_price}>
-          {`$${totalPrice}`}
-        </span>
+        <span className={style.cartItem__total_price}>{`$${totalPrice}`}</span>
       </div>
     </section>
   );

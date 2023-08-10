@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
-import { Product } from '../../types/productType';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { Product } from '../../../types/productType';
+import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { FavoritesContext, FavoritesContextType } from './FavouritesContext';
 
 interface Props {
@@ -14,7 +14,7 @@ export const FavoritesContextProvider: FC<Props> = ({ children }) => {
   );
 
   const isInFavorite = (productId: string) => (
-    favoriteItems.some(item => item.itemId === productId)
+    favoriteItems.some((item) => item.itemId === productId)
   );
 
   const onClickFavorites = (product: Product) => {
