@@ -16,7 +16,7 @@ export const Color: FC<Props> = ({ productDetailsId, colors }) => {
     (color: string) => {
       const splittedId = productDetailsId?.split('-');
       splittedId[splittedId.length - 1] = color.toLowerCase();
-      const idWithNewColor = splittedId.join('-');
+      const idWithNewColor = splittedId.join('-').split(' ').join('-');
   
       return `/${category}/${idWithNewColor}`;
     },
