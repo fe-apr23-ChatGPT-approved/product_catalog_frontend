@@ -52,28 +52,28 @@ export const CarouselSlider: React.FC<Props> = ({ title, products }) => {
       items: 4,
     },
     tablet: {
-      breakpoint: { max: 1200, min: 940 },
-      items: 3.5,
-    },
-
-    tablet2: {
-      breakpoint: { max: 940, min: 840 },
+      breakpoint: { max: 1200, min: 960 },
       items: 3,
     },
 
-    tablet3: {
-      breakpoint: { max: 840, min: 720 },
+    tablet32: {
+      breakpoint: { max: 960, min: 770 },
       items: 2.5,
     },
 
     mobile: {
-      breakpoint: { max: 720, min: 500 },
-      items: 2,
+      breakpoint: { max: 770, min: 500 },
+      items: 1.5,
     },
 
     mobile2: {
-      breakpoint: { max: 500, min: 0 },
-      items: 1,
+      breakpoint: { max: 500, min: 400 },
+      items: 1.1,
+    },
+
+    mobile3: {
+      breakpoint: { max: 400, min: 0 },
+      items: 1.0,
     },
   };
 
