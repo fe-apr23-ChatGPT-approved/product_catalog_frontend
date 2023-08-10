@@ -19,6 +19,8 @@ export const HomePage: React.FC = () => {
   const [totalPhones, setTotalPhones] = useState(0);
   const [totalTablets, setTotalTablets] = useState(0);
   const [totalAccessories, setTotalAccessories] = useState(0);
+  const canShowLoader = !isError && isLoading;
+  const canShowPage = !isError && !isLoading;
 
   useEffect(() => {
     setIsLoading(true);
@@ -64,19 +66,23 @@ export const HomePage: React.FC = () => {
         Welcome to Nice Gadgets store!
       </h1>
 
-      {isLoading && <Loader />}
+      {canShowLoader && <Loader />}
 
-      <PicturesSlider />
+      {canShowPage && (
+        <>
+          <PicturesSlider />
 
-      <CaruselContainer title="Brand new models" products={newModels} />
+          <CaruselContainer title="Brand new models" products={newModels} />
 
-      <ShopByCategories
-        totalPhones={totalPhones}
-        totalTablets={totalTablets}
-        totalAccessories={totalAccessories}
-      />
+          <ShopByCategories
+            totalPhones={totalPhones}
+            totalTablets={totalTablets}
+            totalAccessories={totalAccessories}
+          />
 
-      <CaruselContainer title="Hot prices" products={discountModels} />
+          <CaruselContainer title="Hot prices" products={discountModels} />
+        </>
+      )}
     </main>
   );
 };

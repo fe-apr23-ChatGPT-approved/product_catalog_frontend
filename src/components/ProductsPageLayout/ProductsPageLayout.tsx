@@ -12,6 +12,8 @@ import { Loader } from '../../components/Loader';
 import { Search } from '../../components/Search/Search';
 import { normalizeQuery } from '../../functions/normalizeQuery';
 import { SortSelector } from '../Selectors/SortSelector';
+import { ErrorMessage } from '../ErrorMessage';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 const sortOptions = [
   { value: 'year', label: 'Newest' },
@@ -35,9 +37,8 @@ export const ProductsPageLayout: React.FC<Props> = ({ title }) => {
   const [sortOption, setSortOption] = useState<string>('year');
   const [searchQuery, setSearchQuery] = useState('');
   const [appliedQuery, setAppliedQuery] = useState('');
-  const delay = 1000;
+  const delay = 2000;
   const location = useLocation();
-
   const { pathname } = location;
 
   useEffect(() => {
@@ -53,9 +54,7 @@ export const ProductsPageLayout: React.FC<Props> = ({ title }) => {
       })
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
-  }, [searchParams, pathname, appliedQuery]);
-
-  const canShowCatalog = !isLoading && !isError;
+  }, [searchParams, pathname]);
 
   useEffect(() => {
     const searchParams = new URLSearchParams();
@@ -84,8 +83,6 @@ export const ProductsPageLayout: React.FC<Props> = ({ title }) => {
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
-
-  const showPagination = limit !== total && limit !== 0;
 
   const onSelect = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     const newLimit = Number(event.target.value);
@@ -117,9 +114,15 @@ export const ProductsPageLayout: React.FC<Props> = ({ title }) => {
     setAppliedQuery('');
   };
 
+  const canShowLoader = !isError && isLoading;
+  const canShowPage = !isError && !isLoading;
+  const showPagination = limit !== total && limit !== 0 && !isError;
+
   return (
     <main className={style['products-page']}>
       <div className={style['products-page__container']}>
+
+        <Breadcrumbs />
         <h1 className={style['products-page__title']}>{title}</h1>
 
         <div className={style['products-page__catalog']}>
@@ -150,18 +153,13 @@ export const ProductsPageLayout: React.FC<Props> = ({ title }) => {
 
           {isError && (
             <div className={style['products-page__error']}>
-              <span>Something went wrong</span>
-              {/* <Button buttonTarget={'Reload'} onClick={} /> */}
+              <ErrorMessage />
             </div>
           )}
 
-          {isLoading && <Loader />}
+          {canShowLoader && <Loader />}
 
-          {/* {!LoadedData && products.length && (
-            <span>There are no phones yet</span>
-          )}  */}
-
-          {canShowCatalog && <ProductList products={products} />}
+          {canShowPage && <ProductList products={products} />}
 
           {showPagination && (
             <Pagination
