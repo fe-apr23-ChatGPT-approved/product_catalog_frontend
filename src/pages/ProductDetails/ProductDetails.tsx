@@ -31,7 +31,6 @@ export const ProductDetails: FC = () => {
   const [recommended, setRecommended] = useState<Product[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isRecommended, setIsRecommended] = useState(false);
   const [isFavourite, setIsFavourite] = useState(
     product ? isInFavorite(product.id) : false,
   );
