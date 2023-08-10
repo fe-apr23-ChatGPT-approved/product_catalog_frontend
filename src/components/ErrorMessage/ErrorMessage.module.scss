@@ -1,0 +1,67 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(10px);
+  }
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  margin: 50px 0 50px 0;
+
+  background-color: #413374;
+  border: 1px solid $accentColor;
+  border-radius: 25px;
+
+  margin-bottom: 20px;
+
+  &__text {
+    padding: 25px 0 25px 0;
+
+    text-align: center;
+
+    @include h3_DestopAndTablet;
+    color: $backgroundColor;
+  }
+
+  &__reload-button {
+    margin: 10px 0 40px 0;
+    padding: 10px 30px;
+    
+    color: $backgroundColor;
+    @include h4_DestopAndTablet;
+    font-weight: 600;
+
+    background-color: transparent;
+    border-color: $backgroundColor;
+    border-radius: 25px;
+
+    cursor: pointer;
+
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $backgroundColor;
+      color: #413374;
+    }
+  }
+
+  &__img {
+    width: 200px;
+    padding-top: 20px;
+    justify-content: start;
+
+    animation: fadeIn 1.5s forwards;
+  }
+}

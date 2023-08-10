@@ -13,6 +13,8 @@ import { Data } from '../../types/dataFromServer';
 // import { useLocation } from 'react-router';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Loader } from '../Loader';
+import { errorMessage } from '../../types/errorMesage';
+import { ErrorMessage } from '../../components/ErrorMessage';
 
 const sortOptions = [
   { value: 'year', label: 'Newest' },
@@ -89,6 +91,11 @@ export const CatalogLayout = () => {
     setCurrentPage(initialPage);
   };
 
+  const onReload = () => {
+    // setIsLoading(true); // function should reload
+    setIsError(false);
+  };
+
   return (
     <div className={style['catalog-layout']}>
       <span className={style['catalog-layout__total']}>
@@ -128,8 +135,7 @@ export const CatalogLayout = () => {
 
       {isError && (
         <div className={style['catalog-layout__error']}>
-          <span>Something went wrong</span>
-          {/* <Button buttonTarget={'Reload'} onClick={} /> */}
+          <ErrorMessage errorMessage={errorMessage.LOAD} onReload={onReload} />
         </div>
       )}
 
