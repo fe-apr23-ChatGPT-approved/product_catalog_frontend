@@ -141,13 +141,15 @@ export const ProductsPageLayout: React.FC<Props> = ({ title }) => {
               total={total}
             />
 
-            <Search
-              searchQuery={searchQuery}
-              onChange={onQueryChange}
-              onApplyChange={onApplyChange}
-              currentDelay={delay}
-              clearSearch={clearSearch}
-            />
+            <div className={style['products-page__search']}>
+              <Search
+                searchQuery={searchQuery}
+                onChange={onQueryChange}
+                onApplyChange={onApplyChange}
+                currentDelay={delay}
+                clearSearch={clearSearch}
+              />
+            </div>
           </section>
 
           {isError && (
