@@ -133,11 +133,15 @@ export const ProductDetails: FC = () => {
                   <Color
                     productDetailsId={product.id}
                     colors={product.colorsAvailable}
+                    nameSpacedId={product.namespaceId}
+                    capacity={product.capacity}
                   />
                   <Capacity
                     capacities={product.capacityAvailable}
                     productDetailsId={product.id}
+                    nameSpacedId={product.namespaceId}
                   />
+
                   <p className={style['product-details__price']}>
                     <span className={style['product-details__price-discount']}>
                       {`$${product.priceDiscount}`}
