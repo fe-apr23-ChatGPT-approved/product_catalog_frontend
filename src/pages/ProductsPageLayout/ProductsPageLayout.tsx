@@ -11,6 +11,8 @@ import { Data } from '../../types/dataFromServer';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Loader } from '../../components/Loader';
 import { Search } from '../../components/Search/Search';
+import { ErrorMessage } from '../../components/ErrorMessage';
+import { errorMessage } from '../../types/errorMesage';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 const sortOptions = [
@@ -95,6 +97,10 @@ export const ProductPageLayout: React.FC<Props> = ({ title }) => {
     setCurrentPage(initialPage);
   };
 
+  const onReload = () => {
+    setIsError(false);
+  };
+
   return (
     <main className={style['products-page']}>
       <div className={style['products-page__container']}>
@@ -138,8 +144,7 @@ export const ProductPageLayout: React.FC<Props> = ({ title }) => {
 
           {isError && (
             <div className={style['products-page__error']}>
-              <span>Something went wrong</span>
-              {/* <Button buttonTarget={'Reload'} onClick={} /> */}
+              <ErrorMessage errorMessage={errorMessage.LOAD} onReload={onReload} />
             </div>
           )}
 
