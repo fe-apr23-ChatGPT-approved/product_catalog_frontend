@@ -10,10 +10,7 @@ import { Data } from '../../types/dataFromServer';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Loader } from '../../components/Loader';
 import { Search } from '../../components/Search/Search';
-import { ErrorMessage } from '../../components/ErrorMessage';
-import { errorMessage } from '../../types/errorMesage';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { SortSelector } from '../../components/Selectors/SortSelector';
+import { normalizeQuery } from '../../functions/normalizeQuery';
 
 const sortOptions = [
   { value: 'year', label: 'Newest' },
@@ -25,7 +22,7 @@ interface Props {
   title: string;
 }
 
-export const ProductPageLayout: React.FC<Props> = ({ title }) => {
+export const ProductsPageLayout: React.FC<Props> = ({ title }) => {
   const initialPage = 1;
   const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState<Product[]>([]);
@@ -38,13 +35,14 @@ export const ProductPageLayout: React.FC<Props> = ({ title }) => {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [appliedQuery, setAppliedQuery] = useState('');
+  const delay = 1000;
   const location = useLocation();
-  location.pathname;
+
+  const { pathname } = location;
 
   useEffect(() => {
     setIsLoading(true);
-
-    getFromServer(`${location.pathname}?${searchParams.toString()}`)
+    getFromServer(`${pathname}?${searchParams.toString()}`)
       .then((data: Data) => {
         if ('rows' in data) {
           setProducts(data.rows);
@@ -55,12 +53,13 @@ export const ProductPageLayout: React.FC<Props> = ({ title }) => {
       })
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
-  }, [searchParams]);
+  }, [searchParams, pathname, appliedQuery]);
 
   const canShowCatalog = !isLoading && !isError;
 
   useEffect(() => {
     const searchParams = new URLSearchParams();
+
     if (limit !== total && limit) {
       searchParams.set('limit', limit.toString());
     }
@@ -74,8 +73,13 @@ export const ProductPageLayout: React.FC<Props> = ({ title }) => {
       searchParams.set('sortBy', sortOption);
     }
 
+    if (appliedQuery) {
+      const normalizedData = normalizeQuery(appliedQuery);
+      searchParams.set('query', normalizedData);
+    }
+
     setSearchParams(searchParams);
-  }, [limit, currentPage, sortOption]);
+  }, [limit, currentPage, sortOption, appliedQuery]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -97,15 +101,25 @@ export const ProductPageLayout: React.FC<Props> = ({ title }) => {
     setCurrentPage(initialPage);
   };
 
-  const onReload = () => {
-    setIsError(false);
+  const onQueryChange = (value: string) => {
+    setSearchQuery(value);
+  };
+
+  const onApplyChange = (value: string) => {
+    const newQuery = value.trim();
+    if (newQuery) {
+      setAppliedQuery(value);
+    }
+  };
+
+  const clearSearch = () => {
+    setSearchQuery('');
+    setAppliedQuery('');
   };
 
   return (
     <main className={style['products-page']}>
       <div className={style['products-page__container']}>
-      
-        <Breadcrumbs />
         <h1 className={style['products-page__title']}>{title}</h1>
 
         <div className={style['products-page__catalog']}>
@@ -113,20 +127,45 @@ export const ProductPageLayout: React.FC<Props> = ({ title }) => {
             {`${total} models`}
           </p>
           <section className={style['products-page__catalog-selectors']}>
-            <SortSelector
-              sortOption={sortOption}
-              sortOptions={sortOptions}
-              handleSortChange={handleSortChange}
-            />
-            <PageSelector value={limit} onChange={onSelect} total={total} />
-            <div className={style['products-page__search']}>
-              <Search />
+            <div className={style.selector}>
+              <p className={style.selector__info}>Sort By:</p>
+
+              <select
+                className={cn(
+                  style.selector__field,
+                  style['selector__arrow-select'],
+                )}
+                id={'sort'}
+                value={sortOption}
+                onChange={handleSortChange}
+              >
+                {sortOptions.map((option) => (
+                  <option
+                    key={option.value}
+                    className={style['products-page__catalog-selector-text']}
+                    value={option.value}
+                  >
+                    {option.label}
+                  </option>
+                ))}
+              </select>
             </div>
+
+            <PageSelector value={limit} onChange={onSelect} total={total} />
+
+            <Search
+              searchQuery={searchQuery}
+              onChange={onQueryChange}
+              onApplyChange={onApplyChange}
+              currentDelay={delay}
+              clearSearch={clearSearch}
+            />
           </section>
 
           {isError && (
             <div className={style['products-page__error']}>
-              <ErrorMessage errorMessage={errorMessage.LOAD} onReload={onReload} />
+              <span>Something went wrong</span>
+              {/* <Button buttonTarget={'Reload'} onClick={} /> */}
             </div>
           )}
 

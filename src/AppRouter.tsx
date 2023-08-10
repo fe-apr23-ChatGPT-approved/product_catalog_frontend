@@ -6,7 +6,9 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { ProductDetails } from './pages/ProductDetails';
 import { Layout } from './components/Layout/Layout';
 import { FavoritesPage } from './pages/FavoritesPage';
-import { ProductPageLayout } from './pages/ProductsPageLayout';
+import { TabletsPage } from './pages/TabletsPage';
+import { AccessoriesPage } from './pages/AccessoriesPage';
+import { PhonesPage } from './pages/PhonesPage';
 
 export const AppRouter = createBrowserRouter([
   {
@@ -30,7 +32,7 @@ export const AppRouter = createBrowserRouter([
 
       {
         path: 'phones',
-        element: <ProductPageLayout title="Mobile phones" />,
+        element: <PhonesPage />,
       },
 
       {
@@ -40,7 +42,7 @@ export const AppRouter = createBrowserRouter([
 
       {
         path: '/accessories',
-        element: <ProductPageLayout title="Accessories" />
+        element: <AccessoriesPage />,
       },
 
       {
@@ -50,7 +52,7 @@ export const AppRouter = createBrowserRouter([
 
       {
         path: '/tablets',
-        element: <ProductPageLayout title="Tablets" />,
+        element: <TabletsPage />,
       },
 
       {
