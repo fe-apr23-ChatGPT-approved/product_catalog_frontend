@@ -24,6 +24,7 @@ export const HomePage: React.FC = () => {
   const canShowPage = !isError && !isLoading;
 
   useEffect(() => {
+    setIsError(false);
     setIsLoading(true);
     getNewModels()
       .then((data) => setNewModels(data))

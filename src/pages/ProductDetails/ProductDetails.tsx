@@ -41,6 +41,7 @@ export const ProductDetails: FC = () => {
   const canShowPage = !isError && !isLoading;
 
   useEffect(() => {
+    setIsError(false);
     setIsLoading(true);
 
     getFromServer(pathname)
