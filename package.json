@@ -2,6 +2,7 @@
   "name": "product_catalog_frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://fe-apr23-chatgpt-approved.github.io/product_catalog_frontend/",
   "dependencies": {
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
