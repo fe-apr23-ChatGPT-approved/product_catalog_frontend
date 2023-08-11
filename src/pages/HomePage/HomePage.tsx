@@ -10,6 +10,7 @@ import { ShopByCategories } from '../../components/ShopByCategories';
 import style from './HomePage.module.scss';
 import { CaruselContainer } from '../../components/Carusels/CaruselContainer';
 import { Loader } from '../../components/Loader';
+import { ErrorMessage } from '../../components/ErrorMessage';
 
 export const HomePage: React.FC = () => {
   const [newModels, setNewModels] = useState<Product[]>([]);
@@ -23,6 +24,7 @@ export const HomePage: React.FC = () => {
   const canShowPage = !isError && !isLoading;
 
   useEffect(() => {
+    setIsError(false);
     setIsLoading(true);
     getNewModels()
       .then((data) => setNewModels(data))
@@ -65,6 +67,12 @@ export const HomePage: React.FC = () => {
       <h1 className={style['home-page__title']}>
         Welcome to Nice Gadgets store!
       </h1>
+      
+      {isError && (
+        <div className={style['products-page__error']}>
+          <ErrorMessage />
+        </div>
+      )}
 
       {canShowLoader && <Loader />}
 

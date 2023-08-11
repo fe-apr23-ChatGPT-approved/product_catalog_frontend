@@ -41,6 +41,7 @@ export const ProductsPageLayout: React.FC<Props> = ({ title }) => {
   const { pathname } = location;
 
   useEffect(() => {
+    setIsError(false);
     setIsLoading(true);
     getFromServer(`${pathname}?${searchParams.toString()}`)
       .then((data: Data) => {
@@ -103,7 +104,7 @@ export const ProductsPageLayout: React.FC<Props> = ({ title }) => {
 
   const onApplyChange = useCallback((value: string) => {
     const newQuery = value.trim();
-    setAppliedQuery(value);
+    setAppliedQuery(newQuery);
   }, []);
 
   const clearSearch = useCallback(() => {
