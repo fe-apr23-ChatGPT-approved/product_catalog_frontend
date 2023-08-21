@@ -1,5 +1,4 @@
 # Nice Gadgets Store
-FIGMA MOCKUP
 
 Welcome to the Nice Gadgets Store App! This project is a React-based web application that allows users to browse and shop for various electronic products. The app provides features like product listing, product details, shopping cart management, favorites, and more. It's built using modern web development technologies. The app's UI is designed to be responsive and user-friendly.
 
